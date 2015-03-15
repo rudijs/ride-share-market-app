@@ -1,0 +1,30 @@
+{
+  "name": "ride-share-market-app",
+  "version": "0.0.1",
+  "description": "Ride Share Market AngularJS App",
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "systemsadmin@ridesharemarket.com",
+  "license": "MIT",
+  "dependencies": {
+    "koa": "^0.18.1",
+    "koa-compress": "^1.0.8",
+    "koa-ejs": "^1.1.3",
+    "koa-helmet": "0.0.3",
+    "koa-json-logger": "0.0.19",
+    "koa-router": "^4.2.0",
+    "koa-static": "^1.4.9",
+    "nconf": "^0.7.1",
+    "require-walk": "^0.1.8"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-jshint": "^1.9.2",
+    "gulp-livereload": "^3.8.0",
+    "gulp-nodemon": "^1.0.5",
+    "gulp-task-listing": "^1.0.0"
+  }
+}
