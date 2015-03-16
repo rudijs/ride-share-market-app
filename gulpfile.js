@@ -32,11 +32,15 @@
   ];
 
   var liveReloadFiles = [
-    'httpd/views/index.dev.html'
-    //'app/components/**/*.js',
-    //'app/components/**/*.html',
-    //'app/template-cache/templates.js',
-    //'app/styles/**/*.css'
+    'httpd/views/index.dev.html',
+    'app/components/**/*.js',
+    'app/components/**/*.html',
+    'app/styles/**/*.css'
+    //'app/template-cache/templates.js'
+  ];
+
+  var stylusFiles = [
+    'app/components/**/*.styl'
   ];
 
   gulp.task('default', taskListing);
@@ -50,7 +54,7 @@
 
   gulp.task('watch', function () {
     gulp.watch(jsLintFiles, ['lint']);
-    //gulp.watch(stylusFiles, ['stylus']);
+    gulp.watch(stylusFiles, ['stylus']);
     //gulp.watch('app/components/**/*.html', ['build-templatecache']);
 
     // Livereload
@@ -65,11 +69,38 @@
       .pipe(jshint.reporter()); // Console output
   });
 
+  gulp.task('stylus', function () {
+
+    var stylus = require('gulp-stylus'),
+      prefix = require('gulp-autoprefixer');
+
+    gulp.src(stylusFiles)
+      .pipe(stylus())
+      .pipe(prefix())
+      .pipe(gulp.dest('./app/styles'));
+  });
+
+
   gulp.task('serve', function () {
     nodemon(nodemonConfig)
       .on('restart', function () {
         console.log('Local Dev Server Restarting...');
       });
   });
+
+  gulp.task('karma', function () {
+    var conf = require('./config/karma.conf.js')();
+    ////conf.browsers = ['Firefox', 'Chrome'];
+    //console.log(conf);
+    //return require('./node_modules/karma').server.start(conf);
+
+    var server = require('karma').server;
+    return server.start(conf, function (exitCode) {
+      console.log('Karma has exited with ' + exitCode);
+      process.exit(exitCode);
+    });
+
+  });
+
 
 })();

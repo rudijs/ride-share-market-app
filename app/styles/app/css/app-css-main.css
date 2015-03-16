@@ -1,0 +1,9 @@
+h1 {
+  font-family: 'Racing Sans One', cursive;
+}
+.bold {
+  font-weight: bold;
+}
+.error {
+  color: #f00;
+}
