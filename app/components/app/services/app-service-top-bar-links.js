@@ -6,13 +6,27 @@
       return {
        urls: [
          {
-           text: 'Google',
-           url: 'http://google.com'
+           text: 'Home',
+           url: '#!/'
          },
          {
-           text: 'Yahoo',
-           url: 'http://yahoo.com'
+           text: 'About Us',
+           url: '#!/about'
+         },
+         {
+           text: 'Privacy Policy',
+           url: '#!/privacy'
+         },
+         {
+           text: 'Terms',
+           url: '#!/terms'
+         },
+         {
+           text: 'Contact Us',
+           url: '#!/contact'
          }
+
+
        ]
       };
     });

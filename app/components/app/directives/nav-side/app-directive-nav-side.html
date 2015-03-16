@@ -8,7 +8,7 @@
 
         <md-item ng-repeat="link in links">
             <div class="md-tile-content">
-                <a ng-href="{{link.url}}">{{link.text}}</a>
+                <a ng-href="{{link.url}}" ng-click="toggleLeftMenu()">{{link.text}}</a>
             </div>
         </md-item>
 

@@ -19,7 +19,11 @@
 
       var names = [
         '', // implicit root state
-        'home'
+        'about',
+        'contact',
+        'home',
+        'privacy',
+        'terms'
       ];
 
       expect(list.map(function (state) {
