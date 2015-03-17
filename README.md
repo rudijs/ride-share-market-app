@@ -6,9 +6,9 @@ Ride Share Market AngularJS App
 
 - `git clone git@github.com:rudijs/ride-share-market-app.git`
 - `cd ride-share-market-app && git checkout develop`
+- `npm install -g bower gulp protractor`
 - `npm install`
 - `bower install`
-- `npm install -g gulp`
 - `gulp init`
 - Update the *config/env/\*.json*
 
@@ -19,3 +19,24 @@ Ride Share Market AngularJS App
 - Start live watch processes (code linting, server restart, live reload)
 - `gulp watch`
 - Open Web Browser and enable the [livereload.com](http://feedback.livereload.com/knowledgebase/articles/86242-how-do-i-install-and-use-the-browser-extensions-) plugin.
+
+## AngularJS Unit Tests
+
+- TODO
+
+## End-to-End Tests
+
+[Protractor](http://angular.github.io/protractor/#/) the end-to-end test framework.
+
+- Install webdriver (initial only)
+- `webdriver-manager update`
+- Start webdriver
+- `webdriver-manager start`
+
+Development - Start dev server and test
+
+- `gulp serve`
+- Run all tests.
+- `protractor config/e2e.conf.js`
+- Run a selected *suite* of tests from the *e2e.conf.js* file.
+- `protractor config/e2e.conf.js --suite app`
