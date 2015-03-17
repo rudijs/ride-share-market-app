@@ -10,7 +10,16 @@ Ride Share Market AngularJS App
 - `npm install`
 - `bower install`
 - `gulp init`
-- Update the *config/env/\*.json*
+- Update the *config/env/.json* files.
+
+## AngularJS Unit Tests
+
+Karma test runner using Mocha, Sinon and Chai
+
+- Start karma, run tests once and exit.
+- `gulp karma-single-run`
+- Start karma, run tests, watch for changes, re-run tests.
+- `gulp karma`
 
 ## Local Development Workflow
 
@@ -20,18 +29,9 @@ Ride Share Market AngularJS App
 - `gulp watch`
 - Open Web Browser and enable the [livereload.com](http://feedback.livereload.com/knowledgebase/articles/86242-how-do-i-install-and-use-the-browser-extensions-) plugin.
 
-## AngularJS Unit Tests
-
-Karma test runner using Mocha, Sinon and Chai
-
-- Start karma, run tests, watch for changes, re-run tests.
-- `gulp karma`
-- Start karma, run tests once and exit
-- `gulp karma-single-run`
-
 ## End-to-End Tests
 
-[Protractor](http://angular.github.io/protractor/#/) the end-to-end test framework.
+[Protractor](http://angular.github.io/protractor/#/) is the end-to-end test framework.
 
 - Install webdriver (initial only)
 - `webdriver-manager update`

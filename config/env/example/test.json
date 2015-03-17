@@ -8,5 +8,18 @@
     "signin": {
       "google": "http://local.api.ridesharemarket.com:3001/signin/google"
     }
+  },
+  "e2e": {
+    "url": {
+      "test": "http://127.0.0.1:3000",
+      "development": "http://dev.ridesharemarket.com",
+      "staging": "http://staging.ridesharemarket.com",
+      "qa": "http://qa.ridesharemarket.com",
+      "production": "http://ridesharemarket.com"
+    },
+    "seleniumAddress": "http://localhost:4444/wd/hub",
+    "sauceUser": "your-sauce-labs-username",
+    "sauceKey": "your-sauce-labs-key"
   }
+
 }
