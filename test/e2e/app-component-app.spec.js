@@ -76,35 +76,35 @@ describe('Ride Share Market', function () {
     };
 
     // Home Page
-    this.homeLink = element(by.xpath("//rsm-nav-top//a[@href='#!/']"));
+    this.homeLink = element(by.xpath("//rsm-nav-top//a[@href='#!/']")); // jshint ignore:line
     this.homePageTitle = element(by.id('title'));
     this.clickHome = function () {
       this.homeLink.click();
     };
 
     // About Us
-    this.aboutUsLink = element(by.xpath("//rsm-nav-top//a[@href='#!/about']"));
+    this.aboutUsLink = element(by.xpath("//rsm-nav-top//a[@href='#!/about']")); // jshint ignore:line
     this.aboutUsTitle = element(by.css('div > h1'));
     this.clickAboutUs = function () {
       this.aboutUsLink.click();
     };
 
     // Privacy Policy
-    this.privacyPolicyLink = element(by.xpath("//rsm-nav-top//a[@href='#!/privacy']"));
+    this.privacyPolicyLink = element(by.xpath("//rsm-nav-top//a[@href='#!/privacy']")); // jshint ignore:line
     this.privacyPolicyTitle = element(by.css('div > h1'));
     this.clickPrivacyPolicy = function () {
       this.privacyPolicyLink.click();
     };
 
     // Terms and Conditions
-    this.termsLink = element(by.xpath("//rsm-nav-top//a[@href='#!/terms']"));
+    this.termsLink = element(by.xpath("//rsm-nav-top//a[@href='#!/terms']")); // jshint ignore:line
     this.termsTitle = element(by.css('div > h1'));
     this.clickTerms = function () {
       this.termsLink.click();
     };
     
     // Contact Us
-    this.contactLink = element(by.xpath("//rsm-nav-top//a[@href='#!/contact']"));
+    this.contactLink = element(by.xpath("//rsm-nav-top//a[@href='#!/contact']")); // jshint ignore:line
     this.contactTitle = element(by.css('div > h1'));
     this.clickContact = function () {
       this.contactLink.click();
