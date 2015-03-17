@@ -1,6 +1,12 @@
+# IDE
 .idea/
+# Node.js files
 node_modules/
 npm-debug.log
 test/coverage/
 app/bower_components/
 config/env/*.json
+# Production build is not in git repo, these files will go into a Docker container then deployed.
+dist/
+app/template-cache
+index.prod.html

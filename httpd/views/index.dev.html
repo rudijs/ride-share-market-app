@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <title>Ride Share Market</title>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <!-- build:css css/styles.css -->
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css"/>
-
     <link rel="stylesheet" href="styles/app/css/app-css-animations.css"/>
     <link rel="stylesheet" href="styles/app/css/app-css-main.css"/>
     <link rel="stylesheet" href="styles/app/directives/nav-top/app-directive-nav-top.css"/>
-
+    <!-- endbuild -->
     <link href='http://fonts.googleapis.com/css?family=Racing+Sans+One' rel='stylesheet' type='text/css'>
-
 </head>
 <body id="appBody" layout="column" layout-fill>
 
@@ -22,6 +21,7 @@
 <!-- Application content here -->
 <div flex layout="row" layout-align-gt-sm="center" layout-sm="column" layout-align-sm="start center" style="overflow: auto" ui-view></div>
 
+<!-- build:js scripts/app.js -->
 <script src="bower_components/angular/angular.js"></script>
 
 <script src="bower_components/angular-animate/angular-animate.js"></script>
@@ -33,15 +33,16 @@
 <script src="components/app/app.js"></script>
 <script src="components/app/app-routes.js"></script>
 <script src="components/app/controllers/app-controller-main.js"></script>
-
 <script src="components/app/directives/nav-top/app-directive-nav-top.js"></script>
 <script src="components/app/directives/nav-side/app-directive-nav-side.js"></script>
-
 <script src="components/app/services/app-service-top-bar-ready.js"></script>
 <script src="components/app/services/app-service-top-bar-links.js"></script>
 <script src="components/app/services/app-service-navigation-control.js"></script>
 
+<script src="template-cache/templates.js"></script>
+
 <script src="components/app/app-init.js"></script>
+<!-- endbuild -->
 
 </body>
 </html>

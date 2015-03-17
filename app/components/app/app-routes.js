@@ -41,7 +41,7 @@
           url: '/contact',
           templateUrl: 'components/app/templates/app-template-contact.html',
           data: {noAuth: true}
-        })
+        });
 
     });
 
