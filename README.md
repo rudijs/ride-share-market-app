@@ -22,7 +22,12 @@ Ride Share Market AngularJS App
 
 ## AngularJS Unit Tests
 
-- TODO
+Karma test runner using Mocha, Sinon and Chai
+
+- Start karma, run tests, watch for changes, re-run tests.
+- `gulp karma`
+- Start karma, run tests once and exit
+- `gulp karma-single-run`
 
 ## End-to-End Tests
 

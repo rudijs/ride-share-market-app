@@ -100,11 +100,22 @@
       });
   });
 
+  gulp.task('karma-single-run', function () {
+    var conf = require('./config/karma.conf.js')();
+    ////conf.browsers = ['Firefox', 'Chrome'];
+    conf.singleRun = true;
+
+    var server = require('karma').server;
+    return server.start(conf, function (exitCode) {
+      console.log('Karma has exited with ' + exitCode);
+      process.exit(exitCode);
+    });
+
+  });
+
   gulp.task('karma', function () {
     var conf = require('./config/karma.conf.js')();
     ////conf.browsers = ['Firefox', 'Chrome'];
-    //console.log(conf);
-    //return require('./node_modules/karma').server.start(conf);
 
     var server = require('karma').server;
     return server.start(conf, function (exitCode) {
