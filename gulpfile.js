@@ -48,8 +48,8 @@
     'httpd/views/index.dev.html',
     'app/components/**/*.js',
     'app/components/**/*.html',
-    'app/styles/**/*.css'
-    //'app/template-cache/templates.js'
+    'app/styles/**/*.css',
+    'app/template-cache/templates.js'
   ];
 
   var stylusFiles = [
@@ -199,9 +199,9 @@
       'build-clean',
       'build-templatecache',
       'build-scripts-styles',
-      // build in paralell
+      // build in parallel
       [
-        'build-copy-images',
+        'build-copy-images'
         //'build-css',
         //'build-js'
       ],
