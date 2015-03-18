@@ -45,3 +45,40 @@ Development - Start dev server and test
 - `protractor config/e2e.conf.js`
 - Run a selected *suite* of tests from the *e2e.conf.js* file.
 - `protractor config/e2e.conf.js --suite app`
+
+## Deployment
+
+Deployment is done using Docker.
+
+Development builds:
+
+- Create the logging directory which will be mounted from the host to the container.
+- `mkdir -p "$(pwd)/tmp/log"`
+- `sudo chown rsm-data "$(pwd)/tmp/log"`
+- Build the Docker image.
+- `sudo docker build -t rudijs/rsm-app:0.0.1 .`
+- Run the container locally for testing.
+- Interactive with login.
+- `sudo docker run -i --name rsm-app -v $(pwd)/tmp/log/:/srv/ride-share-market-app/log -p 3000:3000 -t rudijs/rsm-app:0.0.1 /bin/bash`
+- Daemon mode.
+- `sudo docker run -d --name rsm-app -v $(pwd)/tmp/log/:/srv/ride-share-market-app/log -p 3000:3000 -t rudijs/rsm-app:0.0.1`
+
+Production builds:
+
+- Docker build, tag and push to local private repository.
+- `./docker-build 0.0.1`
+
+## Deployment
+
+Both host OS and container instance will user an *rsm-data* user account with UID number *2000*.
+
+For the host OS the ride-share-market-devops Chef repo will create this user account.
+
+For the docker container instance the Dockerfile will create this user account.
+
+The container instance will mount a *volume* for log files from the host OS with matching UIDs.
+
+- On the remote server.
+- `sudo docker pull 192.168.33.10:5000/rudijs/rsm-app:0.0.1`
+- `sudo docker rm -f rsm-app && sudo docker run -d --restart always --name rsm-app --cap-add SYS_PTRACE --security-opt apparmor:unconfined -v /srv/ride-share-market-app/log:/srv/ride-share-market-app/log -p 3000:3000 192.168.33.10:5000/rudijs/rsm-app:0.0.1`
+- Note: the *--cap-add SYS_PTRACE --security-opt apparmor:unconfined* flags above are required for pm2. See [here](https://github.com/Unitech/PM2/issues/1086)
