@@ -66,7 +66,7 @@ Development builds:
 Production builds:
 
 - Docker build, tag and push to local private repository.
-- `./docker-build 0.0.1`
+- `./docker-build x.x.x`
 
 ## Deployment
 
@@ -79,6 +79,8 @@ For the docker container instance the Dockerfile will create this user account.
 The container instance will mount a *volume* for log files from the host OS with matching UIDs.
 
 - On the remote server.
-- `sudo docker pull 192.168.33.10:5000/rudijs/rsm-app:0.0.1`
-- `sudo docker rm -f rsm-app && sudo docker run -d --restart always --name rsm-app --cap-add SYS_PTRACE --security-opt apparmor:unconfined -v /srv/ride-share-market-app/log:/srv/ride-share-market-app/log -p 3000:3000 192.168.33.10:5000/rudijs/rsm-app:0.0.1`
+- `sudo docker pull 192.168.33.10:5000/rudijs/rsm-app:x.x.x`
+- `sudo docker rm -f rsm-app && sudo docker run -d --restart always --name rsm-app --cap-add SYS_PTRACE --security-opt apparmor:unconfined -p 3000:3000 192.168.33.10:5000/rudijs/rsm-app:x.x.x`
 - Note: the *--cap-add SYS_PTRACE --security-opt apparmor:unconfined* flags above are required for pm2. See [here](https://github.com/Unitech/PM2/issues/1086)
+- Note: the docker container will export the application directory as a docker volume.
+- This data-volume is used by other containers (eg. logstash, nginx).

@@ -1,15 +1,14 @@
-# Version: 0.0.1
 FROM ubuntu:14.04
 MAINTAINER Ride Share Market "systemsadmin@ridesharemarket.com"
 
 # APT cache
-ENV APT_REFRESHED_AT 2015-03-18.1
-RUN apt-get -qq update
+ENV APT_REFRESHED_AT 2015-03-19.1
+RUN apt-get -yqq update
 
 # Install io.js, gpg keys listed at https://github.com/iojs/io.js
 ENV IOJS_VERSION 1.5.1
 RUN \
-    apt-get -y install curl  && \
+    apt-get -y install curl && \
     gpg --keyserver pool.sks-keyservers.net --recv-keys 9554F04D7259F04124DE6B476D5A82AC7E37093B DD8F2338BAE7501E3DD5AC78C273792F7D83545D && \
     curl -SLO "https://iojs.org/dist/v${IOJS_VERSION}/iojs-v${IOJS_VERSION}-linux-x64.tar.gz" && \
     curl -SLO "https://iojs.org/dist/v${IOJS_VERSION}/SHASUMS256.txt.asc" && \
@@ -19,7 +18,7 @@ RUN \
     rm "iojs-v${IOJS_VERSION}-linux-x64.tar.gz" SHASUMS256.txt.asc
 
 # NPM package cache
-ENV NPM_REFRESHED_AT 2015-03-18.2
+ENV NPM_REFRESHED_AT 2015-03-19.1
 COPY package.json /tmp/package.json
 RUN \
     cd /tmp && \
@@ -32,6 +31,7 @@ ENV APP_DIR /srv/ride-share-market-app
 RUN \
     mkdir ${APP_DIR} && \
     cp -a /tmp/node_modules/ ${APP_DIR} && \
+    mkdir ${APP_DIR}/log && \
     mkdir ${APP_DIR}/pids
 COPY config/ ${APP_DIR}/config
 COPY dist/ ${APP_DIR}/dist
@@ -40,13 +40,20 @@ COPY server.js ${APP_DIR}/server.js
 COPY pm2-production.json ${APP_DIR}/pm2-production.json
 COPY package.json ${APP_DIR}/package.json
 
-# Application User
+# Application User and Permissions
 RUN \
     useradd -c 'RSM Data' -u 2000 -m -d /home/rsm-data -s /bin/bash rsm-data && \
     chown -R rsm-data.rsm-data ${APP_DIR}
+
 USER rsm-data
+
 ENV HOME /home/rsm-data
+
+# Export the APP_DIR as a data volume under the app user account.
+# Other containers use this volume's data (nginx, logstash).
+VOLUME ${APP_DIR}
 
 # Application Start
 WORKDIR ${APP_DIR}
+
 CMD ["pm2", "start", "pm2-production.json", "--no-daemon"]
