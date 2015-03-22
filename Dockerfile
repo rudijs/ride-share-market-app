@@ -26,7 +26,7 @@ RUN \
     npm install -g pm2
 
 # Application
-ENV APP_REFRESHED_AT 2015-03-18.1
+ENV APP_REFRESHED_AT 2015-03-20.1
 ENV APP_DIR /srv/ride-share-market-app
 RUN \
     mkdir ${APP_DIR} && \
@@ -37,23 +37,34 @@ COPY config/ ${APP_DIR}/config
 COPY dist/ ${APP_DIR}/dist
 COPY httpd/ ${APP_DIR}/httpd
 COPY server.js ${APP_DIR}/server.js
-COPY pm2-production.json ${APP_DIR}/pm2-production.json
 COPY package.json ${APP_DIR}/package.json
+COPY pm2-production.json ${APP_DIR}/pm2-production.json
+COPY docker-start.sh ${APP_DIR}/docker-start.sh
+
 
 # Application User and Permissions
 RUN \
     useradd -c 'RSM Data' -u 2000 -m -d /home/rsm-data -s /bin/bash rsm-data && \
     chown -R rsm-data.rsm-data ${APP_DIR}
 
-USER rsm-data
+#tmp
+#RUN echo 'rsm-data ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/rsm-data
 
-ENV HOME /home/rsm-data
+COPY config/logrotate.conf /etc/logrotate.d/rsm-app
+RUN chmod 644 /etc/logrotate.d/rsm-app
+
+#tmp
+RUN cp /etc/cron.daily/logrotate /etc/cron.hourly/logrotate
+
+USER rsm-data
 
 # Export the APP_DIR as a data volume under the app user account.
 # Other containers use this volume's data (nginx, logstash).
 VOLUME ${APP_DIR}
 
+USER root
+
 # Application Start
 WORKDIR ${APP_DIR}
 
-CMD ["pm2", "start", "pm2-production.json", "--no-daemon"]
+CMD ["./docker-start.sh"]

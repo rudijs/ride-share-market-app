@@ -70,17 +70,9 @@ Production builds:
 
 ## Deployment
 
-Both host OS and container instance will user an *rsm-data* user account with UID number *2000*.
-
-For the host OS the ride-share-market-devops Chef repo will create this user account.
-
-For the docker container instance the Dockerfile will create this user account.
-
-The container instance will mount a *volume* for log files from the host OS with matching UIDs.
-
 - On the remote server.
 - `sudo docker pull 192.168.33.10:5000/rudijs/rsm-app:x.x.x`
-- `sudo docker rm -f rsm-app && sudo docker run -d --restart always --name rsm-app --cap-add SYS_PTRACE --security-opt apparmor:unconfined -p 3000:3000 192.168.33.10:5000/rudijs/rsm-app:x.x.x`
+- `sudo docker rm -f -v rsm-app && sudo docker run -d --restart always --name rsm-app --cap-add SYS_PTRACE --security-opt apparmor:unconfined -p 3000:3000 192.168.33.10:5000/rudijs/rsm-app:x.x.x`
 - Note: the *--cap-add SYS_PTRACE --security-opt apparmor:unconfined* flags above are required for pm2. See [here](https://github.com/Unitech/PM2/issues/1086)
 - Note: the docker container will export the application directory as a docker volume.
 - This data-volume is used by other containers (eg. logstash, nginx).
