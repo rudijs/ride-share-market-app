@@ -26,7 +26,6 @@ COPY package.json ${APP_DIR}/package.json
 COPY pm2-production.json ${APP_DIR}/pm2-production.json
 COPY docker-start.sh ${APP_DIR}/docker-start.sh
 
-
 # Application User and Permissions
 RUN \
     useradd -c 'RSM Data' -u 2000 -m -d /home/rsm-data -s /bin/bash rsm-data && \

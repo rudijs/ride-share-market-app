@@ -46,33 +46,31 @@ Development - Start dev server and test
 - Run a selected *suite* of tests from the *e2e.conf.js* file.
 - `protractor config/e2e.conf.js --suite app`
 
+## Build
+
+- Cache Angular templates
+- Compile CSS and JS scripts
+- Prepare production index.html
+- `gulp build`
+
 ## Deployment
 
-Deployment is done using Docker.
+- `gulp build`
+- `./docker-build.sh x.x.x`
+- `ssh vagrant@192.168.33.10 '~/deploy-node-app.rb rsm-app:x.x.x'`
 
-Development builds:
+## Notes
 
-- Create the logging directory which will be mounted from the host to the container.
-- `mkdir -p "$(pwd)/tmp/log"`
-- `sudo chown rsm-data "$(pwd)/tmp/log"`
-- Build the Docker image.
-- `sudo docker build -t rudijs/rsm-app:0.0.1 .`
+Development Docker builds:
+
+- `sudo docker build -t rudijs/rsm-app:x.x.x .`
 - Run the container locally for testing.
 - Interactive with login.
-- `sudo docker run -i --name rsm-app -v $(pwd)/tmp/log/:/srv/ride-share-market-app/log -p 3000:3000 -t rudijs/rsm-app:0.0.1 /bin/bash`
+- `sudo docker run -i --name rsm-app -p 3000:3000 -t rudijs/rsm-app:x.x.x /bin/bash`
 - Daemon mode.
-- `sudo docker run -d --name rsm-app -v $(pwd)/tmp/log/:/srv/ride-share-market-app/log -p 3000:3000 -t rudijs/rsm-app:0.0.1`
+- `sudo docker run -d --name rsm-app -p 3000:3000 -t rudijs/rsm-app:x.x.x`
 
 Production builds:
 
 - Docker build, tag and push to local private repository.
 - `./docker-build x.x.x`
-
-## Deployment
-
-- On the remote server.
-- `sudo docker pull 192.168.33.10:5000/rudijs/rsm-app:x.x.x`
-- `sudo docker rm -f -v rsm-app && sudo docker run -d --restart always --name rsm-app --cap-add SYS_PTRACE --security-opt apparmor:unconfined -p 3000:3000 192.168.33.10:5000/rudijs/rsm-app:x.x.x`
-- Note: the *--cap-add SYS_PTRACE --security-opt apparmor:unconfined* flags above are required for pm2. See [here](https://github.com/Unitech/PM2/issues/1086)
-- Note: the docker container will export the application directory as a docker volume.
-- This data-volume is used by other containers (eg. logstash, nginx).
