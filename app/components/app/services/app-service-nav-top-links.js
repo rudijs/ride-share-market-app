@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('app.services')
-    .factory('TopBarLinks', function () {
+    .factory('NavTopLinksSvc', function () {
       return {
        urls: [
          {
@@ -25,8 +25,6 @@
            text: 'Contact Us',
            url: '#!/contact'
          }
-
-
        ]
       };
     });

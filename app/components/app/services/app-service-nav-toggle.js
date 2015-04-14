@@ -2,9 +2,9 @@
   'use strict';
 
   angular.module('app.services')
-    .factory('NavigationSvc', NavigationSvc);
+    .factory('NavToggleSvc', NavToggleSvc);
 
-  function NavigationSvc($mdSidenav) {
+  function NavToggleSvc($mdSidenav) {
 
     function toggleLeftMenu() {
       $mdSidenav('left').toggle();

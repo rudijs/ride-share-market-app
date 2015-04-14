@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('app', [
-    'ngMaterial',
+    'LocalForageModule', // move to user component
     'app.routes',
     'app.services'
   ])
@@ -12,6 +12,6 @@
     });
 
   // Create application services module and define the dependencies
-  angular.module('app.services', []);
+  angular.module('app.services', ['ngMaterial']);
 
 })();

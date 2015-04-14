@@ -29,9 +29,9 @@
       function DialogController(scope, $mdDialog) {
         scope.closeDialog = function () {
           $mdDialog.hide();
-        }
+        };
       }
-    }
+    };
 
   }
 

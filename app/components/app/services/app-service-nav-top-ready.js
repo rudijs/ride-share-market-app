@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('app.services')
-    .factory('TopBarReady', function() {
+    .factory('NavTopReadySvc', function() {
       return {
         ready: false
       };

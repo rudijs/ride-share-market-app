@@ -20,6 +20,8 @@ module.exports = function () {
       'app/bower_components/angular-material/angular-material.js',
       'app/bower_components/angular-ui-router/release/angular-ui-router.js',
       'app/bower_components/angular-mocks/angular-mocks.js',
+      'app/bower_components/localforage/dist/localforage.js',
+      'app/bower_components/angular-localforage/dist/angular-localForage.js',
 
       // First load app.js
       'app/components/app/app.js',
@@ -28,7 +30,10 @@ module.exports = function () {
 
       // app
       'app/components/app/*.js',
-      'app/components/app/**/*.js'
+      'app/components/app/**/*.js',
+
+      // user
+      'app/components/user/**/*.js'
     ],
 
     // list of files to exclude
