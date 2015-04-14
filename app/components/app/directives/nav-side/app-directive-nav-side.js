@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('app')
+  angular.module('app.directives')
     .directive('rsmNavSide', function (NavTopLinksSvc, NavToggleSvc) {
       return {
         restrict: 'E',

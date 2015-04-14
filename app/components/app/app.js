@@ -4,6 +4,7 @@
   angular.module('app', [
     'LocalForageModule', // move to user component
     'app.routes',
+    'app.directives',
     'app.services'
   ])
     .config(function ($locationProvider) {
@@ -13,5 +14,7 @@
 
   // Create application services module and define the dependencies
   angular.module('app.services', ['ngMaterial']);
+
+  angular.module('app.directives', []);
 
 })();

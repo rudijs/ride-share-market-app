@@ -31,6 +31,7 @@ module.exports = function () {
       // app
       'app/components/app/*.js',
       'app/components/app/**/*.js',
+      'app/components/app/**/*.html',
 
       // user
       'app/components/user/**/*.js'
@@ -43,6 +44,9 @@ module.exports = function () {
 
     preprocessors: {
 
+      // test directive HTML template caching
+      'app/components/**/*.html': ['ng-html2js'],
+
       // test Javascript coverage
       // source files, that you want to generate coverage for
       // do not include tests or libraries
@@ -50,6 +54,12 @@ module.exports = function () {
       //'app/services/!(*_spec)+(.js)': ['coverage'],
       'app/components/**/!(*_spec)+(.js)': ['coverage']
 
+    },
+
+    ngHtml2JsPreprocessor: {
+      // strip this from the file path
+      moduleName: 'templates',
+      stripPrefix: 'app/'
     },
 
     reporters: ['progress', 'coverage'],
