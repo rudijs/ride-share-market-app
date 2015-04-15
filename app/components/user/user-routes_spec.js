@@ -1,9 +1,9 @@
 (function () {
   'use strict';
 
-  describe('App Routes', function () {
+  describe('User Routes', function () {
 
-    beforeEach(module('app.routes'));
+    beforeEach(module('user.routes'));
 
     var $state;
 
@@ -21,13 +21,9 @@
 
       var names = [
         '', // implicit root state
-        'home',
-        '404',
-        'error',
-        'about',
-        'privacy',
-        'terms',
-        'contact'
+        'signin',
+        'signout',
+        'welcome'
       ].sort();
 
       expect(list.map(function (state) {

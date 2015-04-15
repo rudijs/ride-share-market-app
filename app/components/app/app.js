@@ -5,7 +5,8 @@
     'LocalForageModule', // move to user component
     'app.routes',
     'app.directives',
-    'app.services'
+    'app.services',
+    'app.components'
   ])
     .config(function ($locationProvider) {
       // Enable HTML5 Location Mode
@@ -16,5 +17,9 @@
   angular.module('app.services', ['ngMaterial']);
 
   angular.module('app.directives', []);
+
+  angular.module('app.components', [
+    'user'
+  ]);
 
 })();

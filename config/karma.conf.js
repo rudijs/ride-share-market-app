@@ -34,7 +34,9 @@ module.exports = function () {
       'app/components/app/**/*.html',
 
       // user
-      'app/components/user/**/*.js'
+      'app/components/user/*.js',
+      'app/components/user/**/*.js',
+      'app/components/user/**/*.html'
     ],
 
     // list of files to exclude

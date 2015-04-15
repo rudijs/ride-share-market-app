@@ -27,7 +27,7 @@ Karma test runner using Mocha, Sinon and Chai
 - `gulp serve`
 - Start live watch processes (code linting, server restart, live reload)
 - `gulp watch`
-- Open Web Browser and enable the [livereload.com](http://feedback.livereload.com/knowledgebase/articles/86242-how-do-i-install-and-use-the-browser-extensions-) plugin.
+- Open Web Browser and enable the [livereload.com](http://livereload.com/extensions/) plugin.
 
 ## End-to-End Tests
 

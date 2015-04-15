@@ -19,6 +19,18 @@
           data: {noAuth: true}
         })
 
+        .state('404', {
+          url: '/404',
+          templateUrl: 'components/app/templates/app-template-404.html',
+          data: {noAuth: true}
+        })
+
+        .state('error', {
+          url: '/error',
+          templateUrl: 'components/app/templates/app-template-error.html',
+          data: {noAuth: true}
+        })
+
         .state('about', {
           url: '/about',
           templateUrl: 'components/app/templates/app-template-about-us.html',

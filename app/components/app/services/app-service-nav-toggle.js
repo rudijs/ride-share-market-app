@@ -7,7 +7,7 @@
   function NavToggleSvc($mdSidenav) {
 
     function toggleLeftMenu() {
-      $mdSidenav('left').toggle();
+        $mdSidenav('left').toggle();
     }
 
     return {

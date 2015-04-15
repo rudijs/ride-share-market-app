@@ -1,0 +1,2 @@
+<a href="#!/signin" ng-if="!isSignedIn()" ng-click="toggleLeftMenuOnSign()">Sign In</a>
+<a href="#!/signout" ng-if="isSignedIn()" ng-click="toggleLeftMenuOnSign()">Sign Out: {{ user.name }}</a>

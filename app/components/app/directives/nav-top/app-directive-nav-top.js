@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('app.directives')
-    .directive('rsmNavTop', function (NavTopLinksSvc, NavTopReadySvc, NavToggleSvc) {
+    .directive('rsmNavTop', function (NavTopLinksSvc, NavToggleSvc) {
       return {
         restrict: 'E',
         scope: {},
@@ -10,8 +10,6 @@
         link: function (scope) {
           scope.links = NavTopLinksSvc.urls;
           scope.toggleLeftMenu = NavToggleSvc.toggleLeftMenu;
-          // Menu is ready, use this is prevent the page re-aligning when the Top Bar <header> element is inserted.
-          NavTopReadySvc.ready = true;
         }
       };
     });
