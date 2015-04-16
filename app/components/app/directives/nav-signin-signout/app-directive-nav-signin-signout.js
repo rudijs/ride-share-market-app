@@ -6,7 +6,7 @@
       return {
         restrict: 'E',
         templateUrl: 'components/app/directives/nav-signin-signout/app-directive-nav-signin-signout.html',
-        link: function (scope) {
+        link: function(scope, element, attrs) {
 
           var defaultUser = {name: 'Guest'};
 
@@ -29,13 +29,14 @@
           });
 
           scope.toggleLeftMenuOnSign = function () {
-            // Only toggle left side menu if we are in nav side (not on nav top)
-            if (scope.toggleOnSignInOut) {
+             // Only toggle left side menu if clicked from nav side (ie. not from nav top)
+            if (attrs.toggleNavSide) {
               NavToggleSvc.toggleLeftMenu();
             }
           };
 
         }
+
       };
     });
 

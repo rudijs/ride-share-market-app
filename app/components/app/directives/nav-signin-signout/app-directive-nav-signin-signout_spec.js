@@ -6,14 +6,10 @@
     var $rootScope,
       $scope,
       spy,
-      element = angular.element('<rsm-nav-signin-signout></rsm-nav-signin-signout>');
+      element = angular.element('<rsm-nav-signin-signout toggle-nav-side="true"></rsm-nav-signin-signout>');
 
     // Load the test cached HTML templates
     beforeEach(module('templates'));
-    // Dependencies
-    //beforeEach(module('app.directives'));
-    //beforeEach(module('app.services'));
-    //beforeEach(module('user.service.jwt.manager'));
 
     describe('Signed Out', function () {
 
@@ -58,11 +54,64 @@
 
       it('should toggle nav side menu on click', function(done) {
         $scope.$apply();
-        $scope.toggleOnSignInOut = true;
         $scope.toggleLeftMenuOnSign();
         sinon.assert.calledOnce(spy);
         done();
       });
+
+    });
+
+    describe('Signed In', function () {
+
+      beforeEach(module('app.directives', function ($provide) {
+
+        var mockNavToggleSvc,
+          mockJwtSvc;
+
+        spy = sinon.spy();
+
+        mockNavToggleSvc = {
+          toggleLeftMenu: spy
+        };
+
+        mockJwtSvc = {
+          getUser: function () {
+            return {
+              then: function (callback) {
+                callback({
+                  name: 'Net Citizen'
+                });
+              }
+            };
+          }
+        };
+
+        $provide.value('NavToggleSvc', mockNavToggleSvc);
+        $provide.value('JwtSvc', mockJwtSvc);
+
+      }));
+
+      beforeEach(inject(function (_$rootScope_, $compile) {
+        $rootScope = _$rootScope_;
+        $scope = $rootScope.$new();
+        $compile(element)($scope);
+      }));
+
+      it('should show sign out text', function (done) {
+        $scope.$apply();
+        $scope.isSignedIn().should.be.true;
+        expect(element.text()).to.match(/Sign\ Out/);
+        done();
+      });
+
+      it('should reset user to default on sign out', function(done) {
+        $scope.$apply();
+        // Use $broadcast for the test, $emit used in app
+        $rootScope.$broadcast('user.signout');
+        expect($scope.user.name).to.equal('Guest');
+        done();
+      });
+
     });
 
   });

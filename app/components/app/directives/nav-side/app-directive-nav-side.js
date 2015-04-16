@@ -10,7 +10,6 @@
         link: function (scope) {
           scope.links = NavTopLinksSvc.urls;
           scope.toggleLeftMenu = NavToggleSvc.toggleLeftMenu;
-          scope.toggleOnSignInOut = true;
         }
       };
     });
