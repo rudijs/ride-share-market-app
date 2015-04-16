@@ -46,6 +46,10 @@ Development - Start dev server and test
 - Run a selected *suite* of tests from the *e2e.conf.js* file.
 - `protractor config/e2e.conf.js --suite app`
 
+## Node Tests
+
+- `gulp test`
+
 ## Build
 
 - Cache Angular templates

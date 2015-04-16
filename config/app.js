@@ -24,7 +24,7 @@ nconf.defaults({
 
   oauth: {
     signin: {
-      google: 'https://local.api.ridesharemarket.com:3001/signin/google'
+      google: 'https://api.ridesharemarket.com/signin/google'
     }
   },
 

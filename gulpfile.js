@@ -125,6 +125,23 @@
 
   });
 
+  gulp.task('test', function (cb) {
+
+    var tests = '\'httpd/**/*.js\'';
+
+    // TODO: use command line options library here.
+    if (process.argv[3] === '--suite' && process.argv[4]) {
+      tests = process.argv[4];
+    }
+
+    exec('NODE_ENV=test node --harmony ./node_modules/istanbul-harmony/lib/cli.js cover node_modules/mocha/bin/_mocha ' +
+    '-x \'*.spec.js\' --root httpd/ --dir test/coverage  -- -R spec ' + tests, function (err, stdout, stderr) {
+      console.log(stdout);
+      console.log(stderr);
+      cb(err);
+    });
+  });
+
   gulp.task('build-clean', function () {
     return gulp.src('dist/')
       .pipe(clean());
