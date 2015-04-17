@@ -4,7 +4,6 @@
     "hostname": "local.ridesharemarket.com:3000",
     "api": "http://api.dev.loc.ridesharemarket.com:3001"
   },
-  "jwtTokenSecret": "CHANGE_ME",
   "oauth": {
     "signin": {
       "google": "http://api.dev.loc.ridesharemarket.com:3001/signin/google"

@@ -24,7 +24,7 @@ module.exports = function (app) {
   //var assetsPath;
   app.use(serve(path.join(__dirname, (env === 'prd') ? './../dist' : './../app')));
 
-  var json = JSON.parse(fs.readFileSync('package.json', 'utf8'))
+  var json = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 
   var locals = {
     version: json.version,
