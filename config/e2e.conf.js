@@ -1,6 +1,6 @@
 'use strict';
 
-var env = process.env.NODE_ENV = process.env.NODE_ENV || 'test',
+var env = process.env.NODE_ENV = process.env.NODE_ENV || 'tst',
   config = require('./app');
 
 exports.config = {

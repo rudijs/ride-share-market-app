@@ -1,0 +1,13 @@
+{
+  "app": {
+    "protocol": "http://",
+    "hostname": "dev.ridesharemarket.com",
+    "api": "http://api.dev.ams.ridesharemarket.com"
+  },
+  "jwtTokenSecret": "CHANGE_ME",
+  "oauth": {
+    "signin": {
+      "google": "http://api.dev.ams.ridesharemarket.com/signin/google"
+    }
+  }
+}

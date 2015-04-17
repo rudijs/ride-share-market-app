@@ -1,0 +1,13 @@
+{
+  "app": {
+    "protocol": "http://",
+    "hostname": "vbox.ridesharemarket.com",
+    "api": "http://api.dev.vbx.ridesharemarket.com"
+  },
+  "jwtTokenSecret": "CHANGE_ME",
+  "oauth": {
+    "signin": {
+      "google": "http://api.dev.vbx.ridesharemarket.com/signin/google"
+    }
+  }
+}

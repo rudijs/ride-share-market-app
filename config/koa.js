@@ -1,6 +1,6 @@
 'use strict';
 
-var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development',
+var env = process.env.NODE_ENV = process.env.NODE_ENV || 'dev',
   helmet = require('koa-helmet'),
   compress = require('koa-compress'),
   router = require('koa-router'),
@@ -21,7 +21,12 @@ module.exports = function (app) {
   app.use(compress());
 
   //var assetsPath;
-  app.use(serve(path.join(__dirname, (env === 'production') ? './../dist' : './../app')));
+  app.use(serve(path.join(__dirname, (env === 'prd') ? './../dist' : './../app')));
+
+  var locals = {
+    version: '0.0.1', // TODO: read version from package.json
+    api: config.get('app').api
+  };
 
   // EJS Templates
   render(app, {
@@ -29,6 +34,7 @@ module.exports = function (app) {
     layout: false,
     viewExt: 'html',
     cache: false,
+    locals: locals,
     debug: true
   });
 

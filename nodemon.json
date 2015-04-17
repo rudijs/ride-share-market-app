@@ -18,7 +18,7 @@
     "httpd/**/*.js"
   ],
   "env": {
-    "NODE_ENV": "local",
+    "NODE_ENV": "loc",
     "DEBUG": "koa*"
   }
 }

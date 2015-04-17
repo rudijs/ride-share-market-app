@@ -191,7 +191,7 @@
   });
 
   gulp.task('build-index', function (cb) {
-    return exec('mv ./dist/index.dev.html ./httpd/views/index.prod.html', function (err, stdout, stderr) {
+    return exec('mv ./dist/index.dev.html ./httpd/views/index.prd.html', function (err, stdout, stderr) {
       console.log(stdout);
       console.log(stderr);
       return cb(err);

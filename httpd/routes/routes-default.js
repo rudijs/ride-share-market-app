@@ -1,6 +1,6 @@
 'use strict';
 
-var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+var env = process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
 
 module.exports = function (app) {
 
@@ -9,7 +9,7 @@ module.exports = function (app) {
     //console.log('req', this.request);
     //console.log('query', this.query);
 
-    var template = (env === 'production') ? 'index.prod' : 'index.dev';
+    var template = (env === 'loc') ? 'index.dev' : 'index.prd';
     yield this.render(template);
   });
 

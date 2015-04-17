@@ -21,6 +21,13 @@
 <!-- Application content here -->
 <div flex layout="row" layout-align-gt-sm="center" layout-sm="column" layout-align-sm="start center" style="overflow: auto" ui-view></div>
 
+<script type="text/javascript">
+    window.rsmConfig = {
+        version: '<%= version %>',
+        api: '<%= api %>'
+    };
+</script>
+
 <!-- build:js scripts/app.js -->
 <script src="bower_components/angular/angular.js"></script>
 

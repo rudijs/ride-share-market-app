@@ -7,10 +7,7 @@
       "log_date_format": "YYYY-MM-DD HH:mm Z",
       "error_file": "log/pm2-app-server.stderr.log",
       "out_file": "log/pm2-app-server.stdout.log",
-      "pid_file": "pids/pm2-app-server.pid",
-      "env": {
-        "NODE_ENV": "production"
-      }
+      "pid_file": "pids/pm2-app-server.pid"
     }
   ]
 }
