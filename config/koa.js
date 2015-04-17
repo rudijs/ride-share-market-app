@@ -1,6 +1,7 @@
 'use strict';
 
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'dev',
+  fs = require('fs'),
   helmet = require('koa-helmet'),
   compress = require('koa-compress'),
   router = require('koa-router'),
@@ -23,8 +24,10 @@ module.exports = function (app) {
   //var assetsPath;
   app.use(serve(path.join(__dirname, (env === 'prd') ? './../dist' : './../app')));
 
+  var json = JSON.parse(fs.readFileSync('package.json', 'utf8'))
+
   var locals = {
-    version: '0.0.1', // TODO: read version from package.json
+    version: json.version,
     api: config.get('app').api
   };
 
