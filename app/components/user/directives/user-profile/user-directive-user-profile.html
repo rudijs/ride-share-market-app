@@ -1,0 +1,31 @@
+<div flex="95" flex-gt-sm="70">
+
+    <h3 ng-hide="user.ready">Loading profile...</h3>
+
+    <div ng-show="user.ready">
+
+        <div ng-if="user.error">
+            <p ng-repeat="error in user.error">{{error.title}}</p>
+        </div>
+
+        <table ng-if="user.profile">
+            <tr>
+                <td>Name:</td>
+                <td>{{ user.profile.providers.google.displayName }}</td>
+            </tr>
+            <tr>
+                <td>Public Profile:</td>
+                <td><a ng-href="{{ user.profile.providers.google.url }}" target="_blank">Google Plus</a></td>
+            </tr>
+
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    <img ng-src="{{ user.profile.providers.google.image.url }}"/>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+</div>

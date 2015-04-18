@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('app', [
-    'LocalForageModule', // move to user component
+    'LocalForageModule',
     'app.routes',
     'app.directives',
     'app.services',

@@ -23,7 +23,8 @@
         '', // implicit root state
         'signin',
         'signout',
-        'welcome'
+        'welcome',
+        'profile'
       ].sort();
 
       expect(list.map(function (state) {

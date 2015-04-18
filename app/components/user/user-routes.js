@@ -23,6 +23,12 @@
           url: '/signout',
           templateUrl: 'components/user/templates/users-template-signout.html',
           controller: 'SignOutCtrl'
+        })
+
+        .state('profile', {
+          url: '/profile/{id:[0-9a-fA-F]{24}}',
+          templateUrl: 'components/user/templates/users-template-profile.html',
+          controller: 'UsersProfileCtrl as profile'
         });
 
     });

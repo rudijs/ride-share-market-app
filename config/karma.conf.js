@@ -22,6 +22,9 @@ module.exports = function () {
       'app/bower_components/angular-mocks/angular-mocks.js',
       'app/bower_components/localforage/dist/localforage.js',
       'app/bower_components/angular-localforage/dist/angular-localForage.js',
+      'app/bower_components/lodash/lodash.js',
+      'app/bower_components/restangular/dist/restangular.js',
+      'app/bower_components/angular-jwt/dist/angular-jwt.js',
 
       // First load app.js
       'app/components/app/app.js',
@@ -36,7 +39,9 @@ module.exports = function () {
       // user
       'app/components/user/*.js',
       'app/components/user/**/*.js',
-      'app/components/user/**/*.html'
+      'app/components/user/**/*.html',
+
+      'test/fixtures/**/*.json'
     ],
 
     // list of files to exclude
@@ -48,6 +53,9 @@ module.exports = function () {
 
       // test directive HTML template caching
       'app/components/**/*.html': ['ng-html2js'],
+
+      // fixture data
+      'test/fixtures/**/*.json': ['ng-json2js'],
 
       // test Javascript coverage
       // source files, that you want to generate coverage for
@@ -62,6 +70,14 @@ module.exports = function () {
       // strip this from the file path
       moduleName: 'templates',
       stripPrefix: 'app/'
+    },
+
+    ngJson2JsPreprocessor: {
+      // strip this from the file path
+      stripPrefix: 'test/fixtures/',
+
+      // prepend this to the
+      prependPrefix: 'fixture/'
     },
 
     reporters: ['progress', 'coverage'],

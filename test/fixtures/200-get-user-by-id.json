@@ -1,0 +1,37 @@
+{
+  "users": [
+    {
+      "_id": "54354a2e1268cf741d84c3e8",
+      "currentProvider": "google",
+      "providers": {
+        "google": {
+          "kind": "plus#person",
+          "etag": "\"Vea_b94Y77GDGgRK7gFNPnolKQw/X37afh-5ijQDKIRGhU-YcJOHcnE\"",
+          "gender": "male",
+          "emails": [
+            {
+              "value": "net@citizen.com",
+              "type": "account"
+            }
+          ],
+          "objectType": "person",
+          "id": "109511962726719553613",
+          "displayName": "Net Citizen",
+          "name": {
+            "familyName": "Citizen",
+            "givenName": "Net"
+          },
+          "url": "https://plus.google.com/109511962716719553614",
+          "image": {
+            "url": "https://lh3.googleusercontent.com/-oLAFwuSEM2d/AAAAAAAAAAI/AAAAAAAAACg/dWlcwoWU542/photo.jpg?sz=50",
+            "isDefault": false
+          },
+          "isPlusUser": true,
+          "circledByCount": 9,
+          "verified": false
+        }
+      },
+      "__v": 0
+    }
+  ]
+}
