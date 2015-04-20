@@ -35,6 +35,10 @@
             }
           };
 
+          scope.isNavSide = function() {
+            return (attrs.toggleNavSide) ? true : false;
+          };
+
         }
 
       };

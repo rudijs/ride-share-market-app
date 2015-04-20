@@ -1,3 +1,23 @@
-<a href="#!/signin" ng-if="!isSignedIn()" ng-click="toggleLeftMenuOnSign()">Sign In</a>
-<a href="#!/profile/{{user.id}}" ng-if="isSignedIn()" ng-click="toggleLeftMenuOnSign()">Profile: {{ user.name }}</a>
-<a href="#!/signout" ng-if="isSignedIn()" ng-click="toggleLeftMenuOnSign()">Sign Out</a>
+<a href="#!/signin" ng-if="!isNavSide() && !isSignedIn()" ng-click="toggleLeftMenuOnSign()">Sign In</a>
+<a href="#!/profile/{{user.id}}" ng-if="!isNavSide() && isSignedIn()" ng-click="toggleLeftMenuOnSign()">Profile: {{ user.name }}</a>
+<a href="#!/signout" ng-if="!isNavSide() && isSignedIn()" ng-click="toggleLeftMenuOnSign()">Sign Out</a>
+
+<div ng-if="isNavSide()">
+    <md-item ng-if="!isSignedIn()">
+        <div class="md-tile-content">
+            <a href="#!/signin" ng-click="toggleLeftMenuOnSign()">Sign In</a>
+        </div>
+    </md-item>
+
+    <md-item ng-if="isSignedIn()">
+        <div class="md-tile-content">
+            <a href="#!/profile/{{user.id}}" ng-click="toggleLeftMenuOnSign()">Profile: {{ user.name }}</a>
+        </div>
+    </md-item>
+
+    <md-item ng-if="isSignedIn()">
+        <div class="md-tile-content">
+            <a href="#!/signout" ng-click="toggleLeftMenuOnSign()">Sign Out</a>
+        </div>
+    </md-item>
+</div>
