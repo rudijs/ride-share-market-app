@@ -41,6 +41,11 @@ module.exports = function () {
       'app/components/users/**/*.js',
       'app/components/users/**/*.html',
 
+      // rideshares
+      'app/components/rideshares/*.js',
+      'app/components/rideshares/**/*.js',
+      'app/components/rideshares/**/*.html',
+
       'test/fixtures/**/*.json'
     ],
 

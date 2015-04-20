@@ -3,6 +3,7 @@
 
   angular.module('app', [
     'LocalForageModule',
+    'app.routes.auth.policy',
     'app.routes',
     'app.directives',
     'app.services',
@@ -19,7 +20,8 @@
   angular.module('app.directives', []);
 
   angular.module('app.components', [
-    'users'
+    'users',
+    'rideshares'
   ]);
 
 })();
