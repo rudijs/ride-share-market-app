@@ -36,10 +36,10 @@ module.exports = function () {
       'app/components/app/**/*.js',
       'app/components/app/**/*.html',
 
-      // user
-      'app/components/user/*.js',
-      'app/components/user/**/*.js',
-      'app/components/user/**/*.html',
+      // users
+      'app/components/users/*.js',
+      'app/components/users/**/*.js',
+      'app/components/users/**/*.html',
 
       'test/fixtures/**/*.json'
     ],

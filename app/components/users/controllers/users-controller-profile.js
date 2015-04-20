@@ -6,7 +6,7 @@
   }
 
   angular
-    .module('user')
+    .module('users')
     .controller('UsersProfileCtrl', UsersProfileCtrl);
 
 })();

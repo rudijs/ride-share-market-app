@@ -56,7 +56,7 @@
   }
 
   angular
-    .module('user.service.jwt.manager', ['user.service.local.storage'])
+    .module('users.service.jwt.manager', ['users.service.local.storage'])
     .factory('JwtSvc', JwtSvc);
 
 })();

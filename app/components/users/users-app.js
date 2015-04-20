@@ -1,13 +1,13 @@
 (function () {
   'use strict';
 
-  angular.module('user', [
+  angular.module('users', [
     'LocalForageModule', // move to user component
     'restangular',
     'angular-jwt',
-    'user.routes',
-    'user.services',
-    'user.directives'
+    'users.routes',
+    'users.services',
+    'users.directives'
   ])
     .config(function configRestangular(RestangularProvider) {
 
@@ -28,7 +28,7 @@
 
       // Send the JWT with each request
       jwtInterceptorProvider.tokenGetter = function () {
-        var injector = angular.injector(['user.service.jwt.manager', 'ng']);
+        var injector = angular.injector(['users.service.jwt.manager', 'ng']);
         var JwtSvc = injector.get('JwtSvc');
         return JwtSvc.getJwt().then(function getJwtSuccess(token) {
           return token;
@@ -39,11 +39,11 @@
     });
 
   // Create application services module and define the dependencies
-  angular.module('user.services', [
-    'user.service.local.storage',
-    'user.service.url.inspector',
-    'user.service.jwt.manager',
-    'user.service.user.profile'
+  angular.module('users.services', [
+    'users.service.local.storage',
+    'users.service.url.inspector',
+    'users.service.jwt.manager',
+    'users.service.user.profile'
   ]);
 
   /**
@@ -56,8 +56,8 @@
    * This separate directives module works around that issue.
    */
   angular
-    .module('user.directives', [
-      'user.service.user.profile'
+    .module('users.directives', [
+      'users.service.user.profile'
     ]);
 
 })();

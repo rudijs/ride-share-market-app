@@ -6,7 +6,7 @@
     var $scope, $timeout, $location,
       JwtSvc, SignOutCtrl;
 
-    beforeEach(module('user'));
+    beforeEach(module('users'));
 
     beforeEach(inject(function ($rootScope, _$timeout_, _$location_, _JwtSvc_) {
 

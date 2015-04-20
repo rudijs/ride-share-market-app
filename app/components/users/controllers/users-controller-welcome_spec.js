@@ -9,7 +9,7 @@
     beforeEach(function () {
 
       // Load the users module
-      module('user');
+      module('users');
 
       // The app does a full page reload when it extracts the JWT token from the URL path.
       // Mock the window object so the test doesn't do a real page reload (breaks the test suite if it does)

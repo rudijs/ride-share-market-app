@@ -26,7 +26,7 @@
 
   };
 
-  angular.module('user.service.user.profile', [
+  angular.module('users.service.user.profile', [
     'restangular'
   ])
     .factory('UserProfileSvc', UserProfileSvc);

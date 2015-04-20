@@ -12,7 +12,7 @@
     // Dependencies
     beforeEach(module('app.services'));
     beforeEach(module('app.directives'));
-    beforeEach(module('user.service.jwt.manager'));
+    beforeEach(module('users.service.jwt.manager'));
 
     beforeEach(inject(function (_$rootScope_, $compile) {
       $rootScope = _$rootScope_;

@@ -12,7 +12,7 @@
   }
 
   angular
-    .module('user')
+    .module('users')
     .controller('SignOutCtrl', SignOutCtrl);
 
 })();

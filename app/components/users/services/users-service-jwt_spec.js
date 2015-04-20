@@ -17,7 +17,7 @@
 
     beforeEach(function () {
       inject(function () {
-        var injector = angular.injector(['user.service.jwt.manager', 'ng']);
+        var injector = angular.injector(['users.service.jwt.manager', 'ng']);
 
         JwtSvc = injector.get('JwtSvc');
         $rootScope = injector.get('$rootScope');

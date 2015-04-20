@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('user')
+    .module('users')
     .controller('WelcomeCtrl', WelcomeCtrl);
 
   function WelcomeCtrl($location, $window, UrlInspectorSvc, JwtSvc) {

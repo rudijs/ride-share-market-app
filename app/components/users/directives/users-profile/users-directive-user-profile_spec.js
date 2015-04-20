@@ -1,16 +1,16 @@
 (function () {
   'use strict';
 
-  describe('User Directive', function () {
+  describe('Users Directive', function () {
 
-    describe('User Profile', function () {
+    describe('Users Profile', function () {
 
       var scope,
         $httpBackend,
         elm;
 
       // Load the directives module
-      beforeEach(module('user.directives'));
+      beforeEach(module('users.directives'));
 
       // Load the test cached HTML templates
       beforeEach(module('templates'));

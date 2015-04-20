@@ -19,7 +19,7 @@
   }
 
   angular
-    .module('user.service.url.inspector', [])
+    .module('users.service.url.inspector', [])
     .factory('UrlInspectorSvc', UrlInspectorSvc);
 
 })();

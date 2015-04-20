@@ -19,7 +19,7 @@
   angular.module('app.directives', []);
 
   angular.module('app.components', [
-    'user'
+    'users'
   ]);
 
 })();

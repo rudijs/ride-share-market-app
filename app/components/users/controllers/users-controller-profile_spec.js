@@ -5,7 +5,7 @@
 
     var scope;
 
-    beforeEach(module('user'));
+    beforeEach(module('users'));
 
     describe('Success', function () {
 

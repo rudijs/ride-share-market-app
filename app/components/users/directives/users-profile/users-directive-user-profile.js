@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('user.directives')
+    .module('users.directives')
     .controller('UserProfileCtrl', UserProfileCtrl)
     .directive('rsmUserProfile', function () {
       return {
@@ -10,7 +10,7 @@
         scope: {
           userId: '@'
         },
-        templateUrl: 'components/user/directives/user-profile/user-directive-user-profile.html',
+        templateUrl: 'components/users/directives/users-profile/users-directive-user-profile.html',
         controller: 'UserProfileCtrl',
         controllerAs: 'user',
         bindToController: true

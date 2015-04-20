@@ -1,9 +1,9 @@
 (function () {
   'use strict';
 
-  describe('User Routes', function () {
+  describe('Users Routes', function () {
 
-    beforeEach(module('user.routes'));
+    beforeEach(module('users.routes'));
 
     var $state;
 

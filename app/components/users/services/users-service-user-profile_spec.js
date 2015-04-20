@@ -1,9 +1,9 @@
 (function() {
   'use strict';
 
-  describe('User Service User Profile', function () {
+  describe('Users Service User Profile', function () {
 
-    beforeEach(module('user.service.user.profile'));
+    beforeEach(module('users.service.user.profile'));
 
     // Load fixture data
     beforeEach(module('fixture/200-get-user-by-id.json'));
