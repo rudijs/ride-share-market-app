@@ -11,17 +11,17 @@
         <table ng-if="user.profile">
             <tr>
                 <td>Name:</td>
-                <td>{{ user.profile.providers.google.displayName }}</td>
+                <td>{{ user.profile.displayName }}</td>
             </tr>
             <tr>
                 <td>Public Profile:</td>
-                <td><a ng-href="{{ user.profile.providers.google.url }}" target="_blank">Google Plus</a></td>
+                <td><a ng-href="{{ user.profile.url }}" target="_blank">Google Plus</a></td>
             </tr>
 
             <tr>
                 <td>&nbsp;</td>
                 <td>
-                    <img ng-src="{{ user.profile.providers.google.image.url }}"/>
+                    <img ng-src="{{ user.profile.image }}"/>
                 </td>
             </tr>
         </table>
