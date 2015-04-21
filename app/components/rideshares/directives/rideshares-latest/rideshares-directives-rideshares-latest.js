@@ -32,8 +32,6 @@
           //$scope.rideshares = RideshareUtils.filterRideshareList(res);
         },
         function (err) {
-          console.log(err);
-          console.log(err.data.errors);
           vm.errors = err.data.errors;
         }
       )

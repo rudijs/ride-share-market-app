@@ -1,9 +1,11 @@
 (function (module) {
   'use strict';
 
-  function MainCtrl($mdDialog) {
+  function MainCtrl($mdDialog, rsmConfig) {
     //$scope.ready = TopBarReady.ready;
     this.greeting = 'Hello World';
+
+    this.version = rsmConfig.version;
 
     this.showDialog = function showDialog($event) {
       var parentEl = angular.element(document.body);
