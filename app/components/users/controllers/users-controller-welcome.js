@@ -1,9 +1,7 @@
-(function () {
+(function (module) {
   'use strict';
 
-  angular
-    .module('users')
-    .controller('WelcomeCtrl', WelcomeCtrl);
+  module.controller('WelcomeCtrl', WelcomeCtrl);
 
   function WelcomeCtrl($location, $window, UrlInspectorSvc, JwtSvc) {
 
@@ -20,4 +18,4 @@
 
   }
 
-})();
+})(angular.module('users'));

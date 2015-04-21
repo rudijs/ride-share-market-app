@@ -1,8 +1,7 @@
-(function () {
+(function (module) {
   'use strict';
 
-  angular.module('app.directives')
-    .directive('rsmNavTop', function (NavTopLinksSvc, NavToggleSvc) {
+  module.directive('rsmNavTop', function (NavTopLinksSvc, NavToggleSvc) {
       return {
         restrict: 'E',
         scope: {},
@@ -14,4 +13,4 @@
       };
     });
 
-})();
+})(angular.module('app.directives'));

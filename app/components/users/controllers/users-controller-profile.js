@@ -1,12 +1,10 @@
-(function () {
+(function (module) {
   'use strict';
 
   function UsersProfileCtrl($stateParams) {
     this.userId = $stateParams.id;
   }
 
-  angular
-    .module('users')
-    .controller('UsersProfileCtrl', UsersProfileCtrl);
+  module.controller('UsersProfileCtrl', UsersProfileCtrl);
 
-})();
+})(angular.module('users'));

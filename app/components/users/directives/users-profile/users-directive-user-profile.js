@@ -1,8 +1,7 @@
-(function () {
+(function (module) {
   'use strict';
 
-  angular
-    .module('users.directives')
+  module
     .controller('UserProfileCtrl', UserProfileCtrl)
     .directive('rsmUserProfile', function () {
       return {
@@ -36,4 +35,4 @@
 
   }
 
-})();
+})(angular.module('users.directives'));

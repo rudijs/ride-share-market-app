@@ -1,8 +1,7 @@
-(function () {
+(function (module) {
   'use strict';
 
-  angular.module('app.directives')
-    .directive('rsmNavSigninSignout', function (JwtSvc, NavToggleSvc) {
+  module.directive('rsmNavSigninSignout', function (JwtSvc, NavToggleSvc) {
       return {
         restrict: 'E',
         templateUrl: 'components/app/directives/nav-signin-signout/app-directive-nav-signin-signout.html',
@@ -44,4 +43,4 @@
       };
     });
 
-})();
+})(angular.module('app.directives'));

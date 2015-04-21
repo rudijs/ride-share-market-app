@@ -1,4 +1,4 @@
-(function () {
+(function (module) {
   'use strict';
 
   function MainCtrl($mdDialog) {
@@ -35,11 +35,6 @@
 
   }
 
-    angular
-      .module('app')
-      .controller('MainCtrl', MainCtrl);
+  module.controller('MainCtrl', MainCtrl);
 
-  }
-
-  )
-  ();
+})(angular.module('app'));

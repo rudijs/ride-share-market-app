@@ -1,4 +1,4 @@
-(function () {
+(function (module) {
   'use strict';
 
   function SignOutCtrl($timeout, $location, JwtSvc) {
@@ -11,8 +11,6 @@
 
   }
 
-  angular
-    .module('users')
-    .controller('SignOutCtrl', SignOutCtrl);
+  module.controller('SignOutCtrl', SignOutCtrl);
 
-})();
+})(angular.module('users'));

@@ -1,8 +1,7 @@
-(function () {
+(function (module) {
   'use strict';
 
-  angular.module('app.services')
-    .factory('NavToggleSvc', NavToggleSvc);
+  module.factory('NavToggleSvc', NavToggleSvc);
 
   function NavToggleSvc($mdSidenav) {
 
@@ -15,4 +14,4 @@
     };
   }
 
-})();
+})(angular.module('app.services'));

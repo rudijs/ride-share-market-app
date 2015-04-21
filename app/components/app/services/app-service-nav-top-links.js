@@ -1,8 +1,7 @@
-(function () {
+(function (module) {
   'use strict';
 
-  angular.module('app.services')
-    .factory('NavTopLinksSvc', function () {
+  module.factory('NavTopLinksSvc', function () {
       return {
        urls: [
          {
@@ -29,4 +28,4 @@
       };
     });
 
-})();
+})(angular.module('app.services'));
