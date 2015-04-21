@@ -1,0 +1,39 @@
+<div flex="95" flex-gt-sm="70">
+    <table id="rideshares" class="fullWidth">
+        <thead>
+        <tr>
+            <th translate>Type</th>
+            <th translate>Departure</th>
+            <th translate>Arrival</th>
+            <th translate>Posted</th>
+        </tr>
+        </thead>
+
+        <tbody ng-show="latest.ready">
+
+        <tr ng-if="latest.errors">
+            <td colspan="4" class="text-center" ng-repeat="error in latest.errors"><p>{{ error.title }}</p></td>
+        </tr>
+
+        <!--<tr-->
+        <!--ng-repeat="rideshare in latest.rideshares"-->
+        <!--ng-click="go.to('/rideshares', rideshare._id, 'back', 1)"-->
+        <!--time-a-go>-->
+        <tr ng-repeat="rideshare in latest.rideshares">
+            <td><a ng-href="#!/rideshares/{{ rideshare._id }}">{{ rideshare.itinerary.type }}</a></td>
+            <td><a ng-href="#!/rideshares/{{ rideshare._id }}">{{ rideshare.itinerary.route[0].place }}</a></td>
+            <td>{{ rideshare.itinerary.route[1].place }}</td>
+            <td nowrap="nowrap">
+                <span class="timeago" title="{{ rideshare.created_at }}">{{ rideshare.created_at | date:'medium' }}</span>
+            </td>
+        </tr>
+        </tbody>
+
+        <tfoot>
+        <tr ng-hide="latest.ready">
+            <td colspan="4" class="text-center"><h3>Loading Latest Rideshares...</h3></td>
+        </tr>
+        </tfoot>
+
+    </table>
+</div>

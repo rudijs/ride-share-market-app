@@ -47,6 +47,8 @@
    * This separate directives module works around that issue.
    */
   angular
-    .module('rideshares.directives', []);
+    .module('rideshares.directives', [
+      'rideshares.service.rideshares.get'
+    ]);
 
 })();
