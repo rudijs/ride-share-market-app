@@ -39,7 +39,7 @@
 
           done();
 
-        })
+        });
       });
 
       it('should handle POST request errors', function(done) {
@@ -58,7 +58,7 @@
 
           done();
 
-        })
+        });
       });
 
     });

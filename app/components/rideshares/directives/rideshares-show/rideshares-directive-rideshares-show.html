@@ -1,0 +1,45 @@
+<h1>Rideshare Details</h1>
+
+<table id="rideshare" class="fullWidth">
+    <thead>
+    <tr>
+        <th colspan="2" class="text-center">details</th>
+    </tr>
+    </thead>
+
+    <tbody ng-if="vm.errors">
+    <tr>
+        <td colspan="2" class="text-center">
+            <p ng-repeat="error in vm.errors">{{ error.title }}</p>
+        </td>
+    </tr>
+    </tbody>
+
+    <tbody ng-if="vm.rideshare">
+    <tr>
+        <td>Date:</td>
+        <td>{{ vm.rideshare.created_at }}</td>
+    </tr>
+
+    <tr ng-repeat="waypoint in vm.rideshare.itinerary.route">
+        <td>Waypoint:</td>
+        <td>
+            {{ waypoint.place }}
+        </td>
+    </tr>
+
+    <tr ng-if="vm.isOwner">
+        <td>&nbsp;</td>
+        <td>
+            <a ng-href="#!/rideshares/{{vm.rideshare._id}}/update" class="button round"/>Update Rideshare</a>
+        </td>
+    </tr>
+    </tbody>
+
+    <tfoot>
+    <tr ng-hide="vm.ready">
+        <td colspan="2" class="text-center"><h3>Loading Rideshare...</h3></td>
+    </tr>
+    </tfoot>
+
+</table>

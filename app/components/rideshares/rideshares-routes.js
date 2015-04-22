@@ -15,15 +15,15 @@
         .state('update', {
           url: '/rideshares/{rideshareId:[0-9a-fA-F]{24}}/update',
           templateUrl: 'components/rideshares/templates/rideshares-template-rideshare-update.html',
-          controller: 'RideshareCtrl',
+          controller: 'RidesharesCtrl',
           controllerAs: 'vm'
         })
 
         .state('show', {
           url: '/rideshares/{rideshareId:[0-9a-fA-F]{24}}',
           templateUrl: 'components/rideshares/templates/rideshares-template-rideshare.html',
-          controller: 'RideshareCtrl',
-          controllerAs: 'rideshare',
+          controller: 'RidesharesCtrl',
+          controllerAs: 'vm',
           data: {noAuth: true}
         });
 
