@@ -5,6 +5,7 @@
     .module('rideshares', [
       'restangular',
       'angular-jwt',
+      'ngAutocomplete',
       'rideshares.routes',
       'rideshares.directives'
     ])
@@ -48,7 +49,8 @@
    */
   angular
     .module('rideshares.directives', [
-      'rideshares.service.rideshares.get'
+      'rideshares.service.rideshares.get',
+      'rideshares.service.rideshares.create'
     ]);
 
 })();

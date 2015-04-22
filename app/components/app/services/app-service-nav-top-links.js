@@ -9,6 +9,10 @@
            url: '#!/'
          },
          {
+           text: 'Create',
+           url: '#!/rideshares/create'
+         },
+         {
            text: 'About Us',
            url: '#!/about'
          },

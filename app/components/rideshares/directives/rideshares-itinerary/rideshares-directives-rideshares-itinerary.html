@@ -1,0 +1,32 @@
+<form
+        name="RidesharesForm"
+        id="RidesharesForm"
+        novalidate="novalidate"
+        ng-submit="vm.addPlace()">
+
+    <input
+            name="place"
+            id="place"
+            type="text"
+            ng-model="vm.place"
+            ng-autocomplete="vm.place"
+            details="vm.placeDetails"/>
+
+    <md-button class="md-raised md-primary" ng-click="submit()">Add</md-button>
+
+    <br/>
+
+    <div ng-repeat="place in vm.itinerary.route">
+        {{ place.place }}
+    </div>
+
+    <br/>
+
+    <div ng-if="vm.itinerary.route.length > 1">
+        <md-button
+                class="md-raised md-primary"
+                ng-disabled="!vm.isRouteValid"
+                ng-click="vm.save()">Save Rideshare</md-button>
+    </div>
+
+</form>
