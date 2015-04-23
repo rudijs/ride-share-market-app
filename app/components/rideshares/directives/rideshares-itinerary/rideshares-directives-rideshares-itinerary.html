@@ -12,21 +12,32 @@
             ng-autocomplete="vm.place"
             details="vm.placeDetails"/>
 
-    <md-button class="md-raised md-primary" ng-click="submit()">Add</md-button>
-
-    <br/>
+    <md-button
+            class="md-raised md-primary"
+            ng-disabled="!vm.place || !vm.placeDetails"
+            ng-click="submit()">Add
+    </md-button>
 
     <div ng-repeat="place in vm.itinerary.route">
-        {{ place.place }}
+        {{ ::place.place }}
     </div>
 
     <br/>
 
-    <div ng-if="vm.itinerary.route.length > 1">
-        <md-button
-                class="md-raised md-primary"
-                ng-disabled="!vm.isRouteValid"
-                ng-click="vm.save()">Save Rideshare</md-button>
-    </div>
+    <md-button
+            class="md-raised md-primary"
+            ng-if="vm.itinerary.route.length > 1"
+            ng-disabled="!vm.isRouteValid"
+            ng-click="vm.save()">Save Rideshare
+    </md-button>
+
+    <br/>
+
+    <md-button
+            class="md-raised md-warn"
+            ng-if="vm.isOwner"
+            ng-click="vm.remove()">Remove Rideshare
+    </md-button>
+
 
 </form>

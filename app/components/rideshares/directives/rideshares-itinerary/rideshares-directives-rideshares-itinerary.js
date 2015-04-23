@@ -9,7 +9,9 @@
         scope: {
           itinerary: '=',
           isRouteValid: '=?',
-          onSave: '&'
+          onSave: '&',
+          isOwner: '=?',
+          onRemove: '&?'
         },
         templateUrl: 'components/rideshares/directives/rideshares-itinerary/rideshares-directives-rideshares-itinerary.html',
         controller: 'RidesharesItineraryCtrl',
@@ -18,9 +20,24 @@
       };
     });
 
-  function RidesharesItineraryCtrl() {
+  function RidesharesItineraryCtrl($scope) {
 
     var vm = this;
+
+    // We want to only use the exact input value from a google place lookup
+    // If the user alters the google place (vm.place) selection in the UI place form input
+    // this watch will set placeDetails to null which will disable the Add place button in the UI.
+    $scope.$watch(
+      function (scope) {
+        return scope.vm.place;
+      },
+      function (newValue, oldValue) {
+        if(vm.placeDetails) {
+          if(newValue !== oldValue) {
+            vm.placeDetails = null;
+          }
+        }
+      });
 
     vm.addPlace = function () {
 
@@ -54,6 +71,10 @@
     // Call the onSave callback
     vm.save = function () {
       vm.onSave();
+    };
+
+    vm.remove = function () {
+      vm.onRemove();
     };
 
   }

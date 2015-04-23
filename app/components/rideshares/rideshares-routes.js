@@ -14,7 +14,7 @@
 
         .state('update', {
           url: '/rideshares/{rideshareId:[0-9a-fA-F]{24}}/update',
-          templateUrl: 'components/rideshares/templates/rideshares-template-rideshare-update.html',
+          templateUrl: 'components/rideshares/templates/rideshares-template-rideshares-update.html',
           controller: 'RidesharesCtrl',
           controllerAs: 'vm'
         })

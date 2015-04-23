@@ -18,7 +18,7 @@
     <tbody ng-if="vm.rideshare">
     <tr>
         <td>Date:</td>
-        <td>{{ vm.rideshare.created_at }}</td>
+        <td>{{ vm.rideshare.created_at | date:'medium' }}</td>
     </tr>
 
     <tr ng-repeat="waypoint in vm.rideshare.itinerary.route">
