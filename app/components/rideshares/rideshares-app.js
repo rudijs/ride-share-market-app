@@ -50,7 +50,8 @@
   angular
     .module('rideshares.directives', [
       'rideshares.service.rideshares.get',
-      'rideshares.service.rideshares.create'
+      'rideshares.service.rideshares.create',
+      'angular-table'
     ]);
 
 })();

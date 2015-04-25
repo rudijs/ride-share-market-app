@@ -8,7 +8,7 @@
         restrict: 'E',
         scope: {},
         templateUrl: 'components/rideshares/directives/rideshares-latest/rideshares-directives-rideshares-latest.html',
-        controller: 'RidesharesLatestCtrl as latest',
+        controller: 'RidesharesLatestCtrl as vm',
         link: function (scope, element, attrs, ctrl) {
           ctrl.getLatestRideshares();
         }
@@ -41,6 +41,11 @@
           vm.ready = true;
         });
 
+    };
+
+    vm.config = {
+      itemsPerPage: 5,
+      fillLastPage: true
     };
 
   }
