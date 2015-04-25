@@ -5,7 +5,9 @@
     <img src="/images/ellipsis.gif"/>
 </div>
 
-</tfoot>
+<div ng-if="vm.errors">
+    <p ng-repeat="error in vm.errors">{{ error.title }}</p>
+</div>
 
 <table
         ng-if="vm.rideshare"
@@ -15,14 +17,6 @@
         <th colspan="2" class="text-center">details</th>
     </tr>
     </thead>
-
-    <tbody ng-if="vm.errors">
-    <tr>
-        <td colspan="2" class="text-center">
-            <p ng-repeat="error in vm.errors">{{ error.title }}</p>
-        </td>
-    </tr>
-    </tbody>
 
     <tbody>
     <tr>

@@ -1,7 +1,13 @@
 (function (module) {
   'use strict';
 
-  function requestCounter($q) {
+  module.factory('RequestCounterSvc', RequestCounterSvc);
+
+  module.config(function ($httpProvider) {
+    $httpProvider.interceptors.push('RequestCounterSvc');
+  });
+
+  function RequestCounterSvc($q) {
 
     var requests = 0;
 
@@ -38,12 +44,5 @@
     };
 
   }
-
-  module.factory('requestCounter', requestCounter);
-
-  module.config(function ($httpProvider) {
-    $httpProvider.interceptors.push('requestCounter');
-  });
-
 
 })(angular.module('app'));

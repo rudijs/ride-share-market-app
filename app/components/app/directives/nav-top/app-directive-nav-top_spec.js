@@ -11,7 +11,16 @@
     beforeEach(module('templates'));
     // Dependencies
     beforeEach(module('app.services'));
-    beforeEach(module('app.directives'));
+    beforeEach(module('app.directives', function($provide) {
+       //stub out the nested directive, this is tested separately
+      $provide.factory('RequestCounterSvc', function () {
+        return {
+          getRequestCount: function() {
+            return 0;
+          }
+        };
+      });
+    }));
     beforeEach(module('users.service.jwt.manager'));
 
     beforeEach(inject(function (_$rootScope_, $compile) {

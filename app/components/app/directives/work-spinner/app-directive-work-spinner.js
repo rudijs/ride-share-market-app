@@ -3,7 +3,7 @@
 
   module.directive('workSpinner', workSpinner);
 
-  function workSpinner(requestCounter) {
+  function workSpinner(RequestCounterSvc) {
 
     return {
       restrict: 'EA',
@@ -12,7 +12,7 @@
       template: '<ng-transclude ng-show="requestCount"></ng-transclude>',
       link: function (scope) {
         scope.$watch(function () {
-          return requestCounter.getRequestCount();
+          return RequestCounterSvc.getRequestCount();
         }, function (requestCount) {
           scope.requestCount = requestCount;
         });
