@@ -9,4 +9,4 @@ config/env/*.json
 # Production build is not in git repo, these files will go into a Docker container then deployed.
 dist/
 app/template-cache
-index.prod.html
+index.prd.html
