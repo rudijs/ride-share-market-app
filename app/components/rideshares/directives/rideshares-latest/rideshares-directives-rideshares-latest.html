@@ -1,5 +1,11 @@
 <div flex="95" flex-gt-sm="70">
-    <table id="rideshares" class="fullWidth">
+
+    <div ng-hide="latest.ready">
+        <h3>Loading Latest Rideshares...</h3>
+        <img src="/images/ellipsis.gif"/>
+    </div>
+
+    <table id="rideshares" ng-show="latest.ready">
         <thead>
         <tr>
             <th translate>Type</th>
@@ -9,7 +15,7 @@
         </tr>
         </thead>
 
-        <tbody ng-show="latest.ready">
+        <tbody>
 
         <tr ng-if="latest.errors">
             <td colspan="4" class="text-center" ng-repeat="error in latest.errors"><p>{{ error.title }}</p></td>
@@ -28,12 +34,5 @@
             </td>
         </tr>
         </tbody>
-
-        <tfoot>
-        <tr ng-hide="latest.ready">
-            <td colspan="4" class="text-center"><h3>Loading Latest Rideshares...</h3></td>
-        </tr>
-        </tfoot>
-
     </table>
 </div>

@@ -25,6 +25,8 @@
 
       // TODO: pagination
       // https://github.com/michaelbromley/angularUtils
+      // or
+      // http://samu.github.io/angular-table/examples/examples.html
 
       RidesharesGetSvc.getLatest().then(
         function (res) {

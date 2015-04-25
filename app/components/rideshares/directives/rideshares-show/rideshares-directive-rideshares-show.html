@@ -1,6 +1,15 @@
 <h1>Rideshare Details</h1>
 
-<table id="rideshare" class="fullWidth">
+<div ng-hide="vm.ready">
+    <h3>Loading Rideshare...</h3>
+    <img src="/images/ellipsis.gif"/>
+</div>
+
+</tfoot>
+
+<table
+        ng-if="vm.rideshare"
+        id="rideshare">
     <thead>
     <tr>
         <th colspan="2" class="text-center">details</th>
@@ -15,7 +24,7 @@
     </tr>
     </tbody>
 
-    <tbody ng-if="vm.rideshare">
+    <tbody>
     <tr>
         <td>Date:</td>
         <td>{{ vm.rideshare.created_at | date:'medium' }}</td>
@@ -35,11 +44,4 @@
         </td>
     </tr>
     </tbody>
-
-    <tfoot>
-    <tr ng-hide="vm.ready">
-        <td colspan="2" class="text-center"><h3>Loading Rideshare...</h3></td>
-    </tr>
-    </tfoot>
-
 </table>
