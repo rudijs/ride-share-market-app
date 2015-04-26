@@ -5,7 +5,8 @@
 
     describe('Rideshares Create', function () {
 
-      beforeEach(module('rideshares.service.rideshares.create'));
+      //beforeEach(module('rideshares.service.rideshares.create'));
+      beforeEach(module('rideshares.services'));
 
       // Load fixture data
       beforeEach(module('fixture/200-post-rideshare.json'));

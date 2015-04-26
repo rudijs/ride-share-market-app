@@ -9,6 +9,7 @@
         $httpBackend,
         elm;
 
+      beforeEach(module('rideshares.services'));
       beforeEach(module('rideshares.directives', function ($provide) {
 
         // stub out the nested directive, this is tested separately

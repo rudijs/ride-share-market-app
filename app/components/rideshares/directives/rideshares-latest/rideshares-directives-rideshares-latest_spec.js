@@ -10,6 +10,7 @@
         elm;
 
       // Load the directives module
+      beforeEach(module('rideshares.services'));
       beforeEach(module('rideshares.directives'));
       beforeEach(module('app.services', function ($provide) {
         $provide.factory('AppLocalStorageSvc', function($q) {

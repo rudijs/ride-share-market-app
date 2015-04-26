@@ -5,7 +5,8 @@
 
     describe('Rideshares Get', function () {
 
-      beforeEach(module('rideshares.service.rideshares.get'));
+      //beforeEach(module('rideshares.service.rideshares.get'));
+      beforeEach(module('rideshares.services'));
 
       // Load fixture data
       beforeEach(module('fixture/200-get-rideshare.json'));

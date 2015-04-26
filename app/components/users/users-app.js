@@ -41,18 +41,7 @@
     'angular-jwt'
   ]);
 
-  /**
-   * All the directives for the users component in separate module.
-   *
-   * The reason is for testability.
-   * LocalForage is used in the main users-app.js file, the Karma unit tests are unable to deeply resolve
-   * the promises in $httpProvider.interceptors.push('jwtInterceptor')
-   *
-   * This separate directives module works around that issue.
-   */
   angular
-    .module('users.directives', [
-      'users.services'
-    ]);
+    .module('users.directives', []);
 
 })();

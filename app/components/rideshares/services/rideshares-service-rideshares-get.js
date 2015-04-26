@@ -2,9 +2,7 @@
   'use strict';
 
   angular
-    .module('rideshares.service.rideshares.get', [
-      'restangular'
-    ])
+    .module('rideshares.services')
     .factory('RidesharesGetSvc', RidesharesGetSvc);
 
   function RidesharesGetSvc($q, Restangular) {
@@ -41,7 +39,6 @@
 
       return deferred.promise;
     };
-
 
     return {
       getLatest: getLatest,

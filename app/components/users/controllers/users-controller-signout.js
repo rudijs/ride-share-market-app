@@ -1,6 +1,8 @@
 (function (module) {
   'use strict';
 
+  module.controller('SignOutCtrl', SignOutCtrl);
+
   function SignOutCtrl($timeout, $location, JwtSvc) {
 
     JwtSvc.removeJwt().then(function success() {
@@ -10,7 +12,5 @@
     });
 
   }
-
-  module.controller('SignOutCtrl', SignOutCtrl);
 
 })(angular.module('users'));

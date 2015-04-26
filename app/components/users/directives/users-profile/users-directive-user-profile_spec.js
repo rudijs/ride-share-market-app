@@ -9,7 +9,7 @@
         $httpBackend,
         elm;
 
-      // Load the directives module
+      beforeEach(module('users.services'));
       beforeEach(module('users.directives'));
 
       // Load the test cached HTML templates

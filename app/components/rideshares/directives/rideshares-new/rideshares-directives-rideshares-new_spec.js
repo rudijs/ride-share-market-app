@@ -13,6 +13,10 @@
       // Load the directives module
       beforeEach(module('rideshares.directives', function($provide) {
 
+        $provide.factory('ngAutocompleteDirective', function () {
+          return {};
+        });
+
         $provide.factory('RidesharesCreateSvc', function () {
           return {
             create: function (rideshare) {

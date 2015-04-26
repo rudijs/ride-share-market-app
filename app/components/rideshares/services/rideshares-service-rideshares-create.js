@@ -2,9 +2,7 @@
   'use strict';
 
   angular
-    .module('rideshares.service.rideshares.create', [
-      'restangular'
-    ])
+    .module('rideshares.services')
     .factory('RidesharesCreateSvc', RidesharesCreateSvc);
 
   function RidesharesCreateSvc($q, Restangular) {

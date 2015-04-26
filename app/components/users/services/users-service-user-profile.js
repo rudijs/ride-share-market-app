@@ -26,6 +26,6 @@
       getProfileById: getProfileById
     };
 
-  };
+  }
 
 })(angular.module('users.services'));
