@@ -3,7 +3,7 @@
 
   describe('URL Inspector Service', function () {
 
-    beforeEach(module('users.service.url.inspector'));
+    beforeEach(module('users.services'));
 
     var UrlInspectorSvc;
 

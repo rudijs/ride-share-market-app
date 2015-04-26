@@ -11,16 +11,15 @@
               then: function (cb) {
                 cb(true);
               }
-            }
+            };
           },
           getItem: function () {
             return {
               then: function (cb) {
                 cb('itemValue');
               }
-            }
+            };
           }
-
         };
       });
     }));

@@ -3,7 +3,7 @@
 
   describe('Users Service User Profile', function () {
 
-    beforeEach(module('users.service.user.profile'));
+    beforeEach(module('users.services'));
 
     // Load fixture data
     beforeEach(module('fixture/200-get-user-by-id.json'));
@@ -19,11 +19,6 @@
         $httpBackend = _$httpBackend_;
         UserProfileSvc = _UserProfileSvc_;
       });
-    });
-
-    it('should be true', function(done) {
-      true.should.be.true;
-      done();
     });
 
     it('should return a user profile', function (done) {

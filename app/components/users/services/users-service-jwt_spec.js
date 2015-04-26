@@ -3,71 +3,92 @@
 
   describe('Jwt Manager Service', function () {
 
-    /**
-     * This service uses angular-localForage, which uses localforage
-     * So there's a localforage promise, then a angular $q promise - two/nested promises.
-     * For the both to resolve in the tests, currently, it's best to use injector.get rather than beforeEach(module());
-     *
-     * Uses jasmine-as-promised runs() async testing method
-     */
-
-    var $rootScope,
+    var rootScope,
       JwtSvc,
       spies;
 
-    beforeEach(function () {
-      inject(function () {
-        var injector = angular.injector(['users.service.jwt.manager', 'ng']);
+    beforeEach(module('users.services', function ($provide) {
+      $provide.factory('$localForage', function () {
 
-        JwtSvc = injector.get('JwtSvc');
-        $rootScope = injector.get('$rootScope');
+        var value,
+          testUser = {name: 'Test'};
 
-        spies = {
-          signout: sinon.spy($rootScope, '$emit')
+        return {
+          setItem: function (key, val) {
+            value = val;
+            return {
+              then: function (cb) {
+                cb(value);
+              }
+            };
+          },
+          getItem: function () {
+            return {
+              then: function (cb) {
+                cb(value);
+                return {
+                  then: function(cb) {
+                    cb(testUser);
+                  }
+                };
+              }
+            };
+          },
+          removeItem: function () {
+            value = undefined;
+            testUser = null;
+            return {
+              then: function (cb) {
+                cb(value);
+              }
+            };
+          }
+
         };
-
       });
-    });
+    }));
+
+    beforeEach(inject(function ($rootScope, _JwtSvc_) {
+      rootScope = $rootScope;
+      JwtSvc = _JwtSvc_;
+      spies = {
+        signout: sinon.spy(rootScope, '$emit')
+      };
+    }));
 
     afterEach(function () {
-      if ($rootScope.$emit.restore) {
-        $rootScope.$emit.restore();
+      if (rootScope.$emit.restore) {
+        rootScope.$emit.restore();
       }
     });
 
     it('should save a JWT Token from a URL', function (done) {
 
-      return JwtSvc.saveJwt('http://abc.com?jwt=abc123').then(
+      // Save a jwt via the entire URL
+      JwtSvc.saveJwt('http://abc.com?jwt=abc123').then(
         function success(data) {
           data.should.equal('abc123');
 
           // Save a jwt token direct
-          return JwtSvc.saveJwt('def456').then(
+          JwtSvc.saveJwt('def456').then(
             function success(data) {
               data.should.equal('def456');
               done();
             });
-        })
-        .catch(function (err) {
-          throw('JwtSvc.saveJwt error' + err);
         });
-
 
     });
 
     it('should get a JWT token', function () {
 
-      return JwtSvc.saveJwt('http://abc.com?jwt=abc123').then(
+      JwtSvc.saveJwt('http://abc.com?jwt=abc123').then(
         function success(data) {
           data.should.equal('abc123');
 
-          return JwtSvc.getJwt().then(
+          JwtSvc.getJwt().then(
             function success(data) {
               data.should.equal('abc123');
             });
-        })
-        .catch(function (err) {
-          throw('JwtSvc error' + err);
         });
 
     });
@@ -99,9 +120,6 @@
                     });
                 });
               });
-          })
-          .catch(function (err) {
-            throw('JwtSvc error' + err);
           });
 
       });
@@ -122,9 +140,6 @@
               function success(data) {
                 data.name.should.equal('Test');
               });
-          })
-          .catch(function (err) {
-            throw('JwtSvc error' + err);
           });
 
       });
@@ -137,10 +152,7 @@
             function success(data) {
               expect(data).to.be.null;
             });
-        })
-          .catch(function (err) {
-            throw('JwtSvc error' + err);
-          });
+        });
 
       });
 

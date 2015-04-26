@@ -20,7 +20,7 @@
             setItem: function() {
               $q.when(true);
             }
-          }
+          };
         });
       }));
 

@@ -25,25 +25,20 @@
 
       // Send the JWT with each request
       jwtInterceptorProvider.tokenGetter = function () {
-        var injector = angular.injector(['users.service.jwt.manager', 'ng']);
+        var injector = angular.injector(['users.services', 'ng']);
         var JwtSvc = injector.get('JwtSvc');
-        return JwtSvc.getJwt().then(function getJwtSuccess(token) {
+        return JwtSvc.getJwt().then(function (token) {
           return token;
         });
       };
       $httpProvider.interceptors.push('jwtInterceptor');
-
     });
 
   // Create application services module and define the dependencies
   angular.module('users.services', [
     'LocalForageModule',
     'restangular',
-    'angular-jwt',
-    'users.service.local.storage',
-    'users.service.url.inspector',
-    'users.service.jwt.manager',
-    'users.service.user.profile'
+    'angular-jwt'
   ]);
 
   /**
@@ -57,7 +52,7 @@
    */
   angular
     .module('users.directives', [
-      'users.service.user.profile'
+      'users.services'
     ]);
 
 })();

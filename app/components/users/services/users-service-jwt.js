@@ -1,6 +1,10 @@
 (function() {
   'use strict';
 
+  angular
+    .module('users.services')
+    .factory('JwtSvc', JwtSvc);
+
   function JwtSvc($rootScope, $localForage) {
 
     var jwtKeyName = 'jwt';
@@ -54,9 +58,5 @@
     };
 
   }
-
-  angular
-    .module('users.service.jwt.manager', ['users.service.local.storage'])
-    .factory('JwtSvc', JwtSvc);
 
 })();

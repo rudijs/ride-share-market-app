@@ -28,7 +28,7 @@
 
       // Send the JWT with each request
       jwtInterceptorProvider.tokenGetter = function () {
-        var injector = angular.injector(['users.service.jwt.manager', 'ng']);
+        var injector = angular.injector(['users.services', 'ng']);
         var JwtSvc = injector.get('JwtSvc');
         return JwtSvc.getJwt().then(function getJwtSuccess(token) {
           return token;

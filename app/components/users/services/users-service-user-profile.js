@@ -26,9 +26,8 @@
 
   };
 
-  angular.module('users.service.user.profile', [
-    'restangular'
-  ])
+  angular
+    .module('users.services')
     .factory('UserProfileSvc', UserProfileSvc);
 
 })();

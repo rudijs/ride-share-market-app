@@ -13,7 +13,7 @@
       $locationProvider.hashPrefix('!');
     })
     .constant('rsmConfig', {
-      version: (function() {
+      version: (function () {
         var injector = angular.injector(['ng']),
           $window = injector.get('$window');
         return ($window.rsmConfig && $window.rsmConfig.version) ? $window.rsmConfig.version : 'latest';
@@ -24,7 +24,13 @@
   angular.module('app.services', [
     'ngMaterial',
     'LocalForageModule'
-  ]);
+  ])
+    .config(function ($localForageProvider) {
+      $localForageProvider.config({
+        storeName: 'data', // name of the table
+        description: 'RSM Data Local Storage'
+      });
+    });
 
   angular.module('app.directives', []);
 
