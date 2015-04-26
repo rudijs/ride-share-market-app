@@ -1,9 +1,7 @@
-(function() {
+(function (module) {
   'use strict';
 
-  angular
-    .module('users.services')
-    .factory('JwtSvc', JwtSvc);
+  module.factory('JwtSvc', JwtSvc);
 
   function JwtSvc($rootScope, $localForage) {
 
@@ -59,4 +57,4 @@
 
   }
 
-})();
+})(angular.module('users.services'));

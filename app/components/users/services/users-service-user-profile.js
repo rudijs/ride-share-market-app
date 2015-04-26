@@ -1,7 +1,9 @@
-(function () {
+(function (module) {
   'use strict';
 
-  var UserProfileSvc = function UserProfileSvc($q, Restangular) {
+  module.factory('UserProfileSvc', UserProfileSvc);
+
+  function UserProfileSvc($q, Restangular) {
 
     var getProfileById = function getProfileById(userId) {
 
@@ -26,8 +28,4 @@
 
   };
 
-  angular
-    .module('users.services')
-    .factory('UserProfileSvc', UserProfileSvc);
-
-})();
+})(angular.module('users.services'));

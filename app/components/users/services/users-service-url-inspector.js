@@ -1,5 +1,7 @@
-(function () {
+(function (module) {
   'use strict';
+
+  module.factory('UrlInspectorSvc', UrlInspectorSvc);
 
   function UrlInspectorSvc() {
 
@@ -18,8 +20,4 @@
 
   }
 
-  angular
-    .module('users.services')
-    .factory('UrlInspectorSvc', UrlInspectorSvc);
-
-})();
+})(angular.module('users.services'));
