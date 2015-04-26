@@ -32,8 +32,8 @@
         return scope.vm.place;
       },
       function (newValue, oldValue) {
-        if(vm.placeDetails) {
-          if(newValue !== oldValue) {
+        if (vm.placeDetails) {
+          if (newValue !== oldValue) {
             vm.placeDetails = null;
           }
         }
@@ -76,6 +76,22 @@
     vm.remove = function () {
       vm.onRemove();
     };
+
+    vm.types = ['Wanted', 'Offering'];
+    vm.itinerary.type = vm.itinerary.type || vm.types[0]; // wanted
+
+    vm.trips = ['One-way', 'Round trip'];
+    vm.itinerary.trip = vm.itinerary.trip || vm.trips[0]; // One-way
+
+    vm.frequencies = [
+      'One time',
+      'Daily',
+      'Weekly',
+      'Occasional',
+      'Regular',
+      'Often',
+    ];
+    vm.itinerary.frequency = vm.itinerary.frequency || vm.frequencies[0]; // One Time
 
   }
 

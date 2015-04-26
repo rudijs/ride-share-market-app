@@ -2,7 +2,9 @@
         ng-if="vm.ready"
         itinerary="vm.rideshare.itinerary"
         is-route-valid="vm.isRouteValid"
-        on-save="vm.create()"/>
+        on-save="vm.create()"></rsm-rideshares-itinerary>
+
+<pre>Rideshare: {{vm.rideshare|json}}</pre>
 
 <work-spinner>
         <h3>Saving...</h3>

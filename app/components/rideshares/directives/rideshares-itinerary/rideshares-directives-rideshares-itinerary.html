@@ -1,42 +1,71 @@
-<form
-        name="RidesharesForm"
-        id="RidesharesForm"
-        novalidate="novalidate"
-        ng-submit="vm.addPlace()">
+<div flex layout="row">
+    <div flex>
+        <form
+                name="RidesharesForm"
+                id="RidesharesForm"
+                novalidate
+                ng-submit="vm.addPlace()">
 
-    <input
-            name="place"
-            id="place"
-            type="text"
-            ng-model="vm.place"
-            ng-autocomplete="vm.place"
-            details="vm.placeDetails"/>
+            <input
+                    name="place"
+                    id="place"
+                    type="text"
+                    ng-model="vm.place"
+                    ng-autocomplete="vm.place"
+                    details="vm.placeDetails"/>
 
-    <md-button
-            class="md-raised md-primary"
-            ng-disabled="!vm.place || !vm.placeDetails"
-            ng-click="submit()">Add
-    </md-button>
+            <md-button
+                    class="md-raised md-primary"
+                    ng-disabled="!vm.place || !vm.placeDetails"
+                    ng-click="submit()">Add
+            </md-button>
 
-    <div ng-repeat="place in vm.itinerary.route">
-        {{ ::place.place }}
+            <div ng-repeat="place in vm.itinerary.route">
+                {{ ::place.place }}
+            </div>
+
+            <br/>
+
+            <div ng-if="vm.itinerary.route.length > 1">
+                Type:
+                <select
+                        name="type"
+                        ng-model="vm.itinerary.type"
+                        ng-options="o as o for o in vm.types"></select>
+                <br/>
+                Trip:
+                <select
+                        name="trip"
+                        ng-model="vm.itinerary.trip"
+                        ng-options="o as o for o in vm.trips"></select>
+                <br/>
+                Frequency:
+                <select
+                        name="frequency"
+                        ng-model="vm.itinerary.frequency"
+                        ng-options="o as o for o in vm.frequencies"></select>
+                <br/>
+            </div>
+
+            <md-button
+                    class="md-raised md-primary"
+                    ng-if="vm.itinerary.route.length > 1"
+                    ng-disabled="!vm.isRouteValid"
+                    ng-click="vm.save()">Save Rideshare
+            </md-button>
+
+            <br/>
+
+            <md-button
+                    class="md-raised md-warn"
+                    ng-if="vm.isOwner"
+                    ng-click="vm.remove()">Remove Rideshare
+            </md-button>
+
+        </form>
     </div>
+    <div flex>
+        <pre>{{RidesharesForm | json}}</pre>
+    </div>
+</div>
 
-    <br/>
-
-    <md-button
-            class="md-raised md-primary"
-            ng-if="vm.itinerary.route.length > 1"
-            ng-disabled="!vm.isRouteValid"
-            ng-click="vm.save()">Save Rideshare
-    </md-button>
-
-    <br/>
-
-    <md-button
-            class="md-raised md-warn"
-            ng-if="vm.isOwner"
-            ng-click="vm.remove()">Remove Rideshare
-    </md-button>
-
-</form>
