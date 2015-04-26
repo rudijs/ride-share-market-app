@@ -2,9 +2,6 @@
   'use strict';
 
   angular.module('users', [
-    'LocalForageModule', // move to user component
-    'restangular',
-    'angular-jwt',
     'users.routes',
     'users.services',
     'users.directives'
@@ -40,6 +37,9 @@
 
   // Create application services module and define the dependencies
   angular.module('users.services', [
+    'LocalForageModule',
+    'restangular',
+    'angular-jwt',
     'users.service.local.storage',
     'users.service.url.inspector',
     'users.service.jwt.manager',

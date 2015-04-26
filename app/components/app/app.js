@@ -2,7 +2,6 @@
   'use strict';
 
   angular.module('app', [
-    'LocalForageModule',
     'app.routes.auth.policy',
     'app.routes',
     'app.directives',
@@ -22,7 +21,10 @@
     });
 
   // Create application services module and define the dependencies
-  angular.module('app.services', ['ngMaterial']);
+  angular.module('app.services', [
+    'ngMaterial',
+    'LocalForageModule'
+  ]);
 
   angular.module('app.directives', []);
 

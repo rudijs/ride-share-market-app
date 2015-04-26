@@ -11,6 +11,18 @@
 
       // Load the directives module
       beforeEach(module('rideshares.directives'));
+      beforeEach(module('app.services', function ($provide) {
+        $provide.factory('AppLocalStorageSvc', function($q) {
+          return {
+            getItem: function() {
+              $q.when(0);
+            },
+            setItem: function() {
+              $q.when(true);
+            }
+          }
+        });
+      }));
 
       // Load the test cached HTML templates
       beforeEach(module('templates'));
@@ -26,7 +38,7 @@
         $compile(elm)(scope);
       }));
 
-      it('should render the latest rideshares', function(done) {
+      it('should render the latest rideshares', function (done) {
         inject(function (fixture200GetRideshares) {
 
           // test
@@ -39,6 +51,8 @@
           // http get
           $httpBackend.flush();
 
+          scope.$apply();
+
           // test
           expect(angular.element(elm).text()).to.match(/Mountain\ View,\ CA,\ United\ States/);
           expect(angular.element(elm).text()).to.match(/Woody\ Point,\ Queensland,\ Australia/);
@@ -48,7 +62,7 @@
         });
       });
 
-      it('should handle errors', function(done) {
+      it('should handle errors', function (done) {
         inject(function (fixture503ServiceUnavailable) {
 
           // test
