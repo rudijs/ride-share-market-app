@@ -27,6 +27,7 @@ module.exports = function () {
       'app/bower_components/angular-jwt/dist/angular-jwt.js',
       // Auto complete for google places
       'app/bower_components/ngAutocomplete/src/ngAutocomplete.js',
+      'app/bower_components/at-table/dist/angular-table.js',
 
       // First load app.js
       'app/components/app/app.js',

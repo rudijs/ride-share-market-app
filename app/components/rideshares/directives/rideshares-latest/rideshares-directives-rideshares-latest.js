@@ -23,10 +23,10 @@
 
     vm.getLatestRideshares = function () {
 
-      // TODO: pagination
-      // https://github.com/michaelbromley/angularUtils
-      // or
+      // Pagination options
       // http://samu.github.io/angular-table/examples/examples.html
+      // or
+      // https://github.com/michaelbromley/angularUtils
 
       RidesharesGetSvc.getLatest().then(
         function (res) {
@@ -43,6 +43,7 @@
 
     };
 
+    // angular-table pagination
     vm.config = {
       itemsPerPage: 5,
       fillLastPage: true

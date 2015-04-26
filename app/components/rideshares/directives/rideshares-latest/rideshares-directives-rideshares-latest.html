@@ -5,39 +5,12 @@
         <img src="/images/ellipsis.gif"/>
     </div>
 
-    <!--<table id="rideshares" ng-show="vm.ready">-->
-    <!--<thead>-->
-    <!--<tr>-->
-    <!--<th translate>Type</th>-->
-    <!--<th translate>Departure</th>-->
-    <!--<th translate>Arrival</th>-->
-    <!--<th translate>Posted</th>-->
-    <!--</tr>-->
-    <!--</thead>-->
-
-    <!--<tbody>-->
-
-    <!--<tr ng-if="vm.errors">-->
-    <!--<td colspan="4" class="text-center" ng-repeat="error in vm.errors"><p>{{ error.title }}</p></td>-->
-    <!--</tr>-->
-
-    <!--&lt;!&ndash;<tr&ndash;&gt;-->
-    <!--&lt;!&ndash;ng-repeat="rideshare in vm.rideshares"&ndash;&gt;-->
-    <!--&lt;!&ndash;ng-click="go.to('/rideshares', rideshare._id, 'back', 1)"&ndash;&gt;-->
-    <!--&lt;!&ndash;time-a-go>&ndash;&gt;-->
-    <!--<tr ng-repeat="rideshare in vm.rideshares">-->
-    <!--<td><a ng-href="#!/rideshares/{{ rideshare._id }}">{{ rideshare.itinerary.type }}</a></td>-->
-    <!--<td><a ng-href="#!/rideshares/{{ rideshare._id }}">{{ rideshare.itinerary.route[0].place }}</a></td>-->
-    <!--<td>{{ rideshare.itinerary.route[1].place }}</td>-->
-    <!--<td nowrap="nowrap">-->
-    <!--<span class="timeago" title="{{ rideshare.created_at }}">{{ rideshare.created_at | date:'medium' }}</span>-->
-    <!--</td>-->
-    <!--</tr>-->
-    <!--</tbody>-->
-    <!--</table>-->
+    <div ng-if="vm.errors">
+        <p ng-repeat="error in vm.errors">{{ error.title }}</p>
+    </div>
 
     <table
-            ng-if="vm.ready"
+            ng-if="vm.ready && !vm.errors"
             style="width: 100%"
             at-table
             at-paginated
