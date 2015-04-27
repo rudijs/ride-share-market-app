@@ -19,11 +19,23 @@
         <thead></thead>
         <tbody>
         <tr>
-            <td at-title="Origin" at-attribute="itinerary.route[0].place">
+            <td
+                    at-title="Origin"
+                    at-attribute="itinerary.route[0].place"
+                    at-sortable>
                 <a ng-href="#!/rideshares/{{ item._id }}">{{ item.itinerary.route[0].place }}</a>
             </td>
-            <td at-title="Destination" at-implicit at-attribute="itinerary.route[1].place"></td>
-            <td at-title="Post Date" at-attribute="created_at" nowrap>{{item.created_at | date:'yyyy-MM-dd'}}</td>
+            <td
+                    at-title="Destination"
+                    at-implicit
+                    at-attribute="itinerary.route[1].place"
+                    at-sortable></td>
+            <td
+                    at-title="Update Date"
+                    at-attribute="updated_at"
+                    at-sortable
+                    at-initial-sorting="desc"
+                    nowrap>{{item.updated_at | date:'yyyy-MM-dd'}}</td>
         </tr>
         </tbody>
     </table>
