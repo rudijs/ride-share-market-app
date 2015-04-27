@@ -25,7 +25,7 @@ module.exports = function () {
       'app/bower_components/lodash/lodash.js',
       'app/bower_components/restangular/dist/restangular.js',
       'app/bower_components/angular-jwt/dist/angular-jwt.js',
-      // Auto complete for google places
+      'app/bower_components/angular-material-icons/angular-material-icons.js',
       'app/bower_components/ngAutocomplete/src/ngAutocomplete.js',
       'app/bower_components/at-table/dist/angular-table.js',
 

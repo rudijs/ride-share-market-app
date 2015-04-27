@@ -2,6 +2,7 @@
   'use strict';
 
   angular.module('app', [
+    'ngMdIcons',
     'app.routes.auth.policy',
     'app.routes',
     'app.directives',
