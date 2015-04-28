@@ -1,12 +1,12 @@
-<div flex layout="row">
-    <div flex>
-        <ng-md-icon hide-gt-md icon="menu" size="18"></ng-md-icon>
-        <form
-                name="RidesharesForm"
-                id="RidesharesForm"
-                novalidate
-                ng-submit="vm.addPlace()">
+<div flex layout="row" layout-margin layout-fill layout-padding>
+    <form
+            name="RidesharesForm"
+            id="RidesharesForm"
+            novalidate
+            ng-submit="vm.addPlace()">
 
+        <fieldset>
+            <legend>Waypoints</legend>
             <input
                     name="place"
                     id="place"
@@ -25,62 +25,76 @@
                 {{ ::place.place }}
             </div>
 
-            <br/>
+        </fieldset>
 
-            <div ng-if="vm.itinerary.route.length > 1">
-
-            <h3>Rideshare Details</h3>
-
-            <span style="font-weight: bold">Type</span>:&nbsp;
-            <md-select
-                    name="type"
-                    ng-model="vm.itinerary.type">
-                <md-option ng-repeat="o in vm.types" value="{{o}}">{{o}}</md-option>
-            </md-select>
-
-            <br/>
-
-            <span style="font-weight: bold">Trip</span>:&nbsp;
-            <md-select
-                    name="trip"
-                    ng-model="vm.itinerary.trip">
-                <md-option ng-repeat="o in vm.trips" value="{{o}}">{{o}}</md-option>
-            </md-select>
-
-            <br/>
-
-            <span style="font-weight: bold">Frequency</span>:&nbsp;
-            <md-select
-                    name="frequency"
-                    ng-model="vm.itinerary.frequency">
-                <md-option ng-repeat="o in vm.frequencies" value="{{o}}">{{o}}</md-option>
-            </md-select>
-            <!--Frequency:-->
-            <!--<select-->
-                    <!--name="frequency"-->
-                    <!--ng-model="vm.itinerary.frequency"-->
-                    <!--ng-options="o as o for o in vm.frequencies"></select>-->
-            <br/>
-            </div>
-
-            <md-button
-                    class="md-raised md-primary"
-                    ng-if="vm.itinerary.route.length > 1"
-                    ng-disabled="!vm.isRouteValid"
-                    ng-click="vm.save()">Save Rideshare
-            </md-button>
-
-            <br/>
-
-            <md-button
-                    class="md-raised md-warn"
-                    ng-if="vm.isOwner"
-                    ng-click="vm.remove()">Remove Rideshare
-            </md-button>
-
-        </form>
-    </div>
-    <div flex>
-        <!--<pre>{{RidesharesForm | json}}</pre>-->
-    </div>
 </div>
+
+<div flex layout-gt-sm="row" layout-sm="column" layout-margin layout-fill ng-if="vm.itinerary.route.length > 1">
+
+    <div flex>
+        <fieldset>
+            <legend>Rideshare Details</legend>
+            <table>
+                <tr>
+                    <td><span style="font-weight: bold">Type</span>:&nbsp;
+                        <md-select
+                                name="type"
+                                ng-model="vm.itinerary.type">
+                            <md-option ng-repeat="o in vm.types" value="{{o}}">{{o}}</md-option>
+                        </md-select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><span style="font-weight: bold">Trip</span>:&nbsp;
+                        <md-select
+                                name="trip"
+                                ng-model="vm.itinerary.trip">
+                            <md-option ng-repeat="o in vm.trips" value="{{o}}">{{o}}</md-option>
+                        </md-select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span style="font-weight: bold">Frequency</span>:&nbsp;
+                        <md-select
+                                name="frequency"
+                                ng-model="vm.itinerary.frequency">
+                            <md-option ng-repeat="o in vm.frequencies" value="{{o}}">{{o}}</md-option>
+                        </md-select>
+                        <!--Frequency:-->
+                        <!--<select-->
+                        <!--name="frequency"-->
+                        <!--ng-model="vm.itinerary.frequency"-->
+                        <!--ng-options="o as o for o in vm.frequencies"></select>-->
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+
+    </div>
+
+    <div flex>
+        <fieldset>
+            <legend>Vehicle Details</legend>
+            TwoTwoTwo TwoTwoTwo
+        </fieldset>
+    </div>
+
+    </form>
+</div>
+
+<div flex layout-gt-sm="row" layout-sm="column" layout-margin layout-padding layout-fill ng-if="vm.itinerary.route.length > 1">
+    <md-button
+            class="md-raised md-primary"
+            ng-if="vm.itinerary.route.length > 1"
+            ng-disabled="!vm.isRouteValid"
+            ng-click="vm.save()">Save Rideshare
+    </md-button>
+    &nbsp;
+    <md-button
+            class="md-raised md-warn"
+            ng-if="vm.isOwner"
+            ng-click="vm.remove()">Remove Rideshare
+    </md-button>
+</div>
+<!--<pre>{{RidesharesForm | json}}</pre>-->
