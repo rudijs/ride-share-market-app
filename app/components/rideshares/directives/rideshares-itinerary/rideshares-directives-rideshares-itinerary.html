@@ -76,14 +76,61 @@
     <div flex>
         <fieldset>
             <legend>Vehicle Details</legend>
-            TwoTwoTwo TwoTwoTwo
+
+            <span style="font-weight: bold">Type</span>:&nbsp;
+            <md-select
+                    name="vehicle"
+                    ng-model="vm.itinerary.vehicle">
+                <md-option ng-repeat="o in vm.vehicleTypes" value="{{o}}">{{o}}</md-option>
+            </md-select>
+
+            <br/>
+
+            <span style="font-weight: bold">Available Seats</span>:&nbsp;
+            <md-select
+                    name="seats"
+                    ng-model="vm.itinerary.seats">
+                <md-option ng-repeat="o in vm.seats" value="{{o}}">{{o}}</md-option>
+            </md-select>
+
+            <br/>
+
+            <span style="font-weight: bold">Luggage</span>:&nbsp;
+            <md-select
+                    name="luggage"
+                    ng-model="vm.itinerary.luggage">
+                <md-option ng-repeat="o in vm.luggage" value="{{o}}">{{o}}</md-option>
+            </md-select>
+
+            <br/>
+            <br/>
+
+            <span style="font-weight: bold">Share Driving</span>:&nbsp;
+            <md-radio-group ng-model="vm.itinerary.shareDriving" class="md-primary">
+                <md-radio-button ng-repeat="d in vm.shareDriving"
+                                 ng-value="d.value">
+                    {{ d.label }}
+                </md-radio-button>
+            </md-radio-group>
+
+            <br/>
+
+            <span style="font-weight: bold">Smoking</span>:&nbsp;
+            <md-radio-group ng-model="vm.itinerary.smoking" class="md-primary">
+                <md-radio-button ng-repeat="d in vm.smoking"
+                                 ng-value="d.value">
+                    {{ d.label }}
+                </md-radio-button>
+            </md-radio-group>
+
         </fieldset>
     </div>
 
     </form>
 </div>
 
-<div flex layout-gt-sm="row" layout-sm="column" layout-margin layout-padding layout-fill ng-if="vm.itinerary.route.length > 1">
+<div flex layout-gt-sm="row" layout-sm="column" layout-margin layout-padding layout-fill
+     ng-if="vm.itinerary.route.length > 1">
     <md-button
             class="md-raised md-primary"
             ng-if="vm.itinerary.route.length > 1"

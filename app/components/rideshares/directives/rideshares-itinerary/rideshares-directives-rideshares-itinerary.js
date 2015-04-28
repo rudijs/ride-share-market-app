@@ -89,9 +89,44 @@
       'Weekly',
       'Occasional',
       'Regular',
-      'Often',
+      'Often'
     ];
     vm.itinerary.frequency = vm.itinerary.frequency || vm.frequencies[0]; // One Time
+
+    vm.vehicleTypes = [
+      'Car',
+      'Taxi',
+      'Van',
+      'Truck',
+      'Vessel'
+    ];
+    vm.itinerary.vehicle = vm.itinerary.vehicle || vm.vehicleTypes[0]; // Car
+
+    vm.seats = [1,2,3,4,5,6,7,8,9,10];
+    vm.itinerary.seats = vm.itinerary.seats || vm.seats[0]; // 1
+
+    vm.luggage = [
+      'None',
+      'Small Amount',
+      'Backpack',
+      'Suitcase',
+      'Sports Equipment',
+      'Larger'
+    ];
+    vm.itinerary.luggage = vm.itinerary.luggage || vm.luggage[1]; // Small Amount
+
+    vm.shareDriving = [
+      {label: 'Yes', value: 'Yes'},
+      {label: 'No', value: 'No'}
+    ];
+    vm.itinerary.shareDriving = vm.itinerary.shareDriving || vm.shareDriving[1].value; // No
+
+    vm.smoking = [
+      {label: 'Yes', value: 'Yes'},
+      {label: 'No', value: 'No'}
+    ];
+    vm.itinerary.smoking = vm.itinerary.smoking || vm.smoking[1].value; // No
+
 
   }
 
