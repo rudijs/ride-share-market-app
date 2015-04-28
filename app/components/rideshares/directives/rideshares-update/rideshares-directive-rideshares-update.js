@@ -58,9 +58,14 @@
         });
     }
 
+    vm.update1 = function updateRideshare () {
+      console.log('vm.update');
+      console.log('vm.rideshare', vm.rideshare);
+    };
+
     vm.update = function updateRideshare () {
 
-      vm.rideshare.put().then(
+      vm.rideshare.customPUT(vm.rideshare.rideshares[0]).then(
         function () {
           $location.path('/rideshares/' + vm.rideshare.rideshares[0]._id);
         },
