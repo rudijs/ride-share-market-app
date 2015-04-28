@@ -2,7 +2,7 @@
 
     <div ng-hide="vm.ready">
         <h3>Loading Latest Rideshares...</h3>
-        <img src="/images/ellipsis.gif"/>
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
     </div>
 
     <div ng-if="vm.errors">
