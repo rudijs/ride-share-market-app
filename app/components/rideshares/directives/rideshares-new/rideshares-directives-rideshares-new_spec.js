@@ -17,6 +17,10 @@
           return {};
         });
 
+        $provide.factory('$mdDialog', function() {
+          return {};
+        });
+
         $provide.factory('RidesharesCreateSvc', function () {
           return {
             create: function (rideshare) {

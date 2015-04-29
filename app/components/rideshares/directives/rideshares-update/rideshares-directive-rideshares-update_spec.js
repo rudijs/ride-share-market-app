@@ -21,6 +21,10 @@
           return {};
         });
 
+        $provide.factory('$mdDialog', function() {
+          return {};
+        });
+
         $provide.factory('JwtSvc', function ($q) {
           var deferred = $q.defer();
           deferred.resolve({

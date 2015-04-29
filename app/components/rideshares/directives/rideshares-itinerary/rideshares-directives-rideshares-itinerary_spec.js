@@ -17,6 +17,10 @@
           return {};
         });
 
+        $provide.factory('$mdDialog', function() {
+          return {};
+        });
+
       }));
 
       // Load the test cached HTML templates

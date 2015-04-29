@@ -76,6 +76,7 @@
     vm.confirmRemove = function(ev) {
       // Appending dialog to document.body to cover sidenav in docs app
       var confirm = $mdDialog.confirm()
+        // TODO: .parent throwing error?
         //.parent(angular.element(document.body))
         .title('Please confirm.')
         .content('Would you like to remove this Rideshare?')
