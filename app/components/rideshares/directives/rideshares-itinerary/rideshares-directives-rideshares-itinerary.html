@@ -129,19 +129,26 @@
     </form>
 </div>
 
-<div flex layout-gt-sm="row" layout-sm="column" layout-margin layout-padding layout-fill
-     ng-if="vm.itinerary.route.length > 1">
-    <md-button
-            class="md-raised md-primary"
-            ng-if="vm.itinerary.route.length > 1"
-            ng-disabled="!vm.isRouteValid"
-            ng-click="vm.save()">Save Rideshare
-    </md-button>
-    &nbsp;
-    <md-button
-            class="md-raised md-warn"
-            ng-if="vm.isOwner"
-            ng-click="vm.remove()">Remove Rideshare
-    </md-button>
+<div flex layout-gt-sm="row" layout-sm="column" layout-fill layout-margin ng-if="vm.itinerary.route.length > 1">
+    <div flex>
+        <md-button
+                class="md-raised md-primary"
+                ng-if="vm.itinerary.route.length > 1"
+                ng-disabled="!vm.isRouteValid"
+                ng-click="vm.save()">Save Rideshare
+        </md-button>
+        &nbsp;
+        <md-button
+                class="md-raised md-warn"
+                ng-if="vm.isOwner"
+                ng-click="vm.confirmRemove($event)">Remove Rideshare
+        </md-button>
+    </div>
 </div>
-<!--<pre>{{RidesharesForm | json}}</pre>-->
+
+<div flex layout="column" layout-fill layout-margin ng-if="vm.itinerary.route.length">
+    <div flex class="rideshare__map">
+        <rsm-rideshares-map
+                route="vm.itinerary.route"></rsm-rideshares-map>
+    </div>
+</div>

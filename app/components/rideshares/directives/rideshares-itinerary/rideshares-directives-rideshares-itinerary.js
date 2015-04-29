@@ -20,7 +20,7 @@
       };
     });
 
-  function RidesharesItineraryCtrl($scope) {
+  function RidesharesItineraryCtrl($scope, $mdDialog) {
 
     var vm = this;
 
@@ -73,8 +73,19 @@
       vm.onSave();
     };
 
-    vm.remove = function () {
-      vm.onRemove();
+    vm.confirmRemove = function(ev) {
+      // Appending dialog to document.body to cover sidenav in docs app
+      var confirm = $mdDialog.confirm()
+        //.parent(angular.element(document.body))
+        .title('Please confirm.')
+        .content('Would you like to remove this Rideshare?')
+        .ariaLabel('Confirm Rideshare Remove')
+        .ok('Yes, please remove.')
+        .cancel('No.')
+        .targetEvent(ev);
+      $mdDialog.show(confirm).then(function() {
+        vm.onRemove();
+      });
     };
 
     vm.types = ['Wanted', 'Offering'];

@@ -24,10 +24,12 @@
 
     var vm = this;
 
-    // Global dependencies
-    var google = $window.google,
-      _ = $window._;
+    // Show the Google Map right away if a valid route exists
+    if(vm.route && vm.route.length && vm.route.length > 1) {
+      showGoogleMap(vm.route);
+    }
 
+    // Watch the route array and show the Google Map when there is at least 2 places.
     $scope.$watchCollection(function () {
       return vm.route;
     }, function (newValue, oldValue) {
@@ -38,24 +40,74 @@
           return;
         }
 
-        console.log(newValue, oldValue);
-
-        var values = googleMapValues(google, _, newValue);
-
-        // If the route is valid render the google map
-        calcRoute($q, google, values).then(
-          function calcRouteSuccess(route) {
-            vm.isRouteValid = true;
-            initializeGoogleMap(google, values.mapCenter, route);
-          },
-          function calcRouteError() {
-            vm.isRouteValid = false;
-          }
-        );
+        showGoogleMap(newValue);
 
       }
 
     });
+
+    function showGoogleMap(itineraryRoute) {
+
+      // Global dependencies
+      var google = $window.google,
+        _ = $window._;
+
+      var values = googleMapValues(google, _, itineraryRoute);
+
+      // If the route is valid render the google map
+      calcRoute($q, google, values).then(
+        function calcRouteSuccess(route) {
+          vm.isRouteValid = true;
+          initializeGoogleMap(google, values.mapCenter, route);
+        },
+        function calcRouteError() {
+          vm.isRouteValid = false;
+        }
+      );
+    }
+
+  }
+
+  function googleMapValues(_google_, ___, newValue) {
+
+    var google = _google_,
+      _ = ___;
+
+    // lodash _.pluck shorthand
+    var places = _.map(newValue, 'place');
+
+    // Get the 1st stop for the origin
+    var origin = places.shift();
+
+    // Get the last stop as the destination
+    var destination = places.pop();
+
+    // Everything in between are the stopover waypoints
+    var waypoints = [];
+
+    // If there is only two stops it's OK to submit the wayPoints array empty
+    _.forEach(places, function (place) {
+      var waypoint = {
+        location: place,
+        stopover: true
+      };
+      waypoints.push(waypoint);
+    });
+
+    // Extract the geo coordinates from the 1st stop
+    var obj = newValue[0].details.geometry.location;
+    var latitude = obj[Object.keys(obj)[1]];
+    var longitude = obj[Object.keys(obj)[0]];
+
+    // Set the google map center with these coordinates
+    var mapCenter = new google.maps.LatLng(latitude, longitude);
+
+    return {
+      origin: origin,
+      destination: destination,
+      waypoints: waypoints,
+      mapCenter: mapCenter
+    };
 
   }
 
@@ -103,49 +155,6 @@
     directionsDisplay.setMap(map);
 
     directionsDisplay.setDirections(route);
-
-  }
-
-  function googleMapValues(_google_, ___, newValue) {
-
-    var google = _google_,
-      _ = ___;
-
-    // lodash _.pluck shorthand
-    var places = _.map(newValue, 'place');
-
-    // Get the 1st stop for the origin
-    var origin = places.shift();
-
-    // Get the last stop as the destination
-    var destination = places.pop();
-
-    // Everything in between are the stopover waypoints
-    var waypoints = [];
-
-    // If there is only two stops it's OK to submit the wayPoints array empty
-    _.forEach(places, function (place) {
-      var waypoint = {
-        location: place,
-        stopover: true
-      };
-      waypoints.push(waypoint);
-    });
-
-    // Extract the geo coordinates from the 1st stop
-    var obj = newValue[0].details.geometry.location;
-    var latitude = obj[Object.keys(obj)[1]];
-    var longitude = obj[Object.keys(obj)[0]];
-
-    // Set the google map center with these coordinates
-    var mapCenter = new google.maps.LatLng(latitude, longitude);
-
-    return {
-      origin: origin,
-      destination: destination,
-      waypoints: waypoints,
-      mapCenter: mapCenter
-    };
 
   }
 

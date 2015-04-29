@@ -1,46 +1,49 @@
-<h1>Rideshare Details</h1>
+<div flex layout="column" layout-fill layout-margin>
 
-<div ng-hide="vm.ready">
-    <h3>Loading Rideshare...</h3>
-    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
-</div>
+    <div flex>
 
-<div ng-if="vm.errors">
-    <p ng-repeat="error in vm.errors">{{ error.title }}</p>
-</div>
+        <h1>Rideshare Details</h1>
 
-<table
-        ng-if="vm.rideshare"
-        id="rideshare">
-    <thead>
-    <tr>
-        <th colspan="2" class="text-center">details</th>
-    </tr>
-    </thead>
+        <div ng-hide="vm.ready">
+            <h3>Loading Rideshare...</h3>
+            <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+        </div>
 
-    <tbody>
-    <tr>
-        <td>Date:</td>
-        <td>{{ vm.rideshare.created_at | date:'medium' }}</td>
-    </tr>
+        <div ng-if="vm.errors">
+            <p ng-repeat="error in vm.errors">{{ error.title }}</p>
+        </div>
 
-    <tr ng-repeat="waypoint in vm.rideshare.itinerary.route">
-        <td>Waypoint:</td>
-        <td>
-            {{ waypoint.place }}
-        </td>
-    </tr>
+        <div ng-if="vm.rideshare">
 
-    <tr ng-if="vm.isOwner">
-        <td>&nbsp;</td>
-        <td>
-            <a ng-href="#!/rideshares/{{vm.rideshare._id}}/update" class="button round"/>Update Rideshare</a>
-        </td>
-    </tr>
-    </tbody>
-</table>
+            <ul>
+                <li ng-repeat="waypoint in vm.rideshare.itinerary.route">
+                    {{ waypoint.place }}
+                </li>
+                <li>Type: {{vm.rideshare.itinerary.type}}</li>
+                <li>Trip: {{vm.rideshare.itinerary.trip}}</li>
+                <li>Frequency: {{vm.rideshare.itinerary.frequency}}</li>
+                <li>Vehicle: {{vm.rideshare.itinerary.vehicle}}</li>
+                <li>Seats: {{vm.rideshare.itinerary.seats}}</li>
+                <li>Luggage: {{vm.rideshare.itinerary.luggage}}</li>
+                <li>Share Driving: {{vm.rideshare.itinerary.shareDriving}}</li>
+                <li>Smoking: {{vm.rideshare.itinerary.smoking}}</li>
+                <li>{{vm.rideshare.created_at | date:'medium'}}</li>
+            </ul>
 
-<div class="rideshare__map">
-    <rsm-rideshares-map
-            route="vm.rideshare.itinerary.route"            ></rsm-rideshares-map>
+            <md-button
+                    class="md-raised md-primary"
+                    ng-if="vm.isOwner"
+                    ng-href="#!/rideshares/{{vm.rideshare._id}}/update">
+                Update Rideshare
+            </md-button>
+
+        </div>
+
+    </div>
+
+    <div flex class="rideshare__map">
+        <rsm-rideshares-map
+                route="vm.rideshare.itinerary.route"></rsm-rideshares-map>
+    </div>
+
 </div>
