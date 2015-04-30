@@ -6,7 +6,7 @@
             ng-submit="vm.addPlace()">
 
         <fieldset>
-            <legend>Waypoints</legend>
+            <legend><ng-md-icon style="fill: blue" icon="directions" size="18"></ng-md-icon>&nbsp;Waypoints</legend>
             <input
                     name="place"
                     id="place"
@@ -21,8 +21,12 @@
                     ng-click="submit()">+ Add Place
             </md-button>
 
-            <div ng-repeat="place in vm.itinerary.route">
-                <ng-md-icon style="fill: black" icon="swap_vert" size="18" ng-if="vm.itinerary.route.length > 1"></ng-md-icon>&nbsp;
+            <div ng-repeat="place in vm.itinerary.route" style="font-size: 18px">
+                <ng-md-icon style="fill: green" icon="swap_vert" size="18" ng-if="$index + 1 < vm.itinerary.route.length"></ng-md-icon>
+                <ng-md-icon style="fill: blue" icon="place" size="18" ng-if="$index + 1 === vm.itinerary.route.length"></ng-md-icon>
+                &nbsp;&nbsp;
+                <ng-md-icon style="fill: red" icon="cancel" size="18"></ng-md-icon>
+                &nbsp;&nbsp;
                 {{ ::place.place }}
             </div>
 
@@ -34,7 +38,7 @@
 
     <div flex>
         <fieldset>
-            <legend>Rideshare Details</legend>
+            <legend><ng-md-icon style="fill: blue" icon="time_to_leave" size="18"></ng-md-icon>&nbsp;Rideshare Details</legend>
             <table>
                 <tr>
                     <td><span style="font-weight: bold">Type</span>:&nbsp;
@@ -76,8 +80,7 @@
 
     <div flex>
         <fieldset>
-            <legend>Vehicle Details</legend>
-
+            <legend><ng-md-icon style="fill: blue" icon="settings" size="18"></ng-md-icon>&nbsp;Vehicle Details</legend>
             <span style="font-weight: bold">Type</span>:&nbsp;
             <md-select
                     name="vehicle"

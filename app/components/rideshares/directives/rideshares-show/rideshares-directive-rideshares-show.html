@@ -11,17 +11,20 @@
 
         <div ng-if="vm.errors">
             <p ng-repeat="error in vm.errors">
-                <ng-md-icon style="fill: red" icon="error" size="24"></ng-md-icon>&nbsp;
+                <ng-md-icon style="fill: red" icon="error" size="24"></ng-md-icon>
+                &nbsp;
                 {{ error.title }}
             </p>
         </div>
 
         <div ng-if="vm.rideshare">
 
-            <ul>
+            <ol>
                 <li ng-repeat="waypoint in vm.rideshare.itinerary.route">
                     {{ waypoint.place }}
                 </li>
+            </ol>
+            <ul>
                 <li>Type: {{vm.rideshare.itinerary.type}}</li>
                 <li>Trip: {{vm.rideshare.itinerary.trip}}</li>
                 <li>Frequency: {{vm.rideshare.itinerary.frequency}}</li>
@@ -32,7 +35,8 @@
                 <li>Smoking: {{vm.rideshare.itinerary.smoking}}</li>
                 <li>{{vm.rideshare.created_at | date:'medium'}}</li>
                 <li>
-                    <ng-md-icon style="fill: black" icon="message" size="24"></ng-md-icon>&nbsp;
+                    <ng-md-icon style="fill: black" icon="message" size="24"></ng-md-icon>
+                    &nbsp;
                     {{vm.rideshare.user}}
                 </li>
             </ul>
