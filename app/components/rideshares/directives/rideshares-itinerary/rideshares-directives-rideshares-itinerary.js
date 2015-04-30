@@ -64,8 +64,6 @@
       vm.place = '';
       vm.placeDetails = null;
 
-      console.log(vm.itinerary);
-
     };
 
     // Call the onSave callback
@@ -110,7 +108,7 @@
       'Taxi',
       'Van',
       'Truck',
-      'Vessel'
+      'Motorcycle'
     ];
     vm.itinerary.vehicle = vm.itinerary.vehicle || vm.vehicleTypes[0]; // Car
 

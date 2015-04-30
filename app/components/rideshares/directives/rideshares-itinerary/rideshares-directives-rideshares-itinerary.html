@@ -22,6 +22,7 @@
             </md-button>
 
             <div ng-repeat="place in vm.itinerary.route">
+                <ng-md-icon style="fill: black" icon="swap_vert" size="18" ng-if="vm.itinerary.route.length > 1"></ng-md-icon>&nbsp;
                 {{ ::place.place }}
             </div>
 

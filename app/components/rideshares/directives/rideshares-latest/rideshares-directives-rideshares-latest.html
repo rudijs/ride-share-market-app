@@ -23,7 +23,9 @@
                     at-title="Origin"
                     at-attribute="itinerary.route[0].place"
                     at-sortable>
-                <a ng-href="#!/rideshares/{{ item._id }}">{{ item.itinerary.route[0].place }}</a>
+                <a ng-href="#!/rideshares/{{ item._id }}">
+                    <ng-md-icon style="fill: black" icon="forward" size="18"></ng-md-icon>&nbsp;{{ item.itinerary.route[0].place }}
+                </a>
             </td>
             <td
                     at-title="Destination"

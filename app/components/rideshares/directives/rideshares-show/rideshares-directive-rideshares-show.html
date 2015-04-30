@@ -10,7 +10,10 @@
         </div>
 
         <div ng-if="vm.errors">
-            <p ng-repeat="error in vm.errors">{{ error.title }}</p>
+            <p ng-repeat="error in vm.errors">
+                <ng-md-icon style="fill: red" icon="error" size="24"></ng-md-icon>&nbsp;
+                {{ error.title }}
+            </p>
         </div>
 
         <div ng-if="vm.rideshare">
@@ -28,6 +31,10 @@
                 <li>Share Driving: {{vm.rideshare.itinerary.shareDriving}}</li>
                 <li>Smoking: {{vm.rideshare.itinerary.smoking}}</li>
                 <li>{{vm.rideshare.created_at | date:'medium'}}</li>
+                <li>
+                    <ng-md-icon style="fill: black" icon="message" size="24"></ng-md-icon>&nbsp;
+                    {{vm.rideshare.user}}
+                </li>
             </ul>
 
             <md-button

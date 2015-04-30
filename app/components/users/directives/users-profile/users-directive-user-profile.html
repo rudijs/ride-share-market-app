@@ -1,6 +1,9 @@
 <div flex="95" flex-gt-sm="70">
 
-    <h3 ng-hide="user.ready">Loading profile...</h3>
+    <h3 ng-hide="user.ready">
+        Loading profile...
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    </h3>
 
     <div ng-show="user.ready">
 
