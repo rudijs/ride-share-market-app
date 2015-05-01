@@ -20,7 +20,7 @@
       };
     });
 
-  function RidesharesItineraryCtrl($scope, $mdDialog) {
+  function RidesharesItineraryCtrl($scope, $mdDialog, RidesharesRouteUpdateSvc) {
 
     var vm = this;
 
@@ -65,6 +65,12 @@
       vm.placeDetails = null;
 
     };
+
+    // Enable Array to move an element up or down in position
+    // Used with arrow up/down icons to move a route place's position
+    Array.prototype.move = RidesharesRouteUpdateSvc.routeMove;
+
+    vm.routeRemove = RidesharesRouteUpdateSvc.remove;
 
     // Call the onSave callback
     vm.save = function () {

@@ -22,10 +22,13 @@
             </md-button>
 
             <div ng-repeat="place in vm.itinerary.route" style="font-size: 18px">
-                <ng-md-icon style="fill: green" icon="swap_vert" size="18" ng-if="$index + 1 < vm.itinerary.route.length"></ng-md-icon>
+                <ng-md-icon style="fill: green; cursor: pointer;" icon="swap_vert" size="18"
+                            ng-click="vm.itinerary.route.move($index,$index+1)"
+                            ng-if="$index + 1 < vm.itinerary.route.length"></ng-md-icon>
                 <ng-md-icon style="fill: blue" icon="place" size="18" ng-if="$index + 1 === vm.itinerary.route.length"></ng-md-icon>
                 &nbsp;&nbsp;
-                <ng-md-icon style="fill: red" icon="cancel" size="18"></ng-md-icon>
+                <ng-md-icon style="fill: red; cursor: pointer;" icon="cancel" size="18"
+                            ng-click="vm.routeRemove(vm.itinerary.route, $index)"></ng-md-icon>
                 &nbsp;&nbsp;
                 {{ ::place.place }}
             </div>
@@ -150,7 +153,7 @@
     </div>
 </div>
 
-<div flex layout="column" layout-fill layout-margin ng-if="vm.itinerary.route.length">
+<div flex layout="column" layout-fill layout-margin ng-if="vm.itinerary.route.length > 1">
     <div flex class="rideshare__map">
         <rsm-rideshares-map
                 route="vm.itinerary.route"></rsm-rideshares-map>

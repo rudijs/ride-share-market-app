@@ -21,6 +21,10 @@
           return {};
         });
 
+        $provide.factory('RidesharesRouteUpdateSvc', function() {
+          return {};
+        });
+
       }));
 
       // Load the test cached HTML templates

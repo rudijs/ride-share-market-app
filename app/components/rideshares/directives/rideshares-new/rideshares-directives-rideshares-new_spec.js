@@ -21,6 +21,10 @@
           return {};
         });
 
+        $provide.factory('RidesharesRouteUpdateSvc', function() {
+          return {};
+        });
+
         $provide.factory('RidesharesCreateSvc', function () {
           return {
             create: function (rideshare) {
