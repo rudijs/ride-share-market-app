@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  describe('Service', function () {
+  describe('Rideshares Service', function () {
 
     describe('Rideshares Get', function () {
 

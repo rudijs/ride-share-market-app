@@ -1,9 +1,7 @@
-(function() {
+(function(module) {
   'use strict';
 
-  angular
-    .module('rideshares.services')
-    .factory('RidesharesCreateSvc', RidesharesCreateSvc);
+  module.factory('RidesharesCreateSvc', RidesharesCreateSvc);
 
   function RidesharesCreateSvc($q, Restangular) {
     return {
@@ -33,4 +31,4 @@
     };
   }
 
-})();
+})(angular.module('rideshares.services'));
