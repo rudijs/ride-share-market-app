@@ -164,6 +164,11 @@
       .pipe(gulp.dest('./dist/images'));
   });
 
+  gulp.task('build-copy-favicon', function () {
+    return gulp.src('./app/favicon.ico')
+      .pipe(gulp.dest('./dist/'));
+  });
+
   gulp.task('build-scripts-styles', function () {
     var assets = useref.assets({searchPath: 'app'});
 
@@ -218,7 +223,8 @@
       'build-scripts-styles',
       // build in parallel
       [
-        'build-copy-images'
+        'build-copy-images',
+        'build-copy-favicon'
         //'build-css',
         //'build-js'
       ],
