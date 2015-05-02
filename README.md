@@ -78,3 +78,11 @@ Production builds:
 
 - Docker build, tag and push to local private repository.
 - `./docker-build x.x.x`
+
+## Mobile Testing
+ 
+In the loc environment use a tool like airdoid.com to send a URL and open a page on Android Chrome.
+
+- Ex: Use and IP address for local mobile devices
+- `http://192.168.0.102:3000/#!/welcome?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiVGVzdCIsImlhdCI6MTQwOTg4NzM0MH0.90p7HsF59e8qds4F-YQfckMKfy_cA5bcnub6EmZEAQw`
+- `http://local.ridesharemarket.com:3000/#!/welcome?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiVGVzdCIsImlhdCI6MTQwOTg4NzM0MH0.90p7HsF59e8qds4F-YQfckMKfy_cA5bcnub6EmZEAQw`
