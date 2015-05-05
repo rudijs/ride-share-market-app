@@ -155,8 +155,10 @@
 </div>
 
 <div flex layout="column" layout-fill layout-margin ng-if="vm.itinerary.route.length > 1">
-    <div flex class="rideshare__map">
-        <rsm-rideshares-map
-                route="vm.itinerary.route"></rsm-rideshares-map>
+    <div flex>
+        <div class="rideshare__map">
+            <rsm-rideshares-map
+                    route="vm.itinerary.route"></rsm-rideshares-map>
+        </div>
     </div>
 </div>

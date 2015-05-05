@@ -33,7 +33,7 @@
         function (res) {
           vm.rideshare = res[0].rideshares[0];
           vm.user = res[1];
-          if (vm.user && (vm.rideshare.user === vm.user.id)) {
+          if (vm.user && (vm.rideshare.user._id === vm.user.id)) {
             vm.isOwner = true;
           }
         },

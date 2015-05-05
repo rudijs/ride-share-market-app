@@ -44,7 +44,8 @@
         function (res) {
           vm.rideshare = res[0];
           vm.user = res[1];
-          if (vm.user && (vm.rideshare.rideshares[0].user === vm.user.id)) {
+          console.log(vm.rideshare.rideshares[0]);
+          if (vm.user && (vm.rideshare.rideshares[0].user._id === vm.user.id)) {
             vm.isOwner = true;
           }
           vm.route = vm.rideshare.rideshares[0].itinerary.route;

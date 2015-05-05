@@ -35,14 +35,14 @@
                 <li>Smoking: {{vm.rideshare.itinerary.smoking}}</li>
                 <li>{{vm.rideshare.created_at | date:'medium'}}</li>
 
-                <li ng-repeat="profile in vm.rideshare.user track by $index">
+                <li ng-repeat="provider in vm.rideshare.user.providers track by $index">
                     <ng-md-icon style="fill: black" icon="message" size="24"></ng-md-icon>
                     &nbsp;
-                    <a ng-href="{{profile.url}}" target="_blank">
-                        {{profile.provider}} > {{profile.displayName}}
+                    <a ng-href="{{provider.url}}" target="_blank">
+                        {{provider.provider}} > {{provider.displayName}}
                     </a>
-                    <a ng-href="{{profile.url}}" target="_blank">
-                        <img ng-src="{{profile.image}}"/>
+                    <a ng-href="{{provider.url}}" target="_blank">
+                        <img ng-src="{{provider.image}}"/>
                     </a>
                 </li>
 
