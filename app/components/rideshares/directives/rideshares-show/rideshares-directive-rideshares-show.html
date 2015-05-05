@@ -34,11 +34,18 @@
                 <li>Share Driving: {{vm.rideshare.itinerary.shareDriving}}</li>
                 <li>Smoking: {{vm.rideshare.itinerary.smoking}}</li>
                 <li>{{vm.rideshare.created_at | date:'medium'}}</li>
-                <li>
+
+                <li ng-repeat="profile in vm.rideshare.user track by $index">
                     <ng-md-icon style="fill: black" icon="message" size="24"></ng-md-icon>
                     &nbsp;
-                    {{vm.rideshare.user}}
+                    <a ng-href="{{profile.url}}" target="_blank">
+                        {{profile.provider}} > {{profile.displayName}}
+                    </a>
+                    <a ng-href="{{profile.url}}" target="_blank">
+                        <img ng-src="{{profile.image}}"/>
+                    </a>
                 </li>
+
             </ul>
 
             <md-button
@@ -52,9 +59,11 @@
 
     </div>
 
-    <div flex class="rideshare__map">
-        <rsm-rideshares-map
-                route="vm.rideshare.itinerary.route"></rsm-rideshares-map>
+    <div flex>
+        <div class="rideshare__map">
+            <rsm-rideshares-map
+                    route="vm.rideshare.itinerary.route"></rsm-rideshares-map>
+        </div>
     </div>
 
 </div>
