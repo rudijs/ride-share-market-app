@@ -6,7 +6,7 @@ Ride Share Market AngularJS App
 
 - `git clone git@github.com:rudijs/ride-share-market-app.git`
 - `cd ride-share-market-app && git checkout develop`
-- `npm install -g bower gulp protractor`
+- `npm install -g bower gulp`
 - `npm install`
 - `bower install`
 - `gulp init`
