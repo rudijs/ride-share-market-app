@@ -33,18 +33,15 @@ Karma test runner using Mocha, Sinon and Chai
 
 [Protractor](http://angular.github.io/protractor/#/) is the end-to-end test framework.
 
-- Install webdriver (initial only)
-- `webdriver-manager update`
-- Start webdriver
-- `webdriver-manager start`
-
 Development - Start dev server and test
 
+- Console 1:
 - `gulp serve`
+- Console 2:
 - Run all tests.
-- `protractor config/e2e.conf.js`
-- Run a selected *suite* of tests from the *e2e.conf.js* file.
-- `protractor config/e2e.conf.js --suite app`
+- `gulp test-e2e`
+- Run a selected *suite* of tests from the *config/protractor.conf.js* file.
+- `gulp test-e2e --suite app`
 
 ## Node Tests
 

@@ -233,4 +233,39 @@
     );
   });
 
+
+  var args = require('yargs').argv;
+  var browserSync = require('browser-sync');
+  var protractor = require('gulp-protractor').protractor;
+  var webdriverUpdate = require('gulp-protractor').webdriver_update;
+
+  function runProtractor () {
+
+    var suite = args.suite || 'all',
+      host = args.host || 'local';
+
+    // NOTE: Using the fake './foobar' so as to run the files
+    // listed in protractor.conf.js, instead of what was passed to
+    // gulp.src
+    return gulp.src('./foobar')
+      .pipe(protractor({
+        configFile: 'config/protractor.conf.js',
+        args: [
+          '--suite', suite,
+          '--host', host
+        ]
+      }))
+      .on('error', function (err) {
+        // Make sure failed tests cause gulp to exit non-zero
+        throw err;
+      })
+      .on('end', function () {
+        // Close browser sync server
+        browserSync.exit();
+      });
+  }
+
+  gulp.task('test-e2e', ['webdriver-update'], runProtractor);
+  gulp.task('webdriver-update', webdriverUpdate);
+
 })();
