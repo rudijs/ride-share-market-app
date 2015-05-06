@@ -24,21 +24,22 @@ module.exports = function (app) {
   //var assetsPath;
   app.use(serve(path.join(__dirname, (env === 'prd') ? './../dist' : './../app')));
 
-  var json = JSON.parse(fs.readFileSync('package.json', 'utf8'));
-
-  var locals = {
-    version: json.version,
-    api: config.get('app').api
-  };
-
-  // EJS Templates
+  // EJS templates
   render(app, {
     root: path.join(__dirname, './../httpd/views'),
     layout: false,
     viewExt: 'html',
     cache: false,
-    locals: locals,
     debug: true
+  });
+
+  // EJS template variables
+  var json = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+  app.use(function* (next) {
+    this.state = this.state || {};
+    this.state.version = json.version;
+    this.state.api = config.get('app').api;
+    yield next;
   });
 
   app.use(router(app));
