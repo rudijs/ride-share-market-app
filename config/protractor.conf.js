@@ -3,7 +3,7 @@
 var args   = require('yargs').argv;
 
 // Gulp will set NODE_ENV to 'test' by default.
-var config = require('./app');
+//var config = require('./app');
 
 var protractorConfig = {
 
@@ -20,12 +20,12 @@ var protractorConfig = {
   suites: {
     //smoke: 'spec/smoketests/*.js',
     all: '../test/e2e/**/*.js',
-    app: '../test/e2e/app-component-app.spec.js'
+    basic: '../test/e2e/app-basic_spec.js'
   }
 
 };
 
-if(args.host == 'local') {
+if(args.host === 'local') {
   console.log('==> Testing Local Server');
 }
 else {

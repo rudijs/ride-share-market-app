@@ -37,10 +37,10 @@ nconf.defaults({
   e2e: {
     url: {
       test: 'http://local.ridesharemarket.com:3000',
-      development: 'http://dev.ridesharemarket.com',
-      staging: 'http://staging.ridesharemarket.com',
-      qa: 'http://qa.ridesharemarket.com',
-      production: 'http://ridesharemarket.com'
+      dev: 'http://dev.ridesharemarket.com',
+      stg: 'http://staging.ridesharemarket.com',
+      qas: 'http://qa.ridesharemarket.com',
+      prd: 'http://ridesharemarket.com'
     },
 
     // The address of a running selenium server.
