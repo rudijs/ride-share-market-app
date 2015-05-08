@@ -51,8 +51,6 @@ describe('Ride Share Market', function () {
 
   function RsmPage(baseURL) {
 
-    console.log('baseURL', baseURL);
-
     var width = 1024;
     var height = 768;
     browser.driver.manage().window().setSize(width, height);
