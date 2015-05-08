@@ -3,21 +3,26 @@
 
   describe('App Routes Auth Policy', function () {
 
-    var $rootScope, $scope, $location, JwtSvc;
+    var $rootScope,
+      $scope,
+      $state,
+      JwtSvc,
+      spy;
 
     beforeEach(module('app.routes.auth.policy'));
 
-    beforeEach(inject(function(_$rootScope_, _$location_) {
+    beforeEach(inject(function (_$rootScope_, _$state_) {
       $rootScope = _$rootScope_;
       $scope = $rootScope.$new();
-      $location = _$location_;
+      $state = _$state_;
+      spy = sinon.spy($state, 'go');
     }));
 
     describe('Default Policy', function () {
 
       describe('Non Authenticated User', function () {
 
-        beforeEach(inject(function(_JwtSvc_) {
+        beforeEach(inject(function (_JwtSvc_) {
           JwtSvc = _JwtSvc_;
 
           // stub out the JWT Manager promise
@@ -34,11 +39,14 @@
 
         it('should redirect to /signin', function () {
 
-          $location.path('/');
+          var toState = {
+            url: '/rideshares/create'
+          };
 
-          $rootScope.$broadcast('$stateChangeStart', {});
+          $rootScope.$broadcast('$stateChangeStart', toState);
 
-          expect($location.path()).to.equal('/signin');
+          sinon.assert.calledOnce(spy);
+          sinon.assert.calledWith(spy, 'signin');
 
         });
 
@@ -63,11 +71,13 @@
 
         it('should not redirect to /signin', function () {
 
-          $location.path('/');
+          var toState = {
+            url: '/rideshares/create'
+          };
 
-          $rootScope.$broadcast('$stateChangeStart', {});
+          $rootScope.$broadcast('$stateChangeStart', toState);
 
-          expect($location.path()).to.equal('/');
+          sinon.assert.notCalled(spy);
 
         });
 

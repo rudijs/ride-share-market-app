@@ -10,27 +10,28 @@
    *
    */
   angular.module('app.routes.auth.policy', ['users'])
-    .run(function ($rootScope, $location, JwtSvc) {
+    .run(function ($rootScope, $state, JwtSvc) {
 
-      // is authentication is required for this route
-      var isAuthRequired = function (toState) {
-        return (toState.data && toState.data.noAuth) ? false : true;
-      };
-
-      $rootScope.$on('$stateChangeStart', function () {
+      $rootScope.$on('$stateChangeStart', function (event, toState) {
 
         // if route requires auth and user is not logged in
-        if (isAuthRequired(arguments[1])) {
+        if (isAuthRequired(toState)) {
 
           // redirect back to login
           JwtSvc.getUser().then(function success(user) {
             if (!user) {
-              $location.path('/signin');
+              event.preventDefault(); // stop current execution
+              $state.go('signin'); // go to login
             }
           });
         }
 
       });
+
+      // is authentication required for this route
+      function isAuthRequired(toState) {
+        return (toState.data && toState.data.noAuth) ? false : true;
+      }
 
     });
 
