@@ -11,7 +11,7 @@
     livereload = require('gulp-livereload'),
   // build
     exec = require('child_process').exec,
-    clean = require('gulp-clean'),
+    del = require('del'),
     templateCache = require('gulp-angular-templatecache'),
     minifyHTML = require('gulp-minify-html'),
     useref = require('gulp-useref'),
@@ -142,9 +142,8 @@
     });
   });
 
-  gulp.task('build-clean', function () {
-    return gulp.src('dist/')
-      .pipe(clean());
+  gulp.task('build-clean', function (cb) {
+    del(['dist/'], cb);
   });
 
   gulp.task('build-templatecache', function () {
