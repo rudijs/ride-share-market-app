@@ -46,6 +46,14 @@ var NavTop = function () {
     this.cssAnimationDelay();
   };
 
+  // Create Rideshare
+  this.createRideshareLink = element(by.xpath("//rsm-nav-top//a[@href='#!/rideshares/create']")); // jshint ignore:line
+  this.createRideshareTitle = element(by.css('div > h1'));
+  this.clickCreateRideshare = function () {
+    this.createRideshareLink.click();
+    this.cssAnimationDelay();
+  };
+
 };
 
 module.exports = new NavTop();

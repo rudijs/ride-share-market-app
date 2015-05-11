@@ -20,7 +20,8 @@ var protractorConfig = {
   suites: {
     //smoke: 'spec/smoketests/*.js',
     all: '../test/e2e/**/*.js',
-    basic: '../test/e2e/app-basic_spec.js'
+    basic: '../test/e2e/app-basic_spec.js',
+    crud: '../test/e2e/rideshares-crud_spec.js'
   }
 
 };

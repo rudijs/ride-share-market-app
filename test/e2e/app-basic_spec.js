@@ -1,13 +1,13 @@
 'use strict';
 
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'test',
-  config = require('../../config/app');
+  config = require('../../config/app'),
+  RsmPage = require('./page-objects/rsm-page'),
+  navTop = require('./page-objects/nav-top'),
+  baseURL = config.get('e2e').url[env],
+  rsmPage = new RsmPage(baseURL);
 
 describe('Ride Share Market', function () {
-
-  var baseURL = config.get('e2e').url[env];
-  var rsmPage = new RsmPage(baseURL);
-  var navTop = require('./page-objects/nav-top');
 
   describe('Basic', function () {
 
@@ -48,26 +48,5 @@ describe('Ride Share Market', function () {
     });
 
   });
-
-  function RsmPage(baseURL) {
-
-    var width = 1024;
-    var height = 768;
-    browser.driver.manage().window().setSize(width, height);
-
-    this.baseURL = baseURL;
-
-    this.get = function (path) {
-      browser.get(this.baseURL + path);
-    };
-
-    this.sleep = function (ms) {
-      if (!ms) {
-        ms = 100;
-      }
-      browser.sleep(ms);
-    };
-
-  }
 
 });
