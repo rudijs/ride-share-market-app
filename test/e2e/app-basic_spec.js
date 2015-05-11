@@ -44,7 +44,7 @@ describe('Ride Share Market', function () {
 
     it('should link to and load the home page', function () {
       navTop.clickHome();
-      expect(navTop.homePageTitle.getText()).toEqual('Ride Share Market (version 0.0.35)');
+      expect(navTop.homePageTitle.getText()).toMatch(/Ride Share Market/);
     });
 
   });
