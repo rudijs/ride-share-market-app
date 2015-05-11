@@ -1,14 +1,16 @@
 'use strict';
 
+var fs = require('fs');
+
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'test',
   config = require('../../config/app'),
   RsmPage = require('./page-objects/rsm-page'),
   navTop = require('./page-objects/nav-top'),
   rideshareForm = require('./page-objects/form-rideshare'),
+  rideshareDetails = require('./page-objects/rideshare-details'),
   baseURL = config.get('e2e').url[env],
-  rsmPage = new RsmPage(baseURL);
-
-//http://local.ridesharemarket.com:3000/#!/welcome?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiVGVzdCIsImlhdCI6MTQwOTg4NzM0MH0.90p7HsF59e8qds4F-YQfckMKfy_cA5bcnub6EmZEAQw
+  rsmPage = new RsmPage(baseURL),
+  jwtFixture = fs.readFileSync(config.get('root') + '/test/fixtures/e2e-jwt.txt').toString();
 
 describe('Rideshares', function() {
 
@@ -16,7 +18,7 @@ describe('Rideshares', function() {
 
     it('should', function() {
 
-      rsmPage.get('/#!/welcome?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiVGVzdCIsImlhdCI6MTQwOTg4NzM0MH0.90p7HsF59e8qds4F-YQfckMKfy_cA5bcnub6EmZEAQw');
+      rsmPage.get('/#!/welcome?jwt=' + jwtFixture);
 
       // Initial SPA load, wait 1/2 second for the menu to render (it's checking localstorage)
       rsmPage.sleep(2000);
@@ -27,9 +29,12 @@ describe('Rideshares', function() {
       rideshareForm.addGooglePlace('melbourne victoria australia');
       rideshareForm.addGooglePlace('sydney new south wales australia');
 
-      //rsmPage.pause();
+      rideshareForm.clickSaveRideshare();
 
-      expect(true).toBeTruthy();
+      //rsmPage.pause();
+      rsmPage.sleep(2000);
+
+      expect(rideshareDetails.rideshareDetailsTitle.getText()).toEqual('Rideshare Details');
 
     });
 

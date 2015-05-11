@@ -141,6 +141,7 @@
 <div flex layout-gt-sm="row" layout-sm="column" layout-fill layout-margin ng-if="vm.itinerary.route.length > 1">
     <div flex>
         <md-button
+                id="save_rideshare"
                 class="md-raised md-primary"
                 ng-if="vm.itinerary.route.length > 1"
                 ng-disabled="!vm.isRouteValid"
@@ -148,6 +149,7 @@
         </md-button>
         &nbsp;
         <md-button
+                id="remove_rideshare"
                 class="md-raised md-warn"
                 ng-if="vm.isOwner"
                 ng-click="vm.confirmRemove($event)">Remove Rideshare

@@ -31,13 +31,57 @@ Karma test runner using Mocha, Sinon and Chai
 
 ## End-to-End Tests
 
-[Protractor](http://angular.github.io/protractor/#/) is the end-to-end test framework.
+### Overview
 
-Development - Start dev server and test
+- [Protractor](http://angular.github.io/protractor/#/) is the end-to-end test framework.
+- Steps:
+1. Generate a valid JWT token for the tests to use
+2. Start the web app
+3. Start Web Driver
+4. Start the Tests
+
+Generate a valid JWT token for the tests to use.
+
+In the command below, you need to use the current (and valid) user_id.txt test fixture from the ride-share-market-api repo.
+
+`ride-share-market-api/test/fixtures/user_id.txt`
+
+- Open a console
+- `cd ride-share-market-api`
+- `node`
+- `var jwtManager = require('./httpd/lib/jwt/jwtManager')`
+- `var token = jwtManager.issueToken({name: 'Net Citizen', id: 'xxxx-xxxx-xxxx-xxxx'});`
+- `token`
+- Create the new file and Copy/Paste the JWT to [test/fixtures/e2e-jwt.txt](test/fixtures/e2e-jwt.txt)
+
+Start the web app
 
 - Console 1:
 - `gulp serve`
+
+
+Start Web Driver
+
+- Note: Currently the e2e tests need to run with Node.js v0.10.3x due to [this issue](https://github.com/angular/protractor/issues/1893)
 - Console 2:
+- Use Node v0.10.3x
+- `nvm install 0.10.31`
+- `nvm use 0.10.31`
+- `npm install -g protractor`
+- `npm install webdriver-manager`
+- `webdriver-manager update && webdriver-manager start`
+
+Start the Tests
+
+- Console 3:
+- Use Node v0.10.3x
+- `nvm use 0.10.31`
+- Run all tests.
+- `protractor config/protractor.conf.js`
+- Run a selected *suite* of tests from the *config/protractor.conf.js* file.
+- `protractor config/protractor.conf.js --suite basic`
+
+Gulp task runner (WIP)
 - Run all tests.
 - `gulp test-e2e`
 - Run a selected *suite* of tests from the *config/protractor.conf.js* file.
