@@ -41,6 +41,15 @@ var RideshareForm = function () {
     this.saveRideshareButton.click();
   };
 
+  this.updateRideshareTitle = element(by.css('div > h1'));
+
+  // Remove Rideshare
+  this.removeRideshareButton = element(by.id('remove_rideshare')); // jshint ignore:line
+
+  this.clickRemoveRideshare = function() {
+    this.removeRideshareButton.click();
+  };
+
 };
 
 module.exports = new RideshareForm();

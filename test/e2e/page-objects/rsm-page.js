@@ -23,4 +23,10 @@ module.exports = function RsmPage(baseURL) {
     browser.pause();
   };
 
+  this.clickLinkText = function(text) {
+    var xPath = "//*[contains(text(),'" + text + "')]";
+    var link = element(by.xpath(xPath));
+    link.click();
+  };
+
 };
