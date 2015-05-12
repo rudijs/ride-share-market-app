@@ -145,14 +145,18 @@
                 class="md-raised md-primary"
                 ng-if="vm.itinerary.route.length > 1"
                 ng-disabled="!vm.isRouteValid"
-                ng-click="vm.save()">Save Rideshare
+                ng-click="vm.save()">
+            <img src="images/icons/green_tick.svg" height="18px"/>
+            Save Rideshare
         </md-button>
         &nbsp;
         <md-button
                 id="remove_rideshare"
                 class="md-raised md-warn"
                 ng-if="vm.isOwner"
-                ng-click="vm.confirmRemove($event)">Remove Rideshare
+                ng-click="vm.confirmRemove($event)">
+            <img src="images/icons/trash.svg" height="18px"/>
+            Remove Rideshare
         </md-button>
     </div>
 </div>

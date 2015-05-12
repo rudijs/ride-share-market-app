@@ -82,7 +82,7 @@
       var confirm = $mdDialog.confirm()
         // TODO: .parent throwing error?
         //.parent(angular.element(document.body))
-        .title('Please confirm.')
+        .title('Please confirm...')
         .content('Would you like to remove this Rideshare?')
         .ariaLabel('Confirm Rideshare Remove')
         .ok('Yes, please remove.')
