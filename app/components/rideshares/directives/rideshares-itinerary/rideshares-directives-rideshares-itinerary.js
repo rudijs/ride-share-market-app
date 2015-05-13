@@ -20,7 +20,7 @@
       };
     });
 
-  function RidesharesItineraryCtrl($scope, $mdDialog, RidesharesRouteUpdateSvc) {
+  function RidesharesItineraryCtrl($scope, $mdDialog, $mdMedia, RidesharesRouteUpdateSvc) {
 
     var vm = this;
 
@@ -91,6 +91,10 @@
       $mdDialog.show(confirm).then(function() {
         vm.onRemove();
       });
+    };
+
+    vm.isSmall = function() {
+      return $mdMedia('gt-sm');
     };
 
     vm.types = ['Wanted', 'Offering'];

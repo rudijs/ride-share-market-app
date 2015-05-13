@@ -1,5 +1,5 @@
 <div flex layout="row" layout-margin layout-fill layout-padding
-        style="white-space: nowrap;">
+     style="white-space: nowrap;">
     <form
             name="RidesharesForm"
             id="RidesharesForm"
@@ -7,7 +7,11 @@
             ng-submit="vm.addPlace()">
 
         <fieldset>
-            <legend><ng-md-icon style="fill: blue" icon="directions" size="18"></ng-md-icon>&nbsp;Waypoints</legend>
+            <legend>
+                <ng-md-icon style="fill: blue" icon="directions" size="18"></ng-md-icon>
+                &nbsp;Waypoints
+            </legend>
+
             <input
                     name="place"
                     id="place"
@@ -23,16 +27,87 @@
                     ng-click="submit()">+ Add Place
             </md-button>
 
-            <div ng-repeat="place in vm.itinerary.route" style="font-size: 18px">
+            <div ng-if="vm.isSmall()"
+                 ng-repeat="place in vm.itinerary.route"
+                 id="place_{{ $index }}"
+                 style="display: flex; flex-direction: row; flex-wrap: nowrap; font-size: 18px"
+                 pick-a-date
+                 pick-a-time>
                 <ng-md-icon style="fill: green; cursor: pointer;" icon="swap_vert" size="18"
                             ng-click="vm.itinerary.route.move($index,$index+1)"
                             ng-if="$index + 1 < vm.itinerary.route.length"></ng-md-icon>
-                <ng-md-icon style="fill: blue" icon="place" size="18" ng-if="$index + 1 === vm.itinerary.route.length"></ng-md-icon>
+                <ng-md-icon style="fill: blue" icon="place" size="18"
+                            ng-if="$index + 1 === vm.itinerary.route.length"></ng-md-icon>
                 &nbsp;&nbsp;
                 <ng-md-icon style="fill: red; cursor: pointer;" icon="cancel" size="18"
                             ng-click="vm.routeRemove(vm.itinerary.route, $index)"></ng-md-icon>
                 &nbsp;&nbsp;
+
                 {{ ::place.place }}
+
+                &nbsp;-&nbsp;
+
+                <div style="position: relative">
+                    <input
+                            id="place_{{ $index }}_date"
+                            placeholder="Departure or Arrival Date"
+                            ng-model="vm.itinerary.route[$index].date"/>
+                </div>
+
+                &nbsp;@&nbsp;
+
+                <div style="position: relative">
+                    <input
+                            id="place_{{ $index }}_time"
+                            placeholder="Departure or Arrival Time"
+                            ng-model="vm.itinerary.route[$index].time"/>
+                </div>
+
+
+            </div>
+
+            <div ng-if="!vm.isSmall()"
+                 ng-repeat="place in vm.itinerary.route"
+                 id="place2_{{ $index }}"
+                 style="display: flex; flex-direction: row; font-size: 18px"
+                 pick-a-date
+                 pick-a-time>
+
+
+                <div>
+                    <ng-md-icon style="fill: green; cursor: pointer;" icon="swap_vert" size="18"
+                                ng-click="vm.itinerary.route.move($index,$index+1)"
+                                ng-if="$index + 1 < vm.itinerary.route.length"></ng-md-icon>
+                    <ng-md-icon style="fill: blue" icon="place" size="18"
+                                ng-if="$index + 1 === vm.itinerary.route.length"></ng-md-icon>
+                    &nbsp;&nbsp;
+                    <ng-md-icon style="fill: red; cursor: pointer;" icon="cancel" size="18"
+                                ng-click="vm.routeRemove(vm.itinerary.route, $index)"></ng-md-icon>
+                    &nbsp;&nbsp;
+                </div>
+
+                <div>
+                    {{ ::place.place }}
+
+
+                    <div style="position: relative">
+                        Date:
+                        <input
+                                id="place2_{{ $index }}_date"
+                                placeholder="Departure or Arrival Date"
+                                ng-model="vm.itinerary.route[$index].date"/>
+                    </div>
+
+                    <div style="position: relative">
+                        Time:
+                        <input
+                                id="place2_{{ $index }}_time"
+                                placeholder="Departure or Arrival Time"
+                                ng-model="vm.itinerary.route[$index].time"/>
+                    </div>
+                </div>
+
+
             </div>
 
         </fieldset>
@@ -43,7 +118,10 @@
 
     <div flex>
         <fieldset>
-            <legend><ng-md-icon style="fill: blue" icon="time_to_leave" size="18"></ng-md-icon>&nbsp;Rideshare Details</legend>
+            <legend>
+                <ng-md-icon style="fill: blue" icon="time_to_leave" size="18"></ng-md-icon>
+                &nbsp;Rideshare Details
+            </legend>
             <table>
                 <tr>
                     <td><span style="font-weight: bold">Type</span>:&nbsp;
@@ -85,7 +163,10 @@
 
     <div flex>
         <fieldset>
-            <legend><ng-md-icon style="fill: blue" icon="settings" size="18"></ng-md-icon>&nbsp;Vehicle Details</legend>
+            <legend>
+                <ng-md-icon style="fill: blue" icon="settings" size="18"></ng-md-icon>
+                &nbsp;Vehicle Details
+            </legend>
             <span style="font-weight: bold">Type</span>:&nbsp;
             <md-select
                     name="vehicle"
