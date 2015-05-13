@@ -14,7 +14,7 @@ var RideshareDetails = function () {
   this.clickUpdateButton = function() {
     this.updateButton.click();
     this.cssAnimationDelay();
-  }
+  };
 
 };
 

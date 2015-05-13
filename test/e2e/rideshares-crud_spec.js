@@ -6,7 +6,7 @@ var env = process.env.NODE_ENV = process.env.NODE_ENV || 'test',
   config = require('../../config/app'),
   RsmPage = require('./page-objects/rsm-page'),
   navTop = require('./page-objects/nav-top'),
-  rideshareForm = require('./page-objects/form-rideshare'),
+  rideshareForm = require('./page-objects/rideshare-form'),
   rideshareDetails = require('./page-objects/rideshare-details'),
   baseURL = config.get('e2e').url[env],
   rsmPage = new RsmPage(baseURL),
@@ -25,7 +25,6 @@ describe('Rideshares', function () {
       rideshareForm.addGooglePlace('palo alto ca united states');
       rideshareForm.addGooglePlace('mountain view ca united states');
       rideshareForm.clickSaveRideshare();
-      //rsmPage.pause();
       rsmPage.sleep(2000);
       expect(rideshareDetails.rideshareDetailsTitle.getText()).toEqual('Rideshare Details');
     });
