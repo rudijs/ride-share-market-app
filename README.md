@@ -6,7 +6,7 @@ Ride Share Market AngularJS App
 
 - `git clone git@github.com:rudijs/ride-share-market-app.git`
 - `cd ride-share-market-app && git checkout develop`
-- `npm install -g bower gulp`
+- `npm install -g bower bower-update gulp`
 - `npm install`
 - `bower install`
 - `gulp init`
@@ -103,6 +103,14 @@ Gulp task runner (WIP)
 - `gulp build`
 - `./docker-build.sh x.x.x`
 - `ssh vagrant@192.168.33.10 '~/deploy-node-app.rb rsm-app:x.x.x'`
+
+## Update
+
+- NPM Modules.
+- `npm outdated --depth 0`
+- Then cherry pick and npm update one by one.
+- Bower Modules with [bower-update](https://www.npmjs.com/package/bower-update)
+- `bower-update`
 
 ## Notes
 
