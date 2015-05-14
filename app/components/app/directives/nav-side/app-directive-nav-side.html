@@ -6,11 +6,11 @@
     </md-toolbar>
     <md-list>
 
-        <md-item ng-repeat="link in links">
+        <md-list-item ng-repeat="link in links">
             <div class="md-tile-content">
                 <a ng-href="{{link.url}}" ng-click="toggleLeftMenu()">{{link.text}}</a>
             </div>
-        </md-item>
+        </md-list-item>
 
         <rsm-nav-signin-signout toggle-nav-side="true"></rsm-nav-signin-signout>
 
