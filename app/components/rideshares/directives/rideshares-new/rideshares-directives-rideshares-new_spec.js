@@ -21,6 +21,10 @@
           return {};
         });
 
+        $provide.factory('$mdMedia', function() {
+          return {};
+        });
+
         $provide.factory('RidesharesRouteUpdateSvc', function() {
           return {};
         });

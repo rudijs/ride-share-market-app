@@ -12,17 +12,16 @@
       beforeEach(module('rideshares.services'));
       beforeEach(module('rideshares.directives', function ($provide) {
 
-        // stub out the nested directive, this is tested separately
-        //$provide.factory('rsmGoogleMapDirectionsDirective', function () {
-        //  return {};
-        //});
-
         $provide.factory('ngAutocompleteDirective', function () {
           return {};
         });
 
         $provide.factory('$mdDialog', function() {
           return {};
+        });
+
+        $provide.factory('$mdMedia', function() {
+          return function() {};
         });
 
         $provide.factory('JwtSvc', function ($q) {

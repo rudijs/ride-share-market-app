@@ -20,8 +20,6 @@
 
       it('should call jQuery plugin pickadate()', function () {
 
-        console.log('ok');
-
         var spy = sinon.spy($.fn, 'pickatime');
 
         $timeout.flush();

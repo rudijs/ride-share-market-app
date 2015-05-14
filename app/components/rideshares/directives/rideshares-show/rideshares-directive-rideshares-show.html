@@ -21,7 +21,9 @@
 
             <ol>
                 <li ng-repeat="waypoint in vm.rideshare.itinerary.route">
-                    {{ waypoint.place }} on {{ waypoint.date }} @ {{ waypoint.time }}
+                    {{ waypoint.place }}
+                    <span ng-if="waypoint.date"><br/>-&nbsp;{{ waypoint.date }}</span>
+                    <span ng-if="waypoint.date && waypoint.time"> @ {{ waypoint.time }}</span>
                 </li>
             </ol>
             <ul>
