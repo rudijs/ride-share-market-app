@@ -35,7 +35,7 @@
                 <li><b>Luggage</b>: {{::vm.rideshare.itinerary.luggage}}</li>
                 <li><b>Share Driving</b>: {{::vm.rideshare.itinerary.shareDriving}}</li>
                 <li><b>Smoking</b>: {{::vm.rideshare.itinerary.smoking}}</li>
-                <li><b>Posted on</b>: {{::vm.rideshare.created_at | date:'medium'}}</li>
+                <li><b>Last Update</b>: {{::vm.rideshare.updated_at | date:'medium'}}</li>
 
                 <div ng-repeat="provider in vm.rideshare.user.providers track by $index"
                      style="display: flex; margin-top: 1em">
