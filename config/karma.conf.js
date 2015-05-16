@@ -33,6 +33,8 @@ module.exports = function () {
       'app/bower_components/pickadate/lib/picker.date.js',
       'app/bower_components/pickadate/lib/picker.time.js',
 
+      'app/components/webworkers/worker.js',
+
       // First load app.js
       'app/components/app/app.js',
 

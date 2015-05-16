@@ -15,7 +15,7 @@
       };
     });
 
-  function RidesharesLatestCtrl($scope, $q, RidesharesGetSvc, AppLocalStorageSvc) {
+  function RidesharesLatestCtrl($scope, $q, RidesharesGetSvc, AppLocalStorageSvc, RidesharesSortLatestSvc) {
 
     var vm = this;
 
@@ -41,15 +41,21 @@
       ])
         .then(
         function (res) {
-          vm.rideshares = res[0];
+
           vm.config.currentPage = res[1] || 0;
+
+          //vm.rideshares = res[0];
+          return RidesharesSortLatestSvc.sortRideshares(res[0]).then(function(res) {
+            vm.rideshares = res;
+          });
+
         },
         function (err) {
           // Errors from 1st promise
           vm.errors = err.data.errors;
           // TODO: Errors from local storage lookup
         })
-        .finally(function () {
+        .then(function () {
           vm.ready = true;
         });
 

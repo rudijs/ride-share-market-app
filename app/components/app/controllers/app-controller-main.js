@@ -3,8 +3,6 @@
 
   function MainCtrl($mdMedia, rsmConfig) {
 
-    this.greeting = 'Hello World';
-
     this.version = rsmConfig.version;
 
     var pix;

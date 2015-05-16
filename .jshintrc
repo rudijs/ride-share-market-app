@@ -39,8 +39,8 @@
     "google": true,
     "sinon": true,
     "runs": true,
-    "protractor": true
-
+    "protractor": true,
+    "self": true
   }
 
 }

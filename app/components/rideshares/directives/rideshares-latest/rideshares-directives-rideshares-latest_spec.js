@@ -3,7 +3,7 @@
 
   describe('Rideshares Directive', function () {
 
-    describe('Rideshares Latest', function () {
+    describe.only('Rideshares Latest', function () {
 
       var scope,
         $httpBackend,
@@ -22,6 +22,17 @@
               $q.when(true);
             }
           };
+        });
+        $provide.factory('RidesharesSortLatestSvc', function($q) {
+          return {
+            sortRideshares: function(data) {
+              return {
+                then: function(cb) {
+                  cb(data);
+                }
+              }
+            }
+          }
         });
       }));
 

@@ -26,6 +26,9 @@
       'restangular',
       'angular-jwt'
     ])
+    .constant('WEB_WORKERS', {
+      worker: '/components/webworkers/worker.js'
+    })
     .config(function configRestangular(RestangularProvider) {
 
       var injector = angular.injector(['ng']);

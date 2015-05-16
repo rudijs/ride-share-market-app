@@ -1,6 +1,6 @@
 {
   "name": "ride-share-market-app",
-  "version": "0.0.36",
+  "version": "0.0.37",
   "description": "Ride Share Market AngularJS App",
   "private": true,
   "main": "server.js",
@@ -44,6 +44,7 @@
     "gulp-useref": "^1.1.2",
     "istanbul-harmony": "^0.3.12",
     "karma": "^0.12.32",
+    "karma-chrome-launcher": "^0.1.12",
     "karma-coverage": "^0.3.1",
     "karma-mocha": "^0.1.10",
     "karma-ng-html2js-preprocessor": "^0.1.2",
