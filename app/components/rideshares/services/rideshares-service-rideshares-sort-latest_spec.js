@@ -7,9 +7,12 @@
 
       beforeEach(module('rideshares.services', function ($provide) {
         $provide.constant('WEB_WORKERS', {
-          worker: 'base/app/components/webworkers/worker.js'
+          worker: '/base/app/components/webworkers/worker.js'
         });
       }));
+
+      // Load fixture data
+      beforeEach(module('fixture/200-get-rideshares.json'));
 
       var $scope,
         RidesharesSortLatestSvc;
@@ -28,12 +31,19 @@
 
       it('should sort rideshares', function (done) {
 
-        RidesharesSortLatestSvc.sortRideshares([1,2,3]).then(function (res) {
-          console.log('res', res);
-          done();
-        });
+        inject(function (fixture200GetRideshares) {
 
-        triggerDigests();
+          var rideshares = fixture200GetRideshares.rideshares;
+
+          RidesharesSortLatestSvc.sortRideshares(rideshares).then(function (res) {
+            res[0].origin.should.equal(fixture200GetRideshares.rideshares[0].itinerary.route[0].place);
+            res[0].destination.should.equal(fixture200GetRideshares.rideshares[0].itinerary.route[1].place);
+            done();
+          });
+
+          triggerDigests();
+
+        });
 
       });
 

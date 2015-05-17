@@ -3,7 +3,7 @@
 
   describe('Rideshares Directive', function () {
 
-    describe.only('Rideshares Latest', function () {
+    describe('Rideshares Latest', function () {
 
       var scope,
         $httpBackend,
@@ -23,16 +23,27 @@
             }
           };
         });
-        $provide.factory('RidesharesSortLatestSvc', function($q) {
+        // Copy in the rideshares latest sorting function.
+        // Can't seem to trigger the promise in this service
+        $provide.factory('RidesharesSortLatestSvc', function() {
           return {
             sortRideshares: function(data) {
               return {
                 then: function(cb) {
-                  cb(data);
+                  var sorted = data.map(function (item) {
+                    return {
+                      _id: item._id,
+                      origin: item.itinerary.route[0].place,
+                      destination: item.itinerary.route[item.itinerary.route.length - 1].place,
+                      waypoints: item.itinerary.route.length - 2,
+                      updated_at: item.updated_at
+                    };
+                  });
+                  cb(sorted);
                 }
-              }
+              };
             }
-          }
+          };
         });
       }));
 
@@ -50,7 +61,7 @@
         $compile(elm)(scope);
       }));
 
-      it('should render the latest rideshares', function (done) {
+      it('should render the latest rideshares', function () {
         inject(function (fixture200GetRideshares) {
 
           // test
@@ -63,18 +74,14 @@
           // http get
           $httpBackend.flush();
 
-          scope.$apply();
-
           // test
           expect(angular.element(elm).text()).to.match(/Mountain\ View,\ CA,\ United\ States/);
           expect(angular.element(elm).text()).to.match(/Woody\ Point,\ Queensland,\ Australia/);
 
-          done();
-
         });
       });
 
-      it('should handle errors', function (done) {
+      it('should handle errors', function () {
         inject(function (fixture503ServiceUnavailable) {
 
           // test
@@ -89,8 +96,6 @@
 
           // test
           expect(angular.element(elm).text()).to.match(/Service\ Unavailable/);
-
-          done();
 
         });
       });

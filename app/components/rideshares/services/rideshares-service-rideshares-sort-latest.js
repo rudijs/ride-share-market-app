@@ -12,7 +12,6 @@
       var deferred = $q.defer();
 
       worker.addEventListener('message', function (e) {
-        console.log('Received from Worker:', e.data);
         deferred.resolve(e.data);
         worker.terminate();
       });

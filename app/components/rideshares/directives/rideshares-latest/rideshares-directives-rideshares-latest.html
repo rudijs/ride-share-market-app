@@ -21,23 +21,30 @@
         <tr>
             <td
                     at-title="Origin"
-                    at-attribute="itinerary.route[0].place"
+                    at-attribute="origin"
                     at-sortable>
                 <a ng-href="#!/rideshares/{{ item._id }}">
-                    <ng-md-icon style="fill: black" icon="forward" size="18"></ng-md-icon>&nbsp;{{ item.itinerary.route[0].place }}
+                    <ng-md-icon style="fill: black" icon="forward" size="18"></ng-md-icon>
+                    &nbsp;{{ item.origin }}
                 </a>
             </td>
             <td
+                    at-title="Waypoints"
+                    at-implicit
+                    at-attribute="waypoints"
+                    at-sortable></td>
+            <td
                     at-title="Destination"
                     at-implicit
-                    at-attribute="itinerary.route[1].place"
+                    at-attribute="destination"
                     at-sortable></td>
             <td
                     at-title="Update Date"
                     at-attribute="updated_at"
                     at-sortable
                     at-initial-sorting="desc"
-                    nowrap>{{item.updated_at | date:'yyyy-MM-dd'}}</td>
+                    nowrap>{{item.updated_at | date:'yyyy-MM-dd'}}
+            </td>
         </tr>
         </tbody>
     </table>
