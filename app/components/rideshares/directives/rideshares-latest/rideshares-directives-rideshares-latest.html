@@ -11,7 +11,7 @@
 
     <table
             ng-if="vm.ready && !vm.errors"
-            style="width: 100%"
+            style="width: 80%"
             at-table
             at-paginated
             at-list="vm.rideshares"
@@ -20,11 +20,11 @@
         <tbody>
         <tr>
             <td
-                    at-title="Origin"
+                    at-title="Rideshare Origin"
                     at-attribute="origin"
                     at-sortable>
                 <a ng-href="#!/rideshares/{{ item._id }}">
-                    <ng-md-icon style="fill: black" icon="forward" size="18"></ng-md-icon>
+                    <ng-md-icon style="fill: #4c7bff" icon="forward" size="18"></ng-md-icon>
                     &nbsp;{{ item.origin }}
                 </a>
             </td>
@@ -34,12 +34,12 @@
                     at-attribute="waypoints"
                     at-sortable></td>
             <td
-                    at-title="Destination"
+                    at-title="Rideshare Destination"
                     at-implicit
                     at-attribute="destination"
                     at-sortable></td>
             <td
-                    at-title="Update Date"
+                    at-title="Published"
                     at-attribute="updated_at"
                     at-sortable
                     at-initial-sorting="desc"

@@ -10,3 +10,6 @@ legend {
   font-size: 1.3em;
   font-weight: 600;
 }
+table > thead {
+  text-align: left;
+}
