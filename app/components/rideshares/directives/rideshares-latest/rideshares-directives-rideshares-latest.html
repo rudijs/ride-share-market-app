@@ -6,48 +6,74 @@
     </div>
 
     <div ng-if="vm.errors">
-        <p ng-repeat="error in vm.errors">{{ error.title }}</p>
+        <p ng-repeat="error in vm.errors">{{ ::error.title }}</p>
     </div>
 
-    <table
-            ng-if="vm.ready && !vm.errors"
-            style="width: 80%"
-            at-table
-            at-paginated
-            at-list="vm.rideshares"
-            at-config="vm.config">
-        <thead></thead>
-        <tbody>
-        <tr>
-            <td
-                    at-title="Rideshare Origin"
-                    at-attribute="origin"
-                    at-sortable>
-                <a ng-href="#!/rideshares/{{ item._id }}">
-                    <ng-md-icon style="fill: #4c7bff" icon="forward" size="18"></ng-md-icon>
-                    &nbsp;{{ item.origin }}
-                </a>
-            </td>
-            <td
-                    at-title="Waypoints"
-                    at-implicit
-                    at-attribute="waypoints"
-                    at-sortable></td>
-            <td
-                    at-title="Rideshare Destination"
-                    at-implicit
-                    at-attribute="destination"
-                    at-sortable></td>
-            <td
-                    at-title="Published"
-                    at-attribute="updated_at"
-                    at-sortable
-                    at-initial-sorting="desc"
-                    nowrap>{{item.updated_at | date:'yyyy-MM-dd'}}
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <div ng-if="vm.ready && !vm.errors">
+
+        <h3>Latest Rideshares</h3>
+
+        <table
+                ng-if="!vm.isSmall()"
+                class="latest mobile-latest"
+                at-table
+                at-paginated
+                at-list="vm.rideshares"
+                at-config="vm.config">
+            <tbody>
+            <tr>
+                <td>
+                    <a ng-href="#!/rideshares/{{ item._id }}">{{ ::item.origin }}</a><br/>
+                    to<br/>
+                    <a ng-href="#!/rideshares/{{ item._id }}">{{ ::item.destination }}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table
+                ng-if="vm.isSmall()"
+                style="width: 80%"
+                class="latest"
+                at-table
+                at-paginated
+                at-list="vm.rideshares"
+                at-config="vm.config">
+            <thead></thead>
+            <tbody>
+            <tr>
+                <td
+                        at-title="Rideshare Origin"
+                        at-attribute="origin"
+                        at-sortable>
+                    <a ng-href="#!/rideshares/{{ item._id }}">
+                        <ng-md-icon style="fill: #4c7bff" icon="forward" size="18"></ng-md-icon>
+                        &nbsp;{{ item.origin }}
+                    </a>
+                </td>
+                <td
+                        at-title="Waypoints"
+                        at-implicit
+                        at-attribute="waypoints"
+                        at-sortable></td>
+                <td
+                        at-title="Rideshare Destination"
+                        at-implicit
+                        at-attribute="destination"
+                        at-sortable></td>
+                <td
+                        at-title="Published"
+                        at-attribute="updated_at"
+                        at-sortable
+                        at-initial-sorting="desc"
+                        nowrap>{{item.updated_at | date:'yyyy-MM-dd'}}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
 
 </div>
 

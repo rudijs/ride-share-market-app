@@ -4,6 +4,10 @@
 
         <h1>Rideshare Details</h1>
 
+        <md-button id="back" class="md-raised md-primary" ng-href="#!/">
+            &lt;&lt;&nbsp;Back
+        </md-button>
+
         <div ng-hide="vm.ready">
             <h3>Loading Rideshare...</h3>
             <md-progress-circular md-mode="indeterminate"></md-progress-circular>
@@ -35,7 +39,7 @@
                 <li><b>Luggage</b>: {{::vm.rideshare.itinerary.luggage}}</li>
                 <li><b>Share Driving</b>: {{::vm.rideshare.itinerary.shareDriving}}</li>
                 <li><b>Smoking</b>: {{::vm.rideshare.itinerary.smoking}}</li>
-                <li><b>Last Update</b>: {{::vm.rideshare.updated_at | date:'medium'}}</li>
+                <li><b>Last Update</b>: {{::vm.rideshare.updated_at | date:'yyyy-MM-dd'}}</li>
 
                 <div ng-repeat="provider in vm.rideshare.user.providers track by $index"
                      style="display: flex; margin-top: 1em">

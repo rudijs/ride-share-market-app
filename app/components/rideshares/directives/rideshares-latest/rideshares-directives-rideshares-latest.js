@@ -15,7 +15,7 @@
       };
     });
 
-  function RidesharesLatestCtrl($scope, $q, RidesharesGetSvc, AppLocalStorageSvc, RidesharesSortLatestSvc) {
+  function RidesharesLatestCtrl($scope, $q, $mdMedia, RidesharesGetSvc, AppLocalStorageSvc, RidesharesSortLatestSvc) {
 
     var vm = this;
 
@@ -68,6 +68,10 @@
     }, function (newVal) {
       AppLocalStorageSvc.setItem('rsmLatestCurrentPage', newVal);
     });
+
+    vm.isSmall = function() {
+      return $mdMedia('gt-sm');
+    };
 
   }
 
