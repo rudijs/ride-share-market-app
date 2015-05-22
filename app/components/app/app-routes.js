@@ -34,6 +34,9 @@
         .state('about', {
           url: '/about',
           templateUrl: 'components/app/templates/app-template-about-us.html',
+          controller: function($scope, rsmConfig) {
+            $scope.version = rsmConfig.version;
+          },
           data: {noAuth: true}
         })
 
