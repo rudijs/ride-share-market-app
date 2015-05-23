@@ -9,7 +9,8 @@ var env = process.env.NODE_ENV = process.env.NODE_ENV || 'dev',
   path = require('path'),
   requireWalk = require('require-walk'),
   koaJsonLogger = require('koa-json-logger'),
-  serve = require('koa-static');
+  //serve = require('koa-static');
+  serve = require('koa-static-cache');
 
 var config = require('../config/app');
 
@@ -22,7 +23,9 @@ module.exports = function (app) {
   app.use(compress());
 
   //var assetsPath;
-  app.use(serve(path.join(__dirname, (env === 'prd') ? './../dist' : './../app')));
+  app.use(serve(path.join(__dirname, (env === 'prd') ? './../dist' : './../app')), {
+    maxAge: 365 * 24 * 60 * 60
+  });
 
   // EJS templates
   render(app, {
