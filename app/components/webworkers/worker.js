@@ -6,7 +6,6 @@
    */
   self.addEventListener('message', function (e) {
 
-
     var items = e.data.map(function (item) {
       return {
         _id: item._id,
@@ -16,6 +15,10 @@
         updated_at: item.updated_at
       };
     });
+
+    items.sort(function(a,b) {
+      return new Date(a.updated_at).getTime() - new Date(b.updated_at).getTime();
+    }).reverse();
 
     self.postMessage(items);
 

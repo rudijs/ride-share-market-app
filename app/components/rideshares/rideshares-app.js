@@ -48,7 +48,7 @@
   angular
     .module('rideshares.directives', [
       'ngAutocomplete',
-      'angular-table'
+      'angularUtils.directives.dirPagination'
     ]);
 
 })();

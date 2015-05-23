@@ -40,7 +40,8 @@
 
     // tests
     'test/**/*.js',
-    '!test/coverage/**/*.js'
+    '!test/coverage/**/*.js',
+    '!test/polyfills/**/*.js'
 
   ];
 

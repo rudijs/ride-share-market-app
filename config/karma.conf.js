@@ -28,7 +28,9 @@ module.exports = function () {
       'app/bower_components/angular-jwt/dist/angular-jwt.js',
       'app/bower_components/angular-material-icons/angular-material-icons.js',
       'app/bower_components/ngAutocomplete/src/ngAutocomplete.js',
-      'app/bower_components/at-table/dist/angular-table.js',
+
+      'app/bower_components/angular-utils-pagination/dirPagination.js',
+
       'app/bower_components/pickadate/lib/picker.js',
       'app/bower_components/pickadate/lib/picker.date.js',
       'app/bower_components/pickadate/lib/picker.time.js',
@@ -54,7 +56,11 @@ module.exports = function () {
       'app/components/rideshares/**/*.js',
       'app/components/rideshares/**/*.html',
 
-      'test/fixtures/**/*.json'
+      'test/fixtures/**/*.json',
+
+      // Inline WebWorker polyfill for PhantomJS.
+      // It's likely when Karma supports PhantomJS 2.1 we won't need this.
+      'test/polyfills/Blob.js'
     ],
 
     // list of files to exclude

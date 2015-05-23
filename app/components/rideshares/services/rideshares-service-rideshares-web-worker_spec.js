@@ -3,39 +3,35 @@
 
   describe('Rideshares Service', function () {
 
-    describe('Rideshares Sort Latest', function () {
+    describe('Rideshares Web Worker', function () {
 
-      beforeEach(module('rideshares.services', function ($provide) {
-        $provide.constant('WEB_WORKERS', {
-          worker: '/base/app/components/webworkers/worker.js'
-        });
-      }));
+      beforeEach(module('rideshares.services'));
 
       // Load fixture data
       beforeEach(module('fixture/200-get-rideshares.json'));
 
       var $scope,
-        RidesharesSortLatestSvc;
+        RidesharesWebWorkerSvc;
 
-      // because I use multiple promises and $apply only trigger's one digest -  works (but it's very dirty).
+      // $apply only trigger's one digest -  works (but it's very dirty).
       var triggerDigests = function () {
           return setInterval(function () {
             $scope.$digest();
           }, 10);
         };
 
-      beforeEach(inject(function ($rootScope, _RidesharesSortLatestSvc_) {
+      beforeEach(inject(function ($rootScope, _RidesharesWebWorkerSvc_) {
         $scope = $rootScope.$new();
-        RidesharesSortLatestSvc = _RidesharesSortLatestSvc_;
+        RidesharesWebWorkerSvc = _RidesharesWebWorkerSvc_;
       }));
 
-      it('should sort rideshares by updated_at', function (done) {
+      it('should web worker', function (done) {
 
         inject(function (fixture200GetRideshares) {
 
           var rideshares = fixture200GetRideshares.rideshares;
 
-          RidesharesSortLatestSvc.sortRideshares(rideshares).then(function (res) {
+          RidesharesWebWorkerSvc.sorter(rideshares).then(function(res) {
             res[0].origin.should.equal(fixture200GetRideshares.rideshares[1].itinerary.route[0].place);
             res[0].destination.should.equal(fixture200GetRideshares.rideshares[1].itinerary.route[1].place);
             done();

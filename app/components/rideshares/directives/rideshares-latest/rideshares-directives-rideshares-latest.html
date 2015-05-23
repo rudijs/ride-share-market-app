@@ -15,13 +15,11 @@
 
         <table
                 ng-if="!vm.isSmall()"
-                class="latest mobile-latest"
-                at-table
-                at-paginated
-                at-list="vm.rideshares"
-                at-config="vm.config">
+                class="latest mobile-latest">
             <tbody>
-            <tr>
+
+            <tr dir-paginate="item in vm.rideshares | itemsPerPage: 5"
+                current-page="vm.pagination.current">
                 <td>
                     <a ng-href="#!/rideshares/{{ item._id }}">{{ ::item.origin }}</a><br/>
                     to<br/>
@@ -34,53 +32,50 @@
         <table
                 ng-if="vm.isSmall()"
                 style="width: 80%"
-                class="latest"
-                at-table
-                at-paginated
-                at-list="vm.rideshares"
-                at-config="vm.config">
-            <thead></thead>
-            <tbody>
+                class="latest">
+
+            <thead>
             <tr>
-                <td
-                        at-title="Rideshare Origin"
-                        at-attribute="origin"
-                        at-sortable>
-                    <a ng-href="#!/rideshares/{{ item._id }}">
+                <td>Rideshare Origin</td>
+                <td>Waypoints</td>
+                <td>Rideshare Destination</td>
+                <td>Last Update</td>
+            </tr>
+            </thead>
+
+            <tbody>
+            {{vm.rideshares}}
+            <tr dir-paginate="item in vm.rideshares | itemsPerPage: 5"
+                current-page="vm.pagination.current">
+
+                <td>
+                    <a ng-href="#!/rideshares/{{::item._id}}">
                         <ng-md-icon style="fill: #4c7bff" icon="forward" size="18"></ng-md-icon>
-                        &nbsp;{{ item.origin }}
+                        &nbsp;{{::item.origin}}
                     </a>
                 </td>
-                <td
-                        at-title="Waypoints"
-                        at-implicit
-                        at-attribute="waypoints"
-                        at-sortable></td>
-                <td
-                        at-title="Rideshare Destination"
-                        at-implicit
-                        at-attribute="destination"
-                        at-sortable></td>
-                <td
-                        at-title="Published"
-                        at-attribute="updated_at"
-                        at-sortable
-                        at-initial-sorting="desc"
-                        nowrap>{{item.updated_at | date:'yyyy-MM-dd'}}
+
+                <td>
+                    {{::item.waypoints}}
+                </td>
+
+                <td>
+                    {{::item.destination}}
+                </td>
+
+                <td nowrap>
+                    {{item.updated_at | date:'yyyy-MM-dd'}}
                 </td>
             </tr>
+
             </tbody>
         </table>
-    </div>
 
+    </div>
 
 
 </div>
 
 <div flex="95" flex-md="80" flex-gt-md="70" layout="row" layout-align="center">
-    <at-pagination
-            ng-if="vm.ready && vm.rideshares"
-            at-config="vm.config"
-            at-list="vm.rideshares">
-    </at-pagination>
+    <dir-pagination-controls></dir-pagination-controls>
 </div>

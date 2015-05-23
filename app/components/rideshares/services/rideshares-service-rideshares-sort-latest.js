@@ -12,6 +12,7 @@
       var deferred = $q.defer();
 
       worker.addEventListener('message', function (e) {
+        console.log(e.data);
         deferred.resolve(e.data);
         worker.terminate();
       });

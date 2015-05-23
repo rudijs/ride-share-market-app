@@ -15,25 +15,17 @@
       };
     });
 
-  function RidesharesLatestCtrl($scope, $q, $mdMedia, RidesharesGetSvc, AppLocalStorageSvc, RidesharesSortLatestSvc) {
+  function RidesharesLatestCtrl($scope, $q, $mdMedia, RidesharesGetSvc, AppLocalStorageSvc, RidesharesWebWorkerSvc) {
 
     var vm = this;
 
     vm.ready = false;
 
-    // angular-table pagination
-    vm.config = {
-      itemsPerPage: 5,
-      fillLastPage: true,
-      currentPage: 0
+    vm.pagination = {
+      current: 1
     };
 
     vm.getLatestRideshares = function () {
-
-      // Pagination options
-      // http://samu.github.io/angular-table/examples/examples.html
-      // or
-      // https://github.com/michaelbromley/angularUtils
 
       $q.all([
         RidesharesGetSvc.getLatest(),
@@ -42,10 +34,13 @@
         .then(
         function (res) {
 
-          vm.config.currentPage = res[1] || 0;
+          vm.pagination = {
+            current: res[1] || 0
+          };
 
           //vm.rideshares = res[0];
-          return RidesharesSortLatestSvc.sortRideshares(res[0]).then(function(res) {
+          //return RidesharesSortLatestSvc.sortRideshares(res[0]).then(function(res) {
+          return RidesharesWebWorkerSvc.sorter(res[0]).then(function(res) {
             vm.rideshares = res;
           });
 
@@ -64,7 +59,7 @@
     // Watch the pagination current page and save to local storage
     // This is useful if the user goes several pages into the angular-table data, clicks into, then goes back.
     $scope.$watch(function () {
-      return vm.config.currentPage;
+      return vm.pagination.current;
     }, function (newVal) {
       AppLocalStorageSvc.setItem('rsmLatestCurrentPage', newVal);
     });
