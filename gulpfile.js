@@ -216,11 +216,6 @@
       .pipe(gulp.dest('./dist/bower_components/modernizr'));
   });*/
 
-  gulp.task('build-copy-webworkers', function () {
-    return gulp.src('./app/components/webworkers/**/*')
-      .pipe(gulp.dest('./dist/components/webworkers'));
-  });
-
   gulp.task('build', function (callback) {
     runSequence(
       'build-clean',
@@ -230,7 +225,6 @@
       [
         'build-copy-images',
         'build-copy-favicon',
-        'build-copy-webworkers'
         //'build-css',
         //'build-js'
       ],
