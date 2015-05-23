@@ -8,14 +8,15 @@
         restrict: 'E',
         scope: {},
         templateUrl: 'components/rideshares/directives/rideshares-latest/rideshares-directives-rideshares-latest.html',
-        controller: 'RidesharesLatestCtrl as vm',
+        controller: 'RidesharesLatestCtrl',
+        controllerAs: 'vm',
         link: function (scope, element, attrs, ctrl) {
           ctrl.getLatestRideshares();
         }
       };
     });
 
-  function RidesharesLatestCtrl($scope, $q, $mdMedia, RidesharesGetSvc, AppLocalStorageSvc, RidesharesWebWorkerSvc) {
+  function RidesharesLatestCtrl($q, $mdMedia, RidesharesGetSvc, AppLocalStorageSvc, RidesharesWebWorkerSvc) {
 
     var vm = this;
 
@@ -56,13 +57,11 @@
 
     };
 
-    // Watch the pagination current page and save to local storage
-    // This is useful if the user goes several pages into the angular-table data, clicks into, then goes back.
-    $scope.$watch(function () {
-      return vm.pagination.current;
-    }, function (newVal) {
-      AppLocalStorageSvc.setItem('rsmLatestCurrentPage', newVal);
-    });
+    // This is useful if the user paginates several pages into the data, clicks into, then goes back.
+    vm.pageChanged = function(newPageNumber) {
+      console.log(newPageNumber);
+      AppLocalStorageSvc.setItem('rsmLatestCurrentPage', newPageNumber);
+    };
 
     vm.isSmall = function() {
       return $mdMedia('gt-sm');

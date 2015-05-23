@@ -6,15 +6,9 @@
     describe('Rideshares Latest', function () {
 
       var scope,
+        isolateScope,
         $httpBackend,
         elm;
-
-      // because I use multiple promises and $apply only trigger's one digest -  works (but it's very dirty).
-      var triggerDigests = function () {
-        return setInterval(function () {
-          scope.$digest();
-        }, 10);
-      };
 
       // Load the directives module
       beforeEach(module('rideshares.services'));
@@ -53,9 +47,9 @@
           };
         });
         $provide.factory('$mdMedia', function() {
-          return function(data) {
+          return function() {
             return true;
-          }
+          };
         });
       }));
 
@@ -83,14 +77,16 @@
           // compile
           scope.$apply();
 
+          isolateScope = elm.isolateScope();
+
           // http get
           $httpBackend.flush();
 
-          scope.$apply();
-          scope.$apply();
-          triggerDigests();
-
           // test
+          isolateScope.vm.rideshares[0].hasOwnProperty('origin').should.be.true;
+          isolateScope.vm.rideshares[0].hasOwnProperty('destination').should.be.true;
+
+          //TODO: pagination ng-repeat not happening in test.
           //console.log(angular.element(elm).text());
           //console.log(angular.element(elm));
           //expect(angular.element(elm).text()).to.match(/Mountain\ View,\ CA,\ United\ States/);

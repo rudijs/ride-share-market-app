@@ -44,7 +44,6 @@
       var worker = new Worker(blobURL);
 
       worker.addEventListener('message', function (e) {
-        console.log('resolving: ' + e.data);
         deferred.resolve(e.data);
         worker.terminate();
       });
