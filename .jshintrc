@@ -19,6 +19,7 @@
   "unused": true,
   "trailing": true,
   "expr": true,
+  "multistr": true,
 
   "globals": {
     "angular": false,
