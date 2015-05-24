@@ -14,6 +14,8 @@ module.exports = function () {
     // list of files / patterns to load in the browser
     files: [
       // Application dependencies
+      'app/bower_components/ramda/dist/ramda.js',
+
       'app/bower_components/jquery/dist/jquery.js',
       'app/bower_components/angular/angular.min.js',
       'app/bower_components/angular-animate/angular-animate.js',
@@ -28,9 +30,7 @@ module.exports = function () {
       'app/bower_components/angular-jwt/dist/angular-jwt.js',
       'app/bower_components/angular-material-icons/angular-material-icons.js',
       'app/bower_components/ngAutocomplete/src/ngAutocomplete.js',
-
       'app/bower_components/angular-utils-pagination/dirPagination.js',
-
       'app/bower_components/pickadate/lib/picker.js',
       'app/bower_components/pickadate/lib/picker.date.js',
       'app/bower_components/pickadate/lib/picker.time.js',

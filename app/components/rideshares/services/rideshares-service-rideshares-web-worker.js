@@ -6,6 +6,7 @@
   function RidesharesWebWorkerSvc($q, $window) {
 
     function sorter(data) {
+
       var deferred = $q.defer();
 
       var onmessage = 'onmessage =\
@@ -32,7 +33,6 @@
         [onmessage],
         {type: 'application/javascript'}
       );
-
 
       var URL = $window.URL || ($window.webkitURL); // simple polyfill
 

@@ -16,7 +16,7 @@
       };
     });
 
-  function RidesharesLatestCtrl($q, $mdMedia, RidesharesGetSvc, AppLocalStorageSvc, RidesharesWebWorkerSvc) {
+  function RidesharesLatestCtrl($q, $mdMedia, RidesharesGetSvc, AppLocalStorageSvc, RidesharesSortSvc) {
 
     var vm = this;
 
@@ -41,7 +41,8 @@
 
           //vm.rideshares = res[0];
           //return RidesharesSortLatestSvc.sortRideshares(res[0]).then(function(res) {
-          return RidesharesWebWorkerSvc.sorter(res[0]).then(function(res) {
+          //return RidesharesWebWorkerSvc.sorter(res[0]).then(function(res) {
+          return RidesharesSortSvc.latest(res[0]).then(function(res) {
             vm.rideshares = res;
           });
 
