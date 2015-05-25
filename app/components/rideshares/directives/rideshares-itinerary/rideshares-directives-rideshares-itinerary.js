@@ -135,18 +135,17 @@
     ];
     vm.itinerary.luggage = vm.itinerary.luggage || vm.luggage[1]; // Small Amount
 
-    vm.shareDriving = [
-      {label: 'Yes', value: 'Yes'},
-      {label: 'No', value: 'No'}
-    ];
-    vm.itinerary.shareDriving = vm.itinerary.shareDriving || vm.shareDriving[1].value; // No
+    vm.shareDriving = [ 'Yes', 'No'];
+    vm.itinerary.shareDriving = vm.itinerary.shareDriving || vm.shareDriving[1]; // No
 
-    vm.smoking = [
-      {label: 'Yes', value: 'Yes'},
-      {label: 'No', value: 'No'}
-    ];
-    vm.itinerary.smoking = vm.itinerary.smoking || vm.smoking[1].value; // No
-
+    vm.smoking = [ 'Yes', 'No'];
+    vm.itinerary.smoking = vm.itinerary.smoking || vm.smoking[1]; // No
+    // angular material design
+    //vm.smoking = [
+    //  {label: 'Yes', value: 'Yes'},
+    //  {label: 'No', value: 'No'}
+    //];
+    //vm.itinerary.smoking = vm.itinerary.smoking || vm.smoking[1].value; // No
 
   }
 

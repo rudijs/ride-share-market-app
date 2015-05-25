@@ -10,6 +10,15 @@ legend {
   font-size: 1.3em;
   font-weight: 600;
 }
+label {
+  display: block;
+}
+label.radiobutton {
+  display: inline;
+}
+div.element-padding {
+  padding: 0.4em 0 0.4em 0;
+}
 table > thead {
   text-align: left;
 }
