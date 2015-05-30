@@ -9,4 +9,9 @@ module.exports = function (app) {
     yield next;
   });
 
+  app.get('/signin/facebook', function *signinFacebook(next) {
+    this.redirect(config.get('oauth').signin.facebook);
+    yield next;
+  });
+
 };

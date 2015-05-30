@@ -41,20 +41,22 @@
                 <li><b>Smoking</b>: {{::vm.rideshare.itinerary.smoking}}</li>
                 <li><b>Last Update</b>: {{::vm.rideshare.updated_at | date:'yyyy-MM-dd'}}</li>
 
-                <div ng-repeat="provider in vm.rideshare.user.providers track by $index"
-                     style="display: flex; margin-top: 1em">
-                    <a ng-href="{{::provider.url}}" target="_blank">
-                        <img ng-src="{{::provider.image}}"/>
-                    </a>
-                    &nbsp;
-                    <a ng-href="{{::provider.url}}" target="_blank">
-                        {{::provider.displayName}}
-                    </a>
-                    &nbsp;
-                    <a ng-href="{{::provider.url}}" target="_blank">
-                        <img ng-src="images/icons/social/{{::provider.provider}}.svg"
-                             height="35em"/>
-                    </a>
+                <div ng-repeat="provider in vm.rideshare.user.providers">
+                    <div ng-repeat="(providerName, providerData) in provider"
+                         style="display: flex; margin-top: 1em">
+                        <a ng-href="{{::providerData.url}}" target="_blank">
+                            <img ng-src="{{::providerData.image}}"/>
+                        </a>
+                        &nbsp;
+                        <a ng-href="{{::providerData.url}}" target="_blank">
+                            {{::providerData.displayName}}
+                        </a>
+                        &nbsp;
+                        <a ng-href="{{::providerData.url}}" target="_blank">
+                            <img ng-src="/images/icons/social/{{::providerName}}.svg"
+                                 height="35em"/>
+                        </a>
+                    </div>
                 </div>
 
             </ul>

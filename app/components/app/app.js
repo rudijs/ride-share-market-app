@@ -5,6 +5,7 @@
     'ngMdIcons',
     'app.routes.auth.policy',
     'app.routes',
+    'app.filters',
     'app.directives',
     'app.services',
     'app.components'
@@ -34,6 +35,8 @@
     });
 
   angular.module('app.directives', []);
+
+  angular.module('app.filters', []);
 
   angular.module('app.components', [
     'users',

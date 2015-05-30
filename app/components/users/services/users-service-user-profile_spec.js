@@ -26,8 +26,9 @@
       inject(function(fixture200GetUserById) {
         $httpBackend.expectGET('/users/54354a2e1268cf741d84c3e8').respond(fixture200GetUserById);
 
-        UserProfileSvc.getProfileById('54354a2e1268cf741d84c3e8').then(function getProfileByIdSuccess(user) {
+        UserProfileSvc.getProfileById('54354a2e1268cf741d84c3e8').then(function (user) {
           expect(user._id).to.equal('54354a2e1268cf741d84c3e8');
+          user.providers.should.be.instanceof(Array);
         });
 
         $httpBackend.flush();

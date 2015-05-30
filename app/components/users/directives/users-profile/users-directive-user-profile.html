@@ -8,26 +8,29 @@
     <div ng-show="user.ready">
 
         <div ng-if="user.error">
-            <p ng-repeat="error in user.error">{{error.title}}</p>
+            <p ng-repeat="error in user.error">{{::error.title}}</p>
         </div>
 
-        <table ng-if="user.profile">
-            <tr>
-                <td>Name:</td>
-                <td>{{ user.profile.displayName }}</td>
-            </tr>
-            <tr>
-                <td>Public Profile:</td>
-                <td><a ng-href="{{ user.profile.url }}" target="_blank">Google Plus</a></td>
-            </tr>
+        <div ng-if="user.profile" style="display: flex; flex-direction: column">
 
-            <tr>
-                <td>&nbsp;</td>
-                <td>
-                    <img ng-src="{{ user.profile.image }}"/>
-                </td>
-            </tr>
-        </table>
+            <div ng-repeat="provider in user.profile.providers">
+                <div ng-repeat="(providerName, providerData) in provider" style="display: flex; margin: 0.2em">
+                    <div style="padding-right: 0.5em">
+                        <a ng-href="{{::providerData.url}}" target="_blank">
+                            <img ng-src="{{::providerData.image}}"/>
+                        </a>
+                    </div>
+                    <div style="padding-right: 0.5em">
+                        <a ng-href="{{::providerData.url}}" target="_blank">{{::providerData.displayName}}</a>
+                    </div>
+                    <div>
+                        <img ng-src="/images/icons/social/{{::providerName}}.svg"
+                             height="35em"/>
+                    </div>
+                </div>
+            </div>
+
+        </div>
 
     </div>
 

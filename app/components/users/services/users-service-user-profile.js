@@ -10,9 +10,10 @@
       var deferred = $q.defer();
 
       // TODO: restrict data fetched (ie. do not transmit email address)
+
       Restangular.one('users').one(userId).get().then(
         function success(res) {
-          deferred.resolve(res.users[0]);
+          deferred.resolve(res.users);
         },
         function error(err) {
           deferred.reject(err.data.errors);
