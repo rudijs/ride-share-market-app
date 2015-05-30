@@ -1,13 +1,13 @@
 {
   "app": {
     "protocol": "http://",
-    "hostname": "local.ridesharemarket.com",
+    "hostname": "local1.ridesharemarket.com",
     "port": "3000"
   },
-  "jwtTokenSecret": "CHANGE_ME",
   "oauth": {
     "signin": {
-      "google": "http://api.dev.loc.ridesharemarket.com:3001/signin/google"
+      "google": "http://api.dev.loc.ridesharemarket.com:3001/signin/google",
+      "facebook": "http://api.dev.loc.ridesharemarket.com:3001/signin/facebook"
     }
   },
   "e2e": {

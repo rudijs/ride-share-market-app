@@ -4,10 +4,10 @@
     "hostname": "vbox.ridesharemarket.com",
     "api": "https://api.dev.vbx.ridesharemarket.com"
   },
-  "jwtTokenSecret": "CHANGE_ME",
   "oauth": {
     "signin": {
-      "google": "https://api.dev.vbx.ridesharemarket.com/signin/google"
+      "google": "https://api.dev.vbx.ridesharemarket.com/signin/google",
+      "facebook": "https://api.dev.vbx.ridesharemarket.com/signin/facebook"
     }
   }
 }

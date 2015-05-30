@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  describe.only('App Filters', function () {
+  describe('App Filters', function () {
 
     beforeEach(module('app.filters'));
 
@@ -19,8 +19,8 @@
 
       }));
 
-    })
+    });
 
-  })
+  });
 
 })();
