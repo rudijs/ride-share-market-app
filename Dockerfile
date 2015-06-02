@@ -18,6 +18,7 @@ RUN \
     cp -a /tmp/node_modules/ ${APP_DIR} && \
     mkdir ${APP_DIR}/log && \
     mkdir ${APP_DIR}/pids
+COPY bower.json ${APP_DIR}/bower.json
 COPY config/ ${APP_DIR}/config
 COPY dist/ ${APP_DIR}/dist
 COPY httpd/ ${APP_DIR}/httpd

@@ -37,7 +37,7 @@ module.exports = function (app) {
   });
 
   // EJS template variables
-  var json = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+  var json = JSON.parse(fs.readFileSync('bower.json', 'utf8'));
   app.use(function* (next) {
     this.state = this.state || {};
     this.state.version = json.version;

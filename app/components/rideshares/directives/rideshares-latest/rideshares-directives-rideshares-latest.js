@@ -36,7 +36,7 @@
         function (res) {
 
           vm.pagination = {
-            current: res[1] || 0
+            current: res[1] || 1
           };
 
           //vm.rideshares = res[0];
