@@ -8,7 +8,7 @@ var NavTop = function () {
 
   // Home Page
   this.homeLink = element(by.xpath("//rsm-nav-top//a[@href='#!/']")); // jshint ignore:line
-  this.homePageTitle = element(by.id('title'));
+  this.homePageTitle = element(by.css('div > h1'));
   this.clickHome = function () {
     this.homeLink.click();
     this.cssAnimationDelay();
