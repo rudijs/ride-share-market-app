@@ -34,6 +34,7 @@ module.exports = function () {
       'app/bower_components/pickadate/lib/picker.js',
       'app/bower_components/pickadate/lib/picker.date.js',
       'app/bower_components/pickadate/lib/picker.time.js',
+      'app/bower_components/angularytics/dist/angularytics.min.js',
 
       // First load app.js
       'app/components/app/app.js',

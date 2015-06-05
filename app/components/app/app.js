@@ -3,6 +3,7 @@
 
   angular.module('app', [
     'ngMdIcons',
+    'angularytics',
     'app.routes.auth.policy',
     'app.routes',
     'app.filters',
@@ -20,6 +21,19 @@
           $window = injector.get('$window');
         return ($window.rsmConfig && $window.rsmConfig.version) ? $window.rsmConfig.version : 'latest';
       })()
+    })
+    .config(function(AngularyticsProvider) {
+      var angularyticsEventHandlers = [];
+      if (window.location.href.match(/local/)) {
+        angularyticsEventHandlers.push('Console');
+      }
+      else {
+        angularyticsEventHandlers.push('GoogleUniversal');
+      }
+      AngularyticsProvider.setEventHandlers(angularyticsEventHandlers);
+      //AngularyticsProvider.setEventHandlers(['Console', 'GoogleUniversal']);
+    }).run(function(Angularytics) {
+      Angularytics.init();
     });
 
   // Create application services module and define the dependencies
