@@ -21,7 +21,8 @@
     minifyCss = require('gulp-minify-css'),
     rev = require('gulp-rev'),
     revReplace = require('gulp-rev-replace'),
-    runSequence = require('run-sequence');
+    runSequence = require('run-sequence'),
+    cdnify = require('gulp-cdnify');
 
   var nodemonConfig = JSON.parse(fs.readFileSync('./nodemon.json'));
 
@@ -136,7 +137,7 @@
     }
 
     exec('NODE_ENV=test node --harmony ./node_modules/istanbul-harmony/lib/cli.js cover node_modules/mocha/bin/_mocha ' +
-    '-x \'*.spec.js\' --root httpd/ --dir test/coverage  -- -R spec ' + tests, function (err, stdout, stderr) {
+      '-x \'*.spec.js\' --root httpd/ --dir test/coverage  -- -R spec ' + tests, function (err, stdout, stderr) {
       console.log(stdout);
       console.log(stderr);
       cb(err);
@@ -203,18 +204,30 @@
     });
   });
 
-/*  gulp.task('build-css', function () {
-    return gulp.src('./app/css*//*')
-      .pipe(gulp.dest('./dist/css'));
-  });*/
+  gulp.task('cdnify-index', function () {
 
-/*  gulp.task('build-js', function () {
-    gulp.src('./app/bower_components/modernizr/feature-detects*//*.js')
-      .pipe(gulp.dest('./dist/bower_components/modernizr/feature-detects'));
+    return gulp.src('httpd/views/index.prd.html')
+      .pipe(cdnify({
+        base: 'https://cdn.ridesharemarket.com/'
+      }))
+      .pipe(gulp.dest('httpd/views'));
 
-    return gulp.src('./app/bower_components/modernizr/modernizr.js')
-      .pipe(gulp.dest('./dist/bower_components/modernizr'));
-  });*/
+  });
+
+  /*  gulp.task('build-css', function () {
+   return gulp.src('./app/css*/
+  /*')
+   .pipe(gulp.dest('./dist/css'));
+   });*/
+
+  /*  gulp.task('build-js', function () {
+   gulp.src('./app/bower_components/modernizr/feature-detects*/
+  /*.js')
+   .pipe(gulp.dest('./dist/bower_components/modernizr/feature-detects'));
+
+   return gulp.src('./app/bower_components/modernizr/modernizr.js')
+   .pipe(gulp.dest('./dist/bower_components/modernizr'));
+   });*/
 
   gulp.task('build', function (callback) {
     runSequence(
@@ -224,7 +237,7 @@
       // build in parallel
       [
         'build-copy-images',
-        'build-copy-favicon',
+        'build-copy-favicon'
         //'build-css',
         //'build-js'
       ],
@@ -233,13 +246,22 @@
     );
   });
 
+  gulp.task('build-prd', function (callback) {
+    runSequence(
+      'build',
+      'cdnify-index',
+      callback
+    );
+  });
+
+
 
   var args = require('yargs').argv;
   var browserSync = require('browser-sync');
   var protractor = require('gulp-protractor').protractor;
   var webdriverUpdate = require('gulp-protractor').webdriver_update;
 
-  function runProtractor () {
+  function runProtractor() {
 
     var suite = args.suite || 'all',
       host = args.host || 'local';
