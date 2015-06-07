@@ -34,13 +34,16 @@
                 <li><b>Type</b>: {{::vm.rideshare.itinerary.type}}</li>
                 <li><b>Trip</b>: {{::vm.rideshare.itinerary.trip}}</li>
                 <li><b>Frequency</b>: {{::vm.rideshare.itinerary.frequency}}</li>
+                <li><b>Cost</b>: {{::vm.rideshare.itinerary.currency}}{{::vm.rideshare.itinerary.cost|number:2}}</li>
                 <li><b>Vehicle</b>: {{::vm.rideshare.itinerary.vehicle}}</li>
                 <li><b>Seats</b>: {{::vm.rideshare.itinerary.seats}}</li>
                 <li><b>Luggage</b>: {{::vm.rideshare.itinerary.luggage}}</li>
                 <li><b>Share Driving</b>: {{::vm.rideshare.itinerary.shareDriving}}</li>
                 <li><b>Smoking</b>: {{::vm.rideshare.itinerary.smoking}}</li>
                 <li><b>Last Update</b>: {{::vm.rideshare.updated_at | date:'yyyy-MM-dd'}}</li>
-
+                <li ng-if="vm.rideshare.itinerary.comment"><b>Rideshare comments</b>:<br/>
+                    <span style="white-space: pre-line">{{::vm.rideshare.itinerary.comment}}</span>
+                </li>
                 <div ng-repeat="provider in vm.rideshare.user.providers">
                     <div ng-repeat="(providerName, providerData) in provider"
                          style="display: flex; margin-top: 1em">
@@ -58,7 +61,6 @@
                         </a>
                     </div>
                 </div>
-
             </ul>
 
             <md-button

@@ -147,6 +147,23 @@
     //];
     //vm.itinerary.smoking = vm.itinerary.smoking || vm.smoking[1].value; // No
 
+    // Browser Locale
+    // IE
+    if (navigator.browserLanguage) {
+      vm.lang = navigator.browserLanguage;
+    }
+    // All other vendors
+    else if (navigator.language) {
+      vm.lang = navigator.language;
+    }
+
+    vm.currencies = [ '$', '€', '£', '¥', '₱', '฿', 'Rp', '₩', 'RM', '₹', '₨'];
+    vm.itinerary.currency = vm.itinerary.currency || vm.currencies[0]; // $
+
+    vm.itinerary.cost = vm.itinerary.cost || 0;
+
+    vm.itinerary.comment = vm.itinerary.comment || '';
+
   }
 
 

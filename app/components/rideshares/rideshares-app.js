@@ -24,7 +24,8 @@
   angular
     .module('rideshares.services', [
       'restangular',
-      'angular-jwt'
+      'angular-jwt',
+      'ngMessages'
     ])
     .config(function configRestangular(RestangularProvider) {
 

@@ -18,6 +18,7 @@ module.exports = function () {
 
       'app/bower_components/jquery/dist/jquery.js',
       'app/bower_components/angular/angular.min.js',
+      'app/bower_components/angular-messages/angular-messages.min.js',
       'app/bower_components/angular-animate/angular-animate.js',
       'app/bower_components/angular-aria/angular-aria.js',
       'app/bower_components/angular-material/angular-material.js',

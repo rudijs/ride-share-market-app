@@ -166,6 +166,37 @@
                             ng-options="o as o for o in vm.frequencies"></select>
                 </div>
 
+                <div forminput>
+                    <label for="currency">Cost</label>
+                    <select
+                            id="currency"
+                            name="currency"
+                            ng-model="vm.itinerary.currency"
+                            ng-options="o as o for o in vm.currencies"></select>
+                    &nbsp;
+                    <input
+                            type="number"
+                            id="cost"
+                            name="cost"
+                            required
+                            min="0"
+                            max="500000"
+                            ng-maxlength="6"
+                            ng-model="vm.itinerary.cost"
+                            aria-label="cost">
+
+                    <div ng-messages="RidesharesForm.cost.$error">
+                        <p class="error" ng-message="required">! Cost is required, it may be set to 0.</p>
+
+                        <p class="error" ng-message="number">! Cost must be a number.</p>
+
+                        <p class="error" ng-message="max">! Cost must be a number between 0-500,000.</p>
+
+                        <p class="error" ng-message="maxlength">! Cost must be a number between 0-500,000.</p>
+                    </div>
+                </div>
+
+
             </fieldset>
 
         </div>
@@ -215,11 +246,11 @@
                     <label>Share Driving</label>
                     <span ng-repeat="option in vm.shareDriving">
                         <input
-                            type="radio"
-                            id="shareDriving_{{ $index }}"
-                            name="shareDriving"
-                            ng-model="vm.itinerary.shareDriving"
-                            ng-value="option"/>
+                                type="radio"
+                                id="shareDriving_{{ $index }}"
+                                name="shareDriving"
+                                ng-model="vm.itinerary.shareDriving"
+                                ng-value="option"/>
                             <label class="radiobutton" for="shareDriving_{{ $index }}">{{ option }}</label>
                     </span>
                 </div>
@@ -253,13 +284,39 @@
 
     </div>
 
+    <div flex layout-gt-sm="row" layout-sm="column" layout-margin layout-fill class="animate-if"
+         ng-if="vm.itinerary.route.length > 1">
+        <div flex>
+            <fieldset>
+                <legend>
+                    <ng-md-icon style="fill: blue" icon="settings" size="18"></ng-md-icon>
+                    &nbsp;Comments
+                </legend>
+            <textarea
+                    style="width:100%"
+                    rows="5"
+                    ng-model="vm.itinerary.comment"
+                    id="comment"
+                    name="comment"
+                    ng-maxlength="250"
+                    placeholder="Rideshare details."></textarea>
+
+                <i>Comment length characters available: <b>{{250 - RidesharesForm.comment.$viewValue.length}}</b></i>
+                <div ng-messages="RidesharesForm.comment.$error">
+                    <p class="error" ng-message="maxlength">! Maximum Comment length is 250 characters.</p>
+                </div>
+            </fieldset>
+        </div>
+        <div ng-if="vm.isSmall()" flex>&nbsp;</div>
+    </div>
+
     <div flex layout-fill layout-margin ng-if="vm.itinerary.route.length > 1" class="animate-if">
         <div style="display: flex; flex-direction: row; flex-wrap: nowrap">
             <md-button
                     id="save_rideshare"
                     class="md-raised md-primary"
                     ng-if="vm.itinerary.route.length > 1"
-                    ng-disabled="!vm.isRouteValid"
+                    ng-disabled="!RidesharesForm.$valid || !vm.isRouteValid"
                     ng-click="vm.save()">
                 <img src="images/icons/green_tick.svg" height="18px"/>
                 Save Rideshare&nbsp;
